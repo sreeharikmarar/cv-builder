@@ -1,0 +1,36 @@
+
+
+
+
+<div style="font-family: 'Cinzel Decorative' !important;font-style: normal;font-weight: 400;font-size:40px;margin-top: 40px;text-align: center;">
+  Build Your Favorite Cvs Online using Cv Builder ...</div>
+
+<div class="cl-20"></div>
+<div class="cl-20"></div>
+<div class="row-fluid" style="margin-top:50px">
+  <p style="font-size:17px;"><strong>Do you already have an account on one of these sites? Click the logo to log in with it here:</strong></p>
+  <div class="cl-10"></div>
+
+  <% facebook_img_tag = image_tag("/assets/facebook.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+
+  <% twitter_img_tag = image_tag("/assets/twitter.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+
+  <% google_img_tag = image_tag("/assets/google.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+
+
+  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
+    <h4 style="color:#4b4b4b;">Log in using</h4>
+    <%= link_to facebook_img_tag , user_omniauth_authorize_path(:facebook), :style=>"margin-left:10px;" %>&ensp;&ensp;
+    <div class="cl"></div>
+  </div>
+  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
+    <h4 style="color:#4b4b4b;">Log in using</h4>
+    <%= link_to twitter_img_tag, '#' , :style=>"margin-left:10px;" %>&ensp;&ensp;
+    <div class="cl"></div>
+  </div>
+  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
+    <h4 style="color:#4b4b4b;">Log in using</h4>
+    <%= link_to google_img_tag , '#' , :style=>"margin-left:10px;" %>&ensp;&ensp;
+    <div class="cl"></div>
+  </div>
+</div>

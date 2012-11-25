@@ -1,0 +1,75 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<div class="row" style="padding-left: 30px;padding-right: 30px;">
+    <%#*<div style="padding: 10px;background: #fcfcfc">%>
+  <div class="well-white span12" style="margin-left: 0px;height:auto;border-color: #898989">
+      <% if @user %>
+    <div class="span8">
+    <div class="profile-container" style="height:200px;">
+    <div class="box" style="height: auto; width: 200px;border: 1px solid #fcfcfc 1px;padding: 3px;float: left;">
+      <%= image_tag @user.image,:style=>"width:200px;height:auto;" %>
+    </div>
+      <div style="float:left;margin-left: 10px;">
+        <h2 style="color:#4B4B4B"><%= @user.name %></h2>
+        <p style="color:#4B4B4B">Email : <%= @user.email %></p>
+      </div>
+     </div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Technologies</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Experiences</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Education</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Certification</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px">Open Source</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+<div class="cl-30"></div>
+      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px">App & Softwares</h2>
+      <div style="border-bottom: solid #ccc 1.5px;"></div>
+<div class="cl-30"></div>
+    
+    </div>
+      <% end %>
+    <div class="span4" style="margin-right:0px">
+    <div class="sidebar-container" style="height: 200px;background-color: white;">
+      <div class="header">
+        <p style="text-align:center;font-size: 18px;padding-top: 5px">Import your Datas</p>
+      </div>
+      <%= link_to "Import", "/linkedin/auth" %>
+      
+    </div>
+    <div class="sidebar-container" style="height: 200px;;background-color: white;">
+      <div class="header">
+        <p style="text-align:center;font-size: 18px;padding-top: 5px">Add to Your CV</p>
+      </div>
+
+    </div>
+    <div class="sidebar-container" style="height: 200px;;background-color: white;">
+      <div class="header">
+        <p style="text-align:center;font-size: 18px;padding-top: 5px;">Create PDf</p>
+      </div>
+
+    </div>
+    </div>
+     <div class="cl"></div>
+  <%#*</div>%>
+      <div class="cl"></div>
+  </div>
+   
+</div>
