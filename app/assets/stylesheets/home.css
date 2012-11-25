@@ -102,3 +102,5 @@ margin-bottom: 20px;
     padding: 2px;
     border-radius:10px 10px 0px 0px;
 }
+
+.feed { padding: 10px 5px; color: #4b4b4b;background-color: inherit;border-bottom:1px solid #eee;}
