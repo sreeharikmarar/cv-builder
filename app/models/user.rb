@@ -10,7 +10,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me , :provider, :uid , :name , :image
 
   has_one :linkedin_details
-  
+
+  has_many   :industries, :class_name => "Keyword::Industry", :source => :keyword
+  has_many   :companies, :class_name => "Keyword::Company", :source => :keyword
+  has_many   :cities,   :class_name => "Keyword::City", :source => :keyword
+  has_many   :countries, :class_name => "Keyword::Country", :source => :keyword
+
  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
