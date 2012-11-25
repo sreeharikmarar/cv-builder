@@ -11,6 +11,8 @@ development:
   pool: 5
   username: root
   password: asdfgh
+  port: 5432
+  host: localhost
 
 fast_mode:
   adapter: pg
@@ -20,6 +22,8 @@ fast_mode:
   pool: 5
   username: root
   password: asdfgh
+  port: 5432
+  host: localhost
 
 production:
   adapter: pg
@@ -29,4 +33,6 @@ production:
   pool: 5
   username: root
   password: asdfgh
-  socket: /var/run/mysqld/mysqld.sock
+#  socket: /var/run/mysqld/mysqld.sock
+  port: 5432
+  host: localhost
