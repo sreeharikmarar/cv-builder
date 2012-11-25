@@ -242,19 +242,3 @@
   background-color: #fcfcfc;border: 1px solid #eee;
 }
 
-.mandatory  { margin:0px;font-size:12px;font-weight:bold;color:#FF0000;text-align: center; padding-left:4px; }
-.grid-error-label { margin:0px;font-size:14px;font-weight:normal;color:#FF0000;text-align: left; }
-.grid-error-field input {border:1px solid #FF0000;margin:0px;font-size:12px;font-weight:normal;font-family:arial;color:#4B4B4B;background-color: #FFF;}
-.grid-error-field select {border:1px solid #FF0000;}
-.grid-error-field textarea {border:1px solid red;margin:0px;font-size:12px;font-weight:normal;font-family:arial;color:#4B4B4B;background-color: #FFF;}
-
-.grid-label { margin:0px;font-size:14px;font-weight:normal;color:#4B4B4B;text-align: left; }
-
-.error-message  { margin:0px;font-size:12px;font-weight:normal;color:#FF0000;text-align: left;}
-
-.form-grid { clear:both;display: block; }
-.form-grid .form-grid-row { width:100%;padding:2px 0px 2px 0px; }
-.form-grid .form-grid-heading { color:#FFFFFF;width:100%;font-weight: bold; }
-.form-grid .form-grid-cell { float:left;padding:2px;display: table-cell;text-align: left;vertical-align: middle;margin-left: 5px;}
-.form-grid .form-grid-cell input {margin:0px;font-size:12px;font-weight:normal;font-family:arial;color:#4B4B4B;}
-.form-grid .form-grid-cell textarea {margin:0px;font-size:12px;font-weight:normal;font-family:arial;color:#4B4B4B;}
