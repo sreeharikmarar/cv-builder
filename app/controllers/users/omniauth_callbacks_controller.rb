@@ -41,5 +41,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 #              redirect_to new_user_registration_url
 #            end
 #  end
-  
+  def github
+    data = request.env["omniauth.auth"]
+    puts "&"*100
+    puts data
+    puts "&"*100
+  end
 end

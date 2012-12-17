@@ -5,8 +5,8 @@ gem 'rails', '3.2.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem "mysql2"
-gem "pg"
+gem "mysql2"
+#gem "pg"
 gem 'execjs'
 gem 'therubyracer'
 
@@ -38,6 +38,10 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 
 gem 'omniauth-linkedin'
+
+gem 'github_api'
+
+gem 'omniauth-github'
 
 gem 'linkedin', '0.3.7', :git => "git://github.com/pengwynn/linkedin.git"
 
