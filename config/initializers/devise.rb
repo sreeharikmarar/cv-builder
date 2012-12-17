@@ -19,6 +19,9 @@ Devise.setup do |config|
 
   config.omniauth :facebook, "126192984203529", "b692531dd4b6e5fb2201571851c74b33" , :strategy_class => OmniAuth::Strategies::Facebook , :image_size => 'large'
 
+  require "omniauth-github"
+  
+  config.omniauth :github, 'c3c55176248542521759','e5673dbb73c7e010781e8c1457d20a796ad9c19d' 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
