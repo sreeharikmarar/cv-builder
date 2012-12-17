@@ -26,7 +26,7 @@ end
 
 gem 'jquery-rails'
 
-
+gem 'rest-client'
 # gem for facebook authentication using devise
 gem 'devise'
 gem 'omniauth'
