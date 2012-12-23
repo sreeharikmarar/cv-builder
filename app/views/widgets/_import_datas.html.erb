@@ -1,0 +1,25 @@
+<div class="sidebar-container" style="height: 200px;background-color: white;">
+  <div class="header">
+    <p style="text-align:center;font-size: 18px;padding-top: 5px">Import your Datas</p>
+  </div>
+  <div class="padding-5" >
+    <div class="feed" style="height:35px;">
+      <div class="float-left">
+        <%= image_tag '/assets/linkedin.jpg',:style=>"width:autox;height:auto;" %>
+      </div>
+      <div class="float-left margin-left-15">
+        <%= link_to "Import Linkedin", "/linkedin/auth" %>
+      </div>
+
+    </div>
+    <div class="feed" style="height:35px;">
+
+      <div class="float-left">
+        <%= image_tag '/assets/github.jpg',:style=>"width:autox;height:auto;" %>
+      </div>
+      <div class="float-left margin-left-15">
+        <%= link_to "Import Github", '/github/authorize'%>
+      </div>
+    </div>
+  </div>
+</div>

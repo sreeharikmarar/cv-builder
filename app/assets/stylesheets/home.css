@@ -97,7 +97,13 @@ margin-bottom: 20px;
 }
 
 .sidebar-container .header {
-    background-color: #898989;
+    /* background-color: #898989; */
+    background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#E8E8E8));
+    background: -moz-linear-gradient(top, #F9F9F9, #E8E8E8);
+    background: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#E8E8E8));
+    border: 1px solid #DDD;
+    border-bottom-width: 0;
+    color: #666;
     height: 30px;
     padding: 2px;
     border-radius:10px 10px 0px 0px;

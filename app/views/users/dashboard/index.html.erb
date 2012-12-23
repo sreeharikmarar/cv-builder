@@ -4,104 +4,57 @@
 %>
 
 <div class="row" style="padding-left: 30px;padding-right: 30px;">
-    <%#*<div style="padding: 10px;background: #fcfcfc">%>
+<%#*<div style="padding: 10px;background: #fcfcfc">%>
   <div class="well-white span12" style="margin-left: 0px;height:auto;border-color: #898989">
-      <% if @user %>
-    <div class="span8">
-    <div class="profile-container" style="height:200px;">
-    <div class="box" style="height: auto; width: 200px;border: 1px solid #fcfcfc 1px;padding: 3px;float: left;">
-      <%= image_tag @user.image,:style=>"width:200px;height:auto;" %>
-    </div>
-      <div style="float:left;margin-left: 10px;">
-        <h2 style="color:#4B4B4B"><%= @user.name %></h2>
-        <% if @linkedin_details && @linkedin_details.headline %><h5 style="color:#4B4B4B"><%= @linkedin_details.headline %></h5><% end %>
-        <p style="color:#4B4B4B">Email : <%= @user.email %></p>
+    <% if @user %>
+      <div class="span8">
+        <div class="profile-container" style="height:200px;">
+          <div class="box" style="height: auto; width: 200px;border: 1px solid #fcfcfc 1px;padding: 3px;float: left;">
+            <%= image_tag @user.image,:style=>"width:200px;height:auto;" %>
+          </div>
+          <div style="float:left;margin-left: 10px;">
+            <h2 style="color:#4B4B4B"><%= @user.name %></h2>
+            <% if @linkedin_details && @linkedin_details.headline %><h5 style="color:#4B4B4B"><%= @linkedin_details.headline %></h5><% end %>
+            <p style="color:#4B4B4B">Email : <%= @user.email %></p>
+          </div>
+        </div>
+        <div class="cl-30"></div>
+        <%= render :partial => "/users/dashboard/technologies" %>
+
+
+
+        <%= render :partial => "/users/dashboard/experience" %>
+
+
+        <%= render :partial => "/users/dashboard/education" %>
+
+
+        <%= render :partial => "/users/dashboard/certifications" %>
+
+
+        <%= render :partial => "/users/dashboard/opensource" %>
+
+
+        <%= render :partial => "/users/dashboard/apps_and_software" %>
+
+
+        <div class="cl-30"></div>
+
+
       </div>
-     </div>
-<div class="cl-30"></div>
-<div class="raw-fluid padding-left-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Technologies</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-</div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-<div class="raw-fluid padding-left-10">
-  <div class="padding-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Experiences</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-    <div class="cl-10"></div>
-    
-          <% if @company && @company.name %><p style="color:#4B4B4B;font-size: 20px;"><%= @company.name %></p><% end %>
-          <% if @industry && @industry.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @industry.name %></p><% end %>
-          <% if @country && @country.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @country.name %></p><% end %>
-          <% if @city && @city.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @city.name %></p><% end %>
-<div class="cl-30"></div>
-</div>
-</div>
-<div class="raw-fluid padding-left-10" >
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Education</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-</div>
-<div class="raw-fluid padding-left-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Certification</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-</div>
-<div class="raw-fluid padding-left-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px">Open Source</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-<div class="cl-30"></div>
-<div class="cl-30"></div>
-</div>
-<div class="raw-fluid padding-left-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px">App & Softwares</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-<div class="cl-30"></div>
-    
-</div>
-    </div>
-      <% end %>
+    <% end %>
     <div class="span4" style="margin-right:0px">
-    <div class="sidebar-container" style="height: 200px;background-color: white;">
-      <div class="header">
-        <p style="text-align:center;font-size: 18px;padding-top: 5px">Import your Datas</p>
-      </div>
-      <div class="padding-5" >
-      <div class="feed" style="height:35px;">
-        <div class="float-left">
-          <%= image_tag '/assets/linkedin.jpg',:style=>"width:autox;height:auto;" %>
-        </div>
-        <div class="float-left margin-left-15">
-          <%= link_to "Import Linkedin", "/linkedin/auth" %>
-        </div>
-        <div class="float-left margin-left-15">
-          <%#= link_to "Import Github", user_omniauth_authorize_path(:github)%>
-          <%= link_to "Import Github", '/github/authorize'%>
-        </div>
-      </div>
-      </div>
-    </div>
-    <div class="sidebar-container" style="height: 200px;;background-color: white;">
-      <div class="header">
-        <p style="text-align:center;font-size: 18px;padding-top: 5px">Add to Your CV</p>
-      </div>
+
+
+      <%= render :partial => "/widgets/import_datas" %>
+
+      <%= render :partial => "/widgets/add_to_cv" %>
+
+      <%= render :partial => "/widgets/create_pdf" %>
 
     </div>
-    <div class="sidebar-container" style="height: 200px;;background-color: white;">
-      <div class="header">
-        <p style="text-align:center;font-size: 18px;padding-top: 5px;">Create PDf</p>
-      </div>
-
-    </div>
-    </div>
-     <div class="cl"></div>
-  <%#*</div>%>
-      <div class="cl"></div>
+    <div class="cl"></div>
+    <div class="cl"></div>
   </div>
-   
+
 </div>
