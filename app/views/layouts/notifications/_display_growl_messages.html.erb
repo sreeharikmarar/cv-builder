@@ -1,0 +1,58 @@
+<div id="container">
+
+	<!--
+	Later on, you can choose which template to use by referring to the
+	ID assigned to each template.  You'll also be able to refer
+	to each template by index, so in this example, "basic-tempate" is
+	index 0 and "advanced-template" is index 1.
+	-->
+	<div id="DIV_GROWL_DEFAULT" class="ui-state-default" style="display:none;color:#FFF; background-color: #4b4b4b;border:1px solid #f1f1f1;display:none;">
+		<a class="ui-notify-cross ui-notify-close" style='color:#f1f1f1' href="#">x</a>
+		<h3 style="color:#FFF;">#{title}</h3>
+		<p style="color:#FFF;">#{text}</p>
+	</div>
+
+	<div id="DIV_GROWL_OK" style="display:none;color:#FFF;background-color: darkgreen;border:1px solid #f1f1f1;">
+		<a class="ui-notify-cross ui-notify-close" style='color:#FFF' href="#">x</a>
+		<h3 style="color:#FFF;">#{title}</h3>
+		<p style="color:#FFF;">#{text}</p>
+	</div>
+
+	<div id="DIV_GROWL_ERROR" style="display:none;color:#FFF;background-color: #E62020;border:1px solid #f1f1f1;">
+		<a class="ui-notify-cross ui-notify-close" style='color:#FFF' href="#">x</a>
+		<h3 style="color:#FFF;">#{title}</h3>
+		<p style="color:#FFF;">#{text}</p>
+	</div>
+	
+	<div id="DIV_GROWL_HIGHLIGHT" style="display:none;color:#FFF;background-color: #B8860B;border:1px solid #f1f1f1;">
+		<a class="ui-notify-cross ui-notify-close" style='color:#FFF' href="#">x</a>
+		<h3 style="color:#FFF;">#{title}</h3>
+		<p style="color:#FFF;">#{text}</p>
+	</div>
+
+	<div id="basic-template" style='display:none;'>
+		<a class="ui-notify-cross ui-notify-close" href="#">x</a>
+		<h3>#{title}</h3>
+		<p>#{text}</p>
+	</div>
+
+	<div id="advanced-template" style='display:none;'>
+		<!-- ... you get the idea ... -->
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		displayMessagesFromParams();
+		<% unless flash[:error].blank? %>
+			displayGrowlMessages("error", "Error!", "<%= flash[:error] %>", "top", 10000);
+		<% end %>
+		<% unless flash[:alert].blank? %>
+			displayGrowlMessages("warning", "Alert!", "<%= flash[:alert] %>", "top", 10000);
+		<% end %>
+		<% unless flash[:notice].blank? %>
+			displayGrowlMessages("information", "Notification!", "<%= flash[:notice] %>", "top", 10000);
+		<% end %>
+	});
+</script>

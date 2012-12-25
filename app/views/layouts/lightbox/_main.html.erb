@@ -1,0 +1,40 @@
+<%#
+# Author : Krishnaprasad Varma (kpvarma@presciencesoft.com)
+# Date : 30 May, 2011
+# All code (c)2011 Prescience Soft Pvt. Ltd. All rights reserved
+%>
+
+<!-- Our Lightbox -->
+<div id="DIVID_LIGHT_BOX_LOADING" style="display: none;">
+  <div style="background-repeat: repeat;">
+    <%= image_tag "/assets/lightbox/hour_glass_64.gif", :title=>"Loading_block", :class=>"float-left margin-left-20 margin-right-5", :width=>"45", :height=>"42", :style=>"border: medium none;" %>
+    <span style="font-size: 22px;">Please Wait</span>
+    <div class="cl"></div>
+    <%= image_tag "/assets/lightbox/new_loading.gif", :title=>"Loading_block", :class=>"float-left", :style=>"border: medium none;margin-left: -2px;" %>
+    <div class="cl-10"></div>
+  </div>
+</div>
+
+<div id="DIV_CONFIRMATION_DIALOG_TEMPLATE" style="display: none; ">
+  <%= image_tag "/assets/lightbox/confirmations/confirm_question_64.png", :title=>"Loading_block", :class=>"float-left margin-right-5 margin-top-10", :style=>"border: medium none;" %>
+  <span style="font-size: 22px;">Confirm your action</span>
+  <div style="margin: 5px 0px 0px 1px;width:100%;padding:1px;">
+    <div class="CONFIRM_MESSAGE margin-left-60" style="height:auto;">Some custom message</div>
+    <div class="cl-5"></div>
+  </div>
+  <%= link_to "No", "#", :class=>"btn btn-danger btn-azzist margin-right-10 NO_BUTTON", :onclick=>"closeLightBoxLoading();" %>
+  <%= link_to "Yes", "#", :class=>"btn btn-success btn-azzist margin-right-10 YES_BUTTON" %>
+  <div class="cl-5"></div>
+</div>
+
+<div id="DIVID_LIGHT_BOX_CONTAINER_MAIN" class="lightbox" style="border: solid 0px #889db0; display: none; border-radius:4px;">
+  <div id="DIVID_LIGHT_BOX_HEADER" class="modal-header" style="background-color:#EEE; border-radius:4px; display:none;">
+    <button id="BTN_LIGHT_BOX_CLOSE" type="button" class="close" onclick="hidePopUpWindow();">×</button>
+    <h3 id="DIVID_LIGHT_BOX_HEADING">Modal header</h3>
+  </div>
+  <div id="DIVID_LIGHT_BOX_CONTAINER" style="padding:10px 10px 10px 10px; overflow: auto;" class="float-left"></div>
+  <div class="cl"></div>
+</div>
+<div id="DIVID_LIGHT_BOX_LOADING_FADE" class="black_overlay" style="display: none; height: 1800px;"></div>
+
+<div class="cl"></div>

@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lightbox
+//= require noty
 //= require twitter/bootstrap
 //= require_tree .

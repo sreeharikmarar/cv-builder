@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require home
+ *= require lightbox
+ *= require noty
  *= require bootstrap_and_overrides
  *= require general
  *= require_tree .

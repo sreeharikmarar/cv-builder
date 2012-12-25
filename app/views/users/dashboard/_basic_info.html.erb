@@ -1,0 +1,24 @@
+<div class="well" style="height:200px;">
+  <div class="row-fluid">
+  <div class="span3">
+    <%= image_tag @user.image,:class=>"img-polaroid",:style=>"width:auto ,height:auto;"%>
+  </div>
+    
+    <div class="span5" style="width:380px;margin-left:30px;">
+    <h2 style="color:#4B4B4B"><%= @user.name %></h2>
+    <% if @linkedin_details && @linkedin_details.headline %><h5 style="color:#4B4B4B"><%= @linkedin_details.headline %></h5><% end %>
+    <% if current_user.basic_info && current_user.basic_info.email %>
+    <p class="text-info"><%= current_user.basic_info.email %></p>
+    <% end %>
+    <% if current_user.basic_info && current_user.basic_info.website %>
+    <%= link_to "#{current_user.basic_info.website}" , current_user.basic_info.website %><br/>
+    <% end %>
+    <% if current_user.basic_info && current_user.basic_info.twitter_handle %>
+    <%= link_to "@ #{current_user.basic_info.twitter_handle}" , "http://twitter.com/#{current_user.basic_info.twitter_handle}"%><br/>
+    <% end %>
+    <% if current_user.basic_info && current_user.basic_info.address %>
+    <p class="muted"><%= current_user.basic_info.address  %></p>
+    <% end %>
+  </div>
+  </div>
+  </div>

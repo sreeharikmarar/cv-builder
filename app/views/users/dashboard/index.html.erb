@@ -8,16 +8,8 @@
   <div class="well-white span12" style="margin-left: 0px;height:auto;border-color: #898989">
     <% if @user %>
       <div class="span8">
-        <div class="profile-container" style="height:200px;">
-          <div class="box" style="height: auto; width: 200px;border: 1px solid #fcfcfc 1px;padding: 3px;float: left;">
-            <%= image_tag @user.image,:style=>"width:200px;height:auto;" %>
-          </div>
-          <div style="float:left;margin-left: 10px;">
-            <h2 style="color:#4B4B4B"><%= @user.name %></h2>
-            <% if @linkedin_details && @linkedin_details.headline %><h5 style="color:#4B4B4B"><%= @linkedin_details.headline %></h5><% end %>
-            <p style="color:#4B4B4B">Email : <%= @user.email %></p>
-          </div>
-        </div>
+
+        <%= render :partial => "/users/dashboard/basic_info" %>
         <div class="cl-30"></div>
         <%= render :partial => "/users/dashboard/technologies" %>
 

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me , :provider, :uid , :name , :image
 
   has_one :linkedin_details
+  has_one :basic_info
 
   has_many   :industries, :class_name => "Keyword::Industry", :source => :keyword
   has_many   :companies, :class_name => "Keyword::Company", :source => :keyword
