@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_one :linkedin_details
   has_one :basic_info
 
+  has_many :positions ,:class_name => "Position"
+  
   has_many   :industries, :class_name => "Keyword::Industry", :source => :keyword
   has_many   :companies, :class_name => "Keyword::Company", :source => :keyword
   has_many   :cities,   :class_name => "Keyword::City", :source => :keyword

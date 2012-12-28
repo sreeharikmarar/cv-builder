@@ -21,23 +21,9 @@ class LinkedinDetails < ActiveRecord::Base
     @linkedin_detail = user.linkedin_details || LinkedinDetails.new
     
     @linkedin_detail.user_id = user.id
-    puts "*"*100
-    puts "@linkedin_detail.user_id : #{@linkedin_detail.user_id }"
-    puts "*"*100
     @linkedin_detail.first_name = profile_1.first_name unless profile_1.first_name.blank?
-    puts "*"*100
-    puts "@linkedin_detail.first_name : #{@linkedin_detail.first_name}"
-    puts "*"*100
     @linkedin_detail.last_name = profile_1.last_name unless profile_1.last_name.blank?
-    puts "*"*100
-    puts "@linkedin_detail.last_name : #{@linkedin_detail.last_name}"
-    puts "*"*100
     @linkedin_detail.headline = profile_1.headline unless profile_1.headline.blank?
-    puts "*"*100
-    puts "@linkedin_detail.headline : #{@linkedin_detail.headline}"
-    puts "*"*100
-
-
 
     unless profile_1.location.blank?
       ln_country = ""
@@ -45,17 +31,13 @@ class LinkedinDetails < ActiveRecord::Base
       if profile_1.location 
         begin
           ln_city = profile_1.location.name.split(",")[0].split("Area")[0].strip
-          puts "ln_city : #{ln_city}"
           ln_country = profile_1.location.name.split(',').last.strip()
-          puts "ln_country : #{ln_country}"
-         
+
           if ln_city
             @city = Keyword::City.find_by_name(ln_city) || Keyword::City.create(:name=>ln_city, :user_id => user.id)
-          
           end
           if ln_country
             @country = Keyword::Country.find_by_name(ln_country) || Keyword::Country.create(:name=>ln_country, :user_id => user.id)
-         
           end
           
         rescue
@@ -66,31 +48,96 @@ class LinkedinDetails < ActiveRecord::Base
     end
     @linkedin_detail.city_id = @city.id
     @linkedin_detail.country_id = @country.id
-     
+    @linkedin_detail.save(:validate => false)
       
     #    puts "*"*100
+
+    
+    user.positions.destroy_all if user.positions
+    
     if profile_1.positions && profile_1.positions.all && profile_1.positions.all.any?
-      profile_1.positions.all.each do |pos|
+      profile_1.positions.all.each_with_index do |pos,index|
+        @position_details = Position.new
+        @position_details.user_id = user.id
+        puts "&"*100
+        puts "company.name : #{pos.company.name}"
+        puts "&"*100
+        puts "industry.name : #{pos.company.industry}"
+        puts "&"*100
+        puts "iis current : #{pos.is_current}"
+        puts "&"*100
+        puts "start_date.month : #{pos.start_date.month}"
+        puts "&"*100
+        puts "start_date.year : #{pos.start_date.year}"
+        puts "&"*100
+        puts "title : #{pos.title}"
+
+        @position_details.title = pos.title if pos.title
+        @position_details.summary = pos.summary if pos.summary
+        @position_details.is_current = pos.is_current
+        
         @company = Keyword::Company.find_by_name(pos.company.name) || Keyword::Company.create(:name => pos.company.name, :user_id =>user.id )
         @industry = Keyword::Industry.find_by_name(pos.company.industry) || Keyword::Industry.create(:name => pos.company.industry , :user_id => user.id)
         #        role = Keyword::Role.find_by_name(pos.title) || Keyword::Role.new(:name => pos.title)
-        @linkedin_detail.company_id = @company.id
-        @linkedin_detail.industry_id = @industry.id
+        @position_details.company_id = @company.id
+        @position_details.industry_id = @industry.id
+
+        if pos.is_current && pos.is_current.to_s == 'true'
+          puts "%"*100
+          puts "inside is_current true"
+          puts "%"*100
+          begin
+            puts "%"*100
+          puts "inside begin is current true"
+          puts "%"*100
+            if pos.start_date && pos.start_date.month && pos.start_date.year
+              start_date = "#{pos.start_date.month},#{pos.start_date.year}"
+              end_date = "present"
+            end
+          rescue
+             puts "%"*100
+          puts "inside rescue is current true"
+          puts "%"*100
+            start_date = nil
+            end_date = nil
+          end
+          @position_details.start_date = start_date
+          @position_details.end_date = end_date
+           puts "%"*100
+          puts "@position_details.start_date : #{@position_details.start_date}"
+          puts "@position_details.end_date : #{@position_details.end_date}"
+          puts "%"*100
+        elsif pos.is_current && pos.is_current.to_s == 'false'
+           puts "%"*100
+          puts "inside rescue is current false"
+          puts "%"*100
+          begin
+             puts "%"*100
+          puts "inside begin is current false"
+          puts "%"*100
+            if (pos.start_date && pos.end_date ) && (pos.start_date.month && pos.end_date.month) && (pos.start_date.year && pos.end_date.year)
+              start_date = "#{pos.start_date.month},#{pos.start_date.year}"
+              end_date = "#{pos.end_date.month},#{pos.end_date.year}"
+            end
+          rescue
+            puts "%"*100
+          puts "inside rescue is current false"
+          puts "%"*100
+            start_date = nil
+            end_date = nil
+          end
+          @position_details.start_date = start_date
+          @position_details.end_date = end_date
+           puts "%"*100
+          puts "@position_details.start_date : #{@position_details.start_date}"
+          puts "@position_details.end_date : #{@position_details.end_date}"
+        end
+         @position_details.save
       end
-       
-    end
-      
-     
-    puts "@linkedin_detail.company_id : #{@linkedin_detail.company_id}"
-    puts "@linkedin_detail.industry_id : #{@linkedin_detail.industry_id}"
-   
-    puts "*"*100
-    @linkedin_detail.save(:validate => false)
-
-
-    
   end
-
+ 
+  
+  end
   #  def self.parse_linkedin_2(user, profile_2)
   #
   #    ## profile_2 = c.profile(:fields=>["distance","summary","associations","honors","interests","industry","headline"])
@@ -233,5 +280,4 @@ class LinkedinDetails < ActiveRecord::Base
   #
   #  end
   #
-
 end

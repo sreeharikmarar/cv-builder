@@ -17,15 +17,6 @@ class LinkedinUserController < ApplicationController
     request_token = @linkedin_client.request_token(:oauth_callback => "http://#{request.host_with_port}/linkedin/import")
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
-    #      puts "$"*100
-    #      puts "  request_token  : #{  request_token }"
-    #      puts "$"*100
-    #      puts "$"*100
-    #      puts " session[:rtoken] : #{ session[:rtoken]}"
-    #      puts "$"*100
-    #      puts "$"*100
-    #      puts " session[:rtoken] : #{ session[:rsecret]}"
-    #      puts "$"*100
     redirect_to @linkedin_client.request_token.authorize_url
   end
 
@@ -33,31 +24,22 @@ class LinkedinUserController < ApplicationController
     init_client
     if session[:atoken].nil?
       pin = params[:oauth_verifier]
-      #      puts "%"*100
-      #      puts "pin : #{pin}"
-      #      puts "%"*100
       atoken, asecret =  @linkedin_client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
       session[:atoken] = atoken
       session[:asecret] = asecret
-      #      puts "$"*100
-      #      puts " session[:atoken] : #{ session[:atoken]}"
-      #      puts "$"*100
-      #      puts "^"*100
-      #      puts " session[:asecret] : #{ session[:asecret]}"
-      #      puts "^"*100
-
-      
     else
       @linkedin_client.authorize_from_access(session[:atoken], session[:asecret])
     end
 
     c = @linkedin_client
-    profile_0 = c.profile
-    #    puts "profile_1 = #{profile_0}"
-
-    #
+    puts "^"*100
+    puts "c.methods : #{c.methods}"
+    puts "^"*100
     profile_1 = c.profile(:fields=>["first_name","last_name","date_of_birth","location","headline","industry","positions","phone_numbers","public_profile_url","picture_url","main_address"])
     puts "profile_1 = #{profile_1}"
+    puts "*"*100
+    puts "profile_1 positions  = #{profile_1.positions}"
+    puts "*"*100
     #    puts "first_name = #{profile_1.first_name}"
     #    puts "last_name = #{profile_1.last_name}"
     #    puts "DOb = #{profile_1.date_of_birth}"
