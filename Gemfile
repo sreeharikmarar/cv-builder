@@ -8,6 +8,7 @@ gem 'rails', '3.2.0'
 gem "mysql2"
 #gem "pg"
 gem 'execjs'
+gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
 
 

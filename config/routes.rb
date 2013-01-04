@@ -14,7 +14,7 @@ CvBuilder::Application.routes.draw do
 
 
   match '/linkedin/auth'   => 'linkedin_user#auth'
-  match '/linkedin/import' => 'linkedin_user#callback'
+  match '/linkedin/callback' => 'linkedin_user#callback'
 
   match '/github/authorize'   => 'github_login#authorize'
   match '/github/callback'   => 'github_login#callback'
