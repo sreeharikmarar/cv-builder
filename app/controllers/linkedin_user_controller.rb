@@ -9,7 +9,11 @@ class LinkedinUserController < ApplicationController
     # API KEYS : https://www.linkedin.com/secure/developer
     key = "zrjfxj4j6u8i"
     secret = "OFHzBKYQxSNW66wy"
-    @linkedin_client = LinkedIn::Client.new(key, secret)
+    linkedin_configuration = { :site => 'https://api.linkedin.com',
+        :authorize_path => '/uas/oauth/authenticate',
+        :request_token_path =>'/uas/oauth/requestToken?scope=r_basicprofile+r_fullprofile+r_emailaddress+r_network+r_contactinfo',
+        :access_token_path => '/uas/oauth/accessToken' }
+    @linkedin_client = LinkedIn::Client.new(key, secret,linkedin_configuration )
   end
 
   def auth
@@ -35,11 +39,16 @@ class LinkedinUserController < ApplicationController
     puts "^"*100
     puts "c.methods : #{c.methods}"
     puts "^"*100
-    profile_1 = c.profile(:fields=>["first_name","last_name","date_of_birth","location","headline","industry","positions","phone_numbers","public_profile_url","picture_url","main_address"])
+     profile_1 = c.profile(:fields=>["first_name","last_name","headline","industry","public_profile_url","picture_url","main_address"])
+#    profile_1 = c.profile(:fields=>%w(positions))
+#    profile_2 = c.profile(:fields=>%w(educations))
+#    profile_3 = c.profile(:fields=>%w(skills))
     puts "profile_1 = #{profile_1}"
     puts "*"*100
-    puts "profile_1 positions  = #{profile_1.positions}"
-    puts "*"*100
+#    puts "profile_2 = #{profile_2}"
+#    puts "*"*100
+#    puts "profile_3 = #{profile_3}"
+#    puts "*"*100
     #    puts "first_name = #{profile_1.first_name}"
     #    puts "last_name = #{profile_1.last_name}"
     #    puts "DOb = #{profile_1.date_of_birth}"
@@ -58,6 +67,7 @@ class LinkedinUserController < ApplicationController
     ##    ImportDetail::Linkedin.parse_linkedin_2(current_individual, profile_2)
     profile_3 = c.profile(:fields=>["positions","three_current_positions","three_past_positions","publications","patents"])
     puts "profile_3 = #{profile_3}"
+    LinkedinDetails.parse_linkedin_3(current_user, profile_3)
     ##    ImportDetail::Linkedin.parse_linkedin_3(current_individual, profile_3)
     profile_4 = c.profile(:fields=>["languages","skills","certifications","educations"])
     puts "profile_4 = #{profile_4}"
