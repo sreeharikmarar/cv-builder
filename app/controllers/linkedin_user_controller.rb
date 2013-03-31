@@ -18,7 +18,7 @@ class LinkedinUserController < ApplicationController
 
   def auth
     init_client
-    request_token = @linkedin_client.request_token(:oauth_callback => "http://#{request.host_with_port}/linkedin/import")
+    request_token = @linkedin_client.request_token(:oauth_callback => "http://#{request.host_with_port}/linkedin/callback")
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to @linkedin_client.request_token.authorize_url
@@ -39,7 +39,7 @@ class LinkedinUserController < ApplicationController
     puts "^"*100
     puts "c.methods : #{c.methods}"
     puts "^"*100
-     profile_1 = c.profile(:fields=>["first_name","last_name","headline","industry","public_profile_url","picture_url","main_address"])
+     profile_1 = c.profile(:fields=>["first_name","last_name","headline","industry","public_profile_url","main_address"])
 #    profile_1 = c.profile(:fields=>%w(positions))
 #    profile_2 = c.profile(:fields=>%w(educations))
 #    profile_3 = c.profile(:fields=>%w(skills))
@@ -60,14 +60,14 @@ class LinkedinUserController < ApplicationController
     #    puts "public url = #{profile_1.public_profile_url}"
     #    puts "picture url = #{profile_1.picture_url}"
 
-    LinkedinDetails.parse_linkedin(current_user, profile_1)
+#    LinkedinDetails.parse_linkedin(current_user, profile_1)
     ##    ImportDetail::Linkedin.parse_linkedin_1(current_individual, profile_1)
-    profile_2 = c.profile(:fields=>["distance","summary","associations","honors","interests","industry","headline"])
-    puts "profile_2 = #{profile_2}"
+#    profile_2 = c.profile(:fields=>["distance","summary","associations","honors","interests","industry","headline"])
+#    puts "profile_2 = #{profile_2}"
     ##    ImportDetail::Linkedin.parse_linkedin_2(current_individual, profile_2)
-    profile_3 = c.profile(:fields=>["positions","three_current_positions","three_past_positions","publications","patents"])
-    puts "profile_3 = #{profile_3}"
-    LinkedinDetails.parse_linkedin_3(current_user, profile_3)
+    profile_2 = c.profile(:fields=>["positions","three_current_positions","three_past_positions","publications","patents"])
+    puts "profile_3 = #{profile_2}"
+    LinkedinDetails.parse_linkedin_2(current_user, profile_2)
     ##    ImportDetail::Linkedin.parse_linkedin_3(current_individual, profile_3)
     profile_4 = c.profile(:fields=>["languages","skills","certifications","educations"])
     puts "profile_4 = #{profile_4}"
@@ -76,7 +76,8 @@ class LinkedinUserController < ApplicationController
     ## Set preference to linked in
     #current_individual.set_resume_preference("linkedin")
     #current_individual.set_resume_preference("cv_builder")
-
+    session[:atoken] = nil
+    session[:asecret] = nil
     redirect_to dashboard_path(:imported_from_linkedin=>"success")
   end
 

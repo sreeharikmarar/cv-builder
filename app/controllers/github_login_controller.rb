@@ -19,6 +19,9 @@ class GithubLoginController < ApplicationController
     puts  token.inspect
     puts "$"*100
     access_token = token.token
+    puts "$"*100
+    puts "access tocken :#{access_token} "
+    puts "$"*100
 #    github = Github.new do |config|
 #      config.endpoint    = 'https://api.github.com/user/repos'
 #      config.oauth_token = access_token
@@ -31,8 +34,13 @@ class GithubLoginController < ApplicationController
 #    req = Net::HTTP.get(URI.parse("https://api.github.com/user/repos?access_token=#{access_token}"))
 #    puts"="*100
 #     require 'rest-client'
+
+    # To get the whole repos list in browser https://api.github.com/user/repos?access_token=7e349d6d8173b0fca65f64e8ebffc683024b9415 
      response =  RestClient.get("https://api.github.com/user/repos?access_token=#{access_token}")
-    puts response.to_json
+     datas = JSON.parse(response)
+     puts "^"*100
+     GithubDetails.parse_github(current_user, datas)
+    
 #    token = @github.get_token(authorization_code)
 #     items = JSON.parse(access_token.get('/api/v2/json/user/show'))
 #    github = Github.new :access_token => token.to_s , :scope =>'repo'

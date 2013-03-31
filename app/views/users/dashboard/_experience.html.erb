@@ -3,14 +3,36 @@
 <div class="cl-30"></div>
 <div class="raw-fluid padding-left-10">
   <div class="padding-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px;">Experiences</h2>
+      <h2 class="heading" style="line-height: 5px;font-size: 20px;">Experiences</h2>
       <div style="border-bottom: solid #ccc 1.5px;"></div>
     <div class="cl-10"></div>
 
-          <% if @company && @company.name %><p style="color:#4B4B4B;font-size: 20px;"><%= @company.name %></p><% end %>
-          <% if @industry && @industry.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @industry.name %></p><% end %>
-          <% if @country && @country.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @country.name %></p><% end %>
-          <% if @city && @city.name %><p style="color:#4B4B4B;font-size: 17px;"><%= @city.name %></p><% end %>
+          <% if @experience_details && @experience_details.any? %>
+            <% @experience_details.each do |exp| %>
+    <div class="feed">
+      <div class="row-fluid">
+        <div class="span6" style="width:390px;">
+      <h4 style="line-height:5px;"><%= exp.title %></h4>
+      <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;margin-right: 5px"><%= exp.company_name %></p>
+      <p style="color:#4B4B4B;font-size: 15px;font-style: italic;float: left;margin-left: 5px">, <%= exp.industry_name %> Industry</p>
+        </div>
+       <div class="span4">
+      <% if exp.is_current %>
+         <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
+      <% else %>
+         <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%m, %Y").strftime('%b %Y') %></p>
+      <% end %>
+         </div>
+         </div>
+      <p style="color:#4B4B4B;font-size: 15px;"><%= exp.summary %></p>
+    <%= link_to "delete" , delete_position_path(:id => exp.id) ,:style=>"float:right;margin-right:15px;" %>
+    <%= link_to "edit" , edit_position_path(:id => exp.id) , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+      
+      <div class="cl"></div>
+    </div>
+
+    <% end %>
+    <% end %>
 <div class="cl-30"></div>
 </div>
 </div>

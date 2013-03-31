@@ -2,6 +2,30 @@
 <div class="cl-30"></div>
 <div class="cl-30"></div>
 <div class="raw-fluid padding-left-10">
-      <h2 style="color:#4086a3;line-height: 5px;font-size: 20px">Open Source</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
+  <h2 class="heading" style="line-height: 5px;font-size: 20px">Open Source</h2>
+  <div style="border-bottom: solid #ccc 1.5px;"></div>
+
+  <div class="cl-10"></div>
+
+  <% if @github_details && @github_details.any? %>
+    <% @github_details.each do |git| %>
+      <div class="feed">
+        <div class="row-fluid">
+          <div class="span6" style="width:390px;">
+            <h4 style="line-height:20px;"><%= git.project_name %></h4>
+          </div>
+          <div class="span4">
+            <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= git.created_at.strftime('%b %Y') %> to <%= git.updated_at.strftime('%b %Y') %></p>
+          </div>
+        </div>
+        <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= git.project_description %></p>
+        <%= link_to "delete" , '#' ,:style=>"float:right;margin-right:15px;" %>
+        <%= link_to "edit" , '#' , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+
+        <div class="cl"></div>
+      </div>
+
+    <% end %>
+  <% end %>
 </div>
+<div class="cl-30"></div>

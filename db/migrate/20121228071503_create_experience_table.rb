@@ -3,8 +3,8 @@ class CreateExperienceTable < ActiveRecord::Migration
     create_table(:positions) do |t|
       t.integer    :user_id
       t.string     :title
-      t.integer    :company_id
-      t.integer    :industry_id
+      t.string     :company_name
+      t.string     :industry_name
       t.boolean    :is_current
       t.string     :start_date
       t.string     :end_date

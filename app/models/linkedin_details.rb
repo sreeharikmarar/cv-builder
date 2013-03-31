@@ -24,6 +24,7 @@ class LinkedinDetails < ActiveRecord::Base
     @linkedin_detail.first_name = profile_1.first_name unless profile_1.first_name.blank?
     @linkedin_detail.last_name = profile_1.last_name unless profile_1.last_name.blank?
     @linkedin_detail.headline = profile_1.headline unless profile_1.headline.blank?
+    @linkedin_detail.public_profile_url = profile_1.public_profile_url unless profile_1.public_profile_url.blank?
 
     unless profile_1.location.blank?
       ln_country = ""
@@ -46,95 +47,72 @@ class LinkedinDetails < ActiveRecord::Base
         end
       end
     end
-    @linkedin_detail.city_id = @city.id
-    @linkedin_detail.country_id = @country.id
+#    @linkedin_detail.city_id = @city.id
+#    @linkedin_detail.country_id = @country.id
     @linkedin_detail.save(:validate => false)
       
     #    puts "*"*100
 
-    
+  end
+  def self.parse_linkedin_2(user, profile_2)
     user.positions.destroy_all if user.positions
     
-    if profile_1.positions && profile_1.positions.all && profile_1.positions.all.any?
-      profile_1.positions.all.each_with_index do |pos,index|
+    if profile_2.positions && profile_2.positions.all && profile_2.positions.all.any?
+      profile_2.positions.all.each do |pos|
         @position_details = Position.new
         @position_details.user_id = user.id
-        puts "&"*100
-        puts "company.name : #{pos.company.name}"
-        puts "&"*100
-        puts "industry.name : #{pos.company.industry}"
-        puts "&"*100
-        puts "iis current : #{pos.is_current}"
-        puts "&"*100
-        puts "start_date.month : #{pos.start_date.month}"
-        puts "&"*100
-        puts "start_date.year : #{pos.start_date.year}"
-        puts "&"*100
-        puts "title : #{pos.title}"
-
+        
         @position_details.title = pos.title if pos.title
         @position_details.summary = pos.summary if pos.summary
         @position_details.is_current = pos.is_current
-        
-        @company = Keyword::Company.find_by_name(pos.company.name) || Keyword::Company.create(:name => pos.company.name, :user_id =>user.id )
-        @industry = Keyword::Industry.find_by_name(pos.company.industry) || Keyword::Industry.create(:name => pos.company.industry , :user_id => user.id)
-        #        role = Keyword::Role.find_by_name(pos.title) || Keyword::Role.new(:name => pos.title)
-        @position_details.company_id = @company.id
-        @position_details.industry_id = @industry.id
+        @position_details.company_name = pos.company.name
+        @position_details.industry_name = pos.company.industry
 
-        if pos.is_current && pos.is_current.to_s == 'true'
-          puts "%"*100
-          puts "inside is_current true"
-          puts "%"*100
+        
+        #        @company = Keyword::Company.find_by_name(pos.company.name) || Keyword::Company.create(:name => pos.company.name, :user_id =>user.id )
+        #        @industry = Keyword::Industry.find_by_name(pos.company.industry) || Keyword::Industry.create(:name => pos.company.industry , :user_id => user.id)
+        #        role = Keyword::Role.find_by_name(pos.title) || Keyword::Role.new(:name => pos.title)
+        #        @position_details.company_id = @company.id
+        #        @position_details.industry_id = @industry.id
+
+        if pos.is_current
+          
           begin
-            puts "%"*100
-          puts "inside begin is current true"
-          puts "%"*100
-            if pos.start_date && pos.start_date.month && pos.start_date.year
+            
+            if pos.start_date && (pos.start_date.month && pos.start_date.year)
               start_date = "#{pos.start_date.month},#{pos.start_date.year}"
               end_date = "present"
             end
           rescue
-             puts "%"*100
-          puts "inside rescue is current true"
-          puts "%"*100
+            
             start_date = nil
             end_date = nil
           end
           @position_details.start_date = start_date
           @position_details.end_date = end_date
-           puts "%"*100
-          puts "@position_details.start_date : #{@position_details.start_date}"
-          puts "@position_details.end_date : #{@position_details.end_date}"
-          puts "%"*100
-        elsif pos.is_current && pos.is_current.to_s == 'false'
-           puts "%"*100
-          puts "inside rescue is current false"
-          puts "%"*100
+          #        elsif pos.is_current.to_s == "false"
+        else
+          
           begin
-             puts "%"*100
-          puts "inside begin is current false"
-          puts "%"*100
-            if (pos.start_date && pos.end_date ) && (pos.start_date.month && pos.end_date.month) && (pos.start_date.year && pos.end_date.year)
-              start_date = "#{pos.start_date.month},#{pos.start_date.year}"
-              end_date = "#{pos.end_date.month},#{pos.end_date.year}"
+           
+            if pos.start_date && pos.end_date
+              if (pos.start_date.month && pos.end_date.month)  && (pos.start_date.year && pos.end_date.year)
+                start_date = "#{pos.start_date.month},#{pos.start_date.year}"
+                end_date = "#{pos.end_date.month},#{pos.end_date.year}"
+              end
             end
           rescue
-            puts "%"*100
-          puts "inside rescue is current false"
-          puts "%"*100
+           
             start_date = nil
             end_date = nil
           end
           @position_details.start_date = start_date
           @position_details.end_date = end_date
-           puts "%"*100
-          puts "@position_details.start_date : #{@position_details.start_date}"
-          puts "@position_details.end_date : #{@position_details.end_date}"
+         
         end
-         @position_details.save
+        @position_details.save
       end
-  end
+    end
  
   
   end

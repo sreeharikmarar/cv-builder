@@ -11,6 +11,6 @@ class Position < ActiveRecord::Base
 
   
   ## Specifies a white list of attributes that can be set via mass-assignment.
-  attr_accessible :user_id, :title , :company_id , :industry_id , :is_current , :start_date , :end_date , :summary
+  attr_accessible :user_id, :title , :company_name , :industry_name , :is_current , :start_date , :end_date , :summary
 
 end
