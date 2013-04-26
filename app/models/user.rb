@@ -13,7 +13,10 @@ class User < ActiveRecord::Base
   has_one :basic_info
 
   has_many :positions ,:class_name => "Position"
+
   has_many :github_details ,:class_name => "GithubDetails"
+
+  has_many :education_details ,:class_name => "EducationDetails"
   
   has_many   :industries, :class_name => "Keyword::Industry", :source => :keyword
   has_many   :companies, :class_name => "Keyword::Company", :source => :keyword

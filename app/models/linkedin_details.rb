@@ -11,47 +11,33 @@ class LinkedinDetails < ActiveRecord::Base
 
   
   ## Specifies a white list of attributes that can be set via mass-assignment.
-  attr_accessible :user_id, :first_name , :last_name , :headline , :city_id , :location_id , :industry_id , :company_id
+  attr_accessible :user_id, :first_name , :last_name , :headline , :public_profile_url, :date_of_birth , :twitter_account, :main_address , :phone_number , :location , :personal_website
 
 
-  def self.parse_linkedin(user, profile_1)
+  def self.parse_linkedin1(user, profile_1)
 
     ## Storing Personal Detail
     
     @linkedin_detail = user.linkedin_details || LinkedinDetails.new
     
     @linkedin_detail.user_id = user.id
+    @linkedin_detail.email = user.email
     @linkedin_detail.first_name = profile_1.first_name unless profile_1.first_name.blank?
     @linkedin_detail.last_name = profile_1.last_name unless profile_1.last_name.blank?
     @linkedin_detail.headline = profile_1.headline unless profile_1.headline.blank?
     @linkedin_detail.public_profile_url = profile_1.public_profile_url unless profile_1.public_profile_url.blank?
+    @linkedin_detail.year = profile_1.date_of_birth.year  unless profile_1.date_of_birth.year.blank?
+    @linkedin_detail.month = profile_1.date_of_birth.month unless profile_1.date_of_birth.month.blank?
+    @linkedin_detail.day = profile_1.date_of_birth.day unless profile_1.date_of_birth.day.blank?
+    @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name unless profile_1.primary_twitter_account.provider_account_name.blank?
+    @linkedin_detail.main_address = profile_1.main_address unless profile_1.main_address.blank?
+    @linkedin_detail.phone_number = profile_1.phone_numbers.all.first.phone_number if  profile_1.phone_numbers.any? && profile_1.phone_numbers.all.first.phone_number
 
-    unless profile_1.location.blank?
-      ln_country = ""
-      ln_city = ""
-      if profile_1.location 
-        begin
-          ln_city = profile_1.location.name.split(",")[0].split("Area")[0].strip
-          ln_country = profile_1.location.name.split(',').last.strip()
+    
+    @linkedin_detail.location = profile_1.location.name unless profile_1.location.blank?
 
-          if ln_city
-            @city = Keyword::City.find_by_name(ln_city) || Keyword::City.create(:name=>ln_city, :user_id => user.id)
-          end
-          if ln_country
-            @country = Keyword::Country.find_by_name(ln_country) || Keyword::Country.create(:name=>ln_country, :user_id => user.id)
-          end
-          
-        rescue
-          ln_city = ""
-          ln_country = ""
-        end
-      end
-    end
-#    @linkedin_detail.city_id = @city.id
-#    @linkedin_detail.country_id = @country.id
     @linkedin_detail.save(:validate => false)
       
-    #    puts "*"*100
 
   end
   def self.parse_linkedin_2(user, profile_2)
@@ -68,13 +54,6 @@ class LinkedinDetails < ActiveRecord::Base
         @position_details.company_name = pos.company.name
         @position_details.industry_name = pos.company.industry
 
-        
-        #        @company = Keyword::Company.find_by_name(pos.company.name) || Keyword::Company.create(:name => pos.company.name, :user_id =>user.id )
-        #        @industry = Keyword::Industry.find_by_name(pos.company.industry) || Keyword::Industry.create(:name => pos.company.industry , :user_id => user.id)
-        #        role = Keyword::Role.find_by_name(pos.title) || Keyword::Role.new(:name => pos.title)
-        #        @position_details.company_id = @company.id
-        #        @position_details.industry_id = @industry.id
-
         if pos.is_current
           
           begin
@@ -90,7 +69,6 @@ class LinkedinDetails < ActiveRecord::Base
           end
           @position_details.start_date = start_date
           @position_details.end_date = end_date
-          #        elsif pos.is_current.to_s == "false"
         else
           
           begin
@@ -116,6 +94,13 @@ class LinkedinDetails < ActiveRecord::Base
  
   
   end
+
+
+    def self.parse_linkedin_3(user, profile_3)
+
+      EducationDetails.parse_education_details(user, profile_3)
+
+    end
   #  def self.parse_linkedin_2(user, profile_2)
   #
   #    ## profile_2 = c.profile(:fields=>["distance","summary","associations","honors","interests","industry","headline"])
