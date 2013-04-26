@@ -11,10 +11,10 @@
     <% @github_details.each do |git| %>
       <div class="feed">
         <div class="row-fluid">
-          <div class="span6" style="width:390px;">
+          <div class="span9">
             <h4 style="line-height:20px;"><%= git.project_name %></h4>
           </div>
-          <div class="span4">
+          <div class="span3" style="float:right;">
             <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= git.created_at.strftime('%b %Y') %> to <%= git.updated_at.strftime('%b %Y') %></p>
           </div>
         </div>

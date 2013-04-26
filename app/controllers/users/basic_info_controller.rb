@@ -4,7 +4,7 @@ class Users::BasicInfoController < ApplicationController
   layout "after-login"
   
   def edit
-    @basic_info = BasicInfo.find_by_user_id(current_user.id) || BasicInfo.new
+    @basic_info = LinkedinDetails.find_by_user_id(current_user.id) || LinkedinDetails.new
 
     respond_to do |format|
       format.js {}
@@ -12,16 +12,20 @@ class Users::BasicInfoController < ApplicationController
   end
 
   def create
-    @basic_info =  BasicInfo.new
+    @basic_info =  LinkedinDetails.new
 
     @basic_info.user_id = current_user.id
-    @basic_info.full_name = params[:basic_info][:full_name]
+    @basic_info.first_name = params[:basic_info][:first_name]
+    @basic_info.last_name = params[:basic_info][:last_name]
     @basic_info.email = params[:basic_info][:email]
-    @basic_info.address = params[:basic_info][:address]
-    @basic_info.phone = params[:basic_info][:phone]
-    @basic_info.website = params[:basic_info][:website]
-    @basic_info.twitter_handle = params[:basic_info][:twitter_handle]
-    @basic_info.linkedin_url = params[:basic_info][:linkedin_url]
+    @basic_info.year = params[:basic_info][:year]
+    @basic_info.month = params[:basic_info][:month]
+    @basic_info.day = params[:basic_info][:day]
+    @basic_info.main_address = params[:basic_info][:main_address]
+    @basic_info.phone_number = params[:basic_info][:phone_number]
+    @basic_info.personal_website = params[:basic_info][:personal_website]
+    @basic_info.twitter_account = params[:basic_info][:twitter_account]
+    @basic_info.public_profile_url = params[:basic_info][:public_profile_url]
 
     @basic_info.save
     
@@ -30,16 +34,20 @@ class Users::BasicInfoController < ApplicationController
     end
   end
   def update
-    @basic_info = BasicInfo.find_by_user_id(current_user.id) 
+    @basic_info = LinkedinDetails.find_by_user_id(current_user.id)
     
     @basic_info.user_id = current_user.id
-    @basic_info.full_name = params[:basic_info][:full_name]
+    @basic_info.first_name = params[:basic_info][:first_name]
+    @basic_info.last_name = params[:basic_info][:last_name]
     @basic_info.email = params[:basic_info][:email]
-    @basic_info.address = params[:basic_info][:address]
-    @basic_info.phone = params[:basic_info][:phone]
-    @basic_info.website = params[:basic_info][:website]
-    @basic_info.twitter_handle = params[:basic_info][:twitter_handle]
-    @basic_info.linkedin_url = params[:basic_info][:linkedin_url]
+    @basic_info.year = params[:basic_info][:year]
+    @basic_info.month = params[:basic_info][:month]
+    @basic_info.day = params[:basic_info][:day]
+    @basic_info.main_address = params[:basic_info][:main_address]
+    @basic_info.phone_number = params[:basic_info][:phone_number]
+    @basic_info.personal_website = params[:basic_info][:personal_website]
+    @basic_info.twitter_account = params[:basic_info][:twitter_account]
+    @basic_info.public_profile_url = params[:basic_info][:public_profile_url]
 
     @basic_info.save
 

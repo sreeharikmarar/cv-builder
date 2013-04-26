@@ -36,41 +36,22 @@ class LinkedinUserController < ApplicationController
     end
 
     c = @linkedin_client
-    puts "^"*100
-    puts "c.methods : #{c.methods}"
-    puts "^"*100
-     profile_1 = c.profile(:fields=>["first_name","last_name","headline","industry","public_profile_url","main_address"])
-#    profile_1 = c.profile(:fields=>%w(positions))
-#    profile_2 = c.profile(:fields=>%w(educations))
-#    profile_3 = c.profile(:fields=>%w(skills))
-    puts "profile_1 = #{profile_1}"
-    puts "*"*100
-#    puts "profile_2 = #{profile_2}"
-#    puts "*"*100
-#    puts "profile_3 = #{profile_3}"
-#    puts "*"*100
-    #    puts "first_name = #{profile_1.first_name}"
-    #    puts "last_name = #{profile_1.last_name}"
-    #    puts "DOb = #{profile_1.date_of_birth}"
-    #    puts "location = #{profile_1.location}"
-    #    puts "location name = #{profile_1.location.name}"
-    #    puts "country_code = #{profile_1.location.country.code.name}"
-    #    puts "country name = #{profile_1.location.name[0]}"
-    #    puts "phone = #{profile_1.phone_numbers}"
-    #    puts "public url = #{profile_1.public_profile_url}"
-    #    puts "picture url = #{profile_1.picture_url}"
+    
+    profile_1 = c.profile(:fields=>["first_name","last_name","headline","public_profile_url","date-of-birth","main_address","phone-numbers","primary-twitter-account","twitter-accounts","location"])
 
-#    LinkedinDetails.parse_linkedin(current_user, profile_1)
-    ##    ImportDetail::Linkedin.parse_linkedin_1(current_individual, profile_1)
-#    profile_2 = c.profile(:fields=>["distance","summary","associations","honors","interests","industry","headline"])
-#    puts "profile_2 = #{profile_2}"
-    ##    ImportDetail::Linkedin.parse_linkedin_2(current_individual, profile_2)
+    LinkedinDetails.parse_linkedin1(current_user, profile_1)
+
     profile_2 = c.profile(:fields=>["positions","three_current_positions","three_past_positions","publications","patents"])
-    puts "profile_3 = #{profile_2}"
+
+    puts "profile_2 = #{profile_2}"
+
     LinkedinDetails.parse_linkedin_2(current_user, profile_2)
+    
     ##    ImportDetail::Linkedin.parse_linkedin_3(current_individual, profile_3)
-    profile_4 = c.profile(:fields=>["languages","skills","certifications","educations"])
-    puts "profile_4 = #{profile_4}"
+    profile_3 = c.profile(:fields=>["languages","skills","certifications","educations"])
+    puts "profile_3 = #{profile_3}"
+
+    LinkedinDetails.parse_linkedin_3(current_user, profile_3)
     #    ImportDetail::Linkedin.parse_linkedin_4(current_individual, profile_4)
 
     ## Set preference to linked in
