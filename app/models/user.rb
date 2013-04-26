@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me , :provider, :uid , :name , :image
 
   has_one :linkedin_details
-  has_one :basic_info
+  has_one :technical_details
 
   has_many :positions ,:class_name => "Position"
 

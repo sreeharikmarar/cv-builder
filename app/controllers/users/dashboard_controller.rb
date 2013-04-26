@@ -9,5 +9,6 @@ class Users::DashboardController < ApplicationController
     @experience_details = current_user.positions if current_user.positions.any?
     @github_details = current_user.github_details if current_user.github_details.any?
     @education_details = current_user.education_details if current_user.education_details.any?
+    @technical_details = current_user.technical_details 
   end
 end

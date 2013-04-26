@@ -15,27 +15,15 @@ class EducationDetails < ActiveRecord::Base
 
   def self.parse_education_details(user, profile)
      user.education_details.destroy_all if user.education_details.any?
-        profile.educations.all.each do |item|
-       puts "-"*100
+
+      profile.educations.all.each do |item|
       @education_detail = EducationDetails.new
-
       @education_detail.user_id = user.id
-      puts "@education_detail.user_id : #{@education_detail.user_id}"
-
       @education_detail.degree = item.degree
-      puts "@education_detail.degree  : #{@education_detail.degree}"
-
       @education_detail.field_of_study = item.field_of_study
-       puts "@education_detail.field_of_study : #{@education_detail.field_of_study}"
-
       @education_detail.school_name = item.school_name
-      puts "@education_detail.school_name  : #{@education_detail.school_name}"
-
       @education_detail.start_date = item.start_date.year
-      puts " @education_detail.start_date : #{ @education_detail.start_date.year}"
-
       @education_detail.end_date = item.end_date.year
-      puts " @education_detail.end_date : #{@education_detail.end_date.year}"
       @education_detail.save
       end
   end
