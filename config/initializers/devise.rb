@@ -17,7 +17,8 @@ Devise.setup do |config|
 
   require "omniauth-facebook"
 
-  config.omniauth :facebook, "126192984203529", "b692531dd4b6e5fb2201571851c74b33" , :strategy_class => OmniAuth::Strategies::Facebook , :image_size => 'large'
+  conf = YAML::load(File.open("#{Rails.root.to_s}/config/facebook.yml"))
+  config.omniauth :facebook, conf[Rails.env]["app_id"], conf[Rails.env]["secret_key"] , :strategy_class => OmniAuth::Strategies::Facebook , :image_size => 'large'
 
   require "omniauth-github"
   

@@ -1,0 +1,6 @@
+development:
+  app_id: "zrjfxj4j6u8i"
+  secret_key: "OFHzBKYQxSNW66wy"
+production:
+  app_id: "fnoxs3qcbz59"
+  secret_key: "N4jIjYhssjVa8uNo"

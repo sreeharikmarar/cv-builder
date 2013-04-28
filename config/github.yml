@@ -1,0 +1,6 @@
+development:
+  app_id: "c3c55176248542521759"
+  secret_key: "e5673dbb73c7e010781e8c1457d20a796ad9c19d"
+production:
+  app_id: "1e5485e1553652640f4a"
+  secret_key: "640575f67e09552487975ed0f1697332dbf7d1f3"

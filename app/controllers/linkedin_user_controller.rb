@@ -7,8 +7,9 @@ class LinkedinUserController < ApplicationController
 
   def init_client
     # API KEYS : https://www.linkedin.com/secure/developer
-    key = "zrjfxj4j6u8i"
-    secret = "OFHzBKYQxSNW66wy"
+    config = YAML::load(File.open("#{Rails.root.to_s}/config/linkedin.yml"))
+    key = config[Rails.env]["app_id"]
+    secret = config[Rails.env]["secret_key"] 
     linkedin_configuration = { :site => 'https://api.linkedin.com',
         :authorize_path => '/uas/oauth/authenticate',
         :request_token_path =>'/uas/oauth/requestToken?scope=r_basicprofile+r_fullprofile+r_emailaddress+r_network+r_contactinfo',

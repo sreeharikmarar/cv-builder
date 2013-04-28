@@ -1,7 +1,8 @@
 class GithubLoginController < ApplicationController
 
   def authorize
-    @github = Github.new :client_id => 'c3c55176248542521759', :client_secret => 'e5673dbb73c7e010781e8c1457d20a796ad9c19d'
+    config = YAML::load(File.open("#{Rails.root.to_s}/config/github.yml"))
+    @github = Github.new :client_id => config[Rails.env]["app_id"], :client_secret => config[Rails.env]["secret_key"]
     address = @github.authorize_url :redirect_uri => 'http://localhost:3000/github/callback', :scope => 'repo'
     puts "1"*100
     puts address.inspect
@@ -13,7 +14,8 @@ class GithubLoginController < ApplicationController
 #    puts "%"*100
 #    puts @github.methods
 #    puts "@"*100
-    @github = Github.new :client_id => 'c3c55176248542521759', :client_secret => 'e5673dbb73c7e010781e8c1457d20a796ad9c19d'
+    config = YAML::load(File.open("#{Rails.root.to_s}/config/github.yml"))
+    @github = Github.new :client_id => config[Rails.env]["app_id"], :client_secret => config[Rails.env]["secret_key"]
     token = @github.get_token(authorization_code)
     puts "#"*100
     puts  token.inspect
