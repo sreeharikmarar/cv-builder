@@ -3,7 +3,7 @@ class GithubLoginController < ApplicationController
   def authorize
     config = YAML::load(File.open("#{Rails.root.to_s}/config/github.yml"))
     @github = Github.new :client_id => config[Rails.env]["app_id"], :client_secret => config[Rails.env]["secret_key"]
-    address = @github.authorize_url :redirect_uri => 'http://localhost:3000/github/callback', :scope => 'repo'
+    address = @github.authorize_url :redirect_uri => "http://#{request.host_with_port}/github/callback", :scope => 'repo'
     puts "1"*100
     puts address.inspect
     redirect_to address
