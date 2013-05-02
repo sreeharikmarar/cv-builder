@@ -245,3 +245,29 @@
 .heading {
     color:#08C;
 }
+
+@font-face {
+    font-family: 'Quicksand_Book';
+    src: url("/assets/Quicksand_Book.otf");
+}
+@font-face {
+    font-family: 'Arvo-Regular';
+    src: url("/assets/Arvo-Regular.otf");
+}
+
+@font-face {
+    font-family: 'RockSalt';
+    src: url("/assets/RockSalt.ttf");
+}
+@font-face {
+    font-family: 'SansitaOne';
+    src: url("/assets/SansitaOne.ttf");
+}
+@font-face {
+    font-family: 'QumpellkaNo12';
+    src: url("/assets/QumpellkaNo12.otf");
+}
+@font-face {
+    font-family: 'Caviar_Dreams_Bold';
+    src: url("/assets/CaviarDreams.ttf");
+}

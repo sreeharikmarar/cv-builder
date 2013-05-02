@@ -12,10 +12,12 @@
               <h4 style="line-height:5px;"><%= exp.title %></h4>
             <% end %>
             <% if exp.company_name %>
-              <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;margin-right: 5px"><%= exp.company_name %></p>
+               <div class="cl"></div>
+              <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;margin: 2px"><%= exp.company_name %></p>
             <% end %>
             <% if exp.industry_name %>
-              <p style="color:#4B4B4B;font-size: 15px;font-style: italic;float: left;margin-left: 5px">, <%= exp.industry_name %> Industry</p>
+              <div class="cl"></div>
+              <p style="color:#4B4B4B;font-size: 15px;font-style: italic;margin: 2px;"><%= exp.industry_name %> Industry</p>
             <% end %>
           </div>
           <div class="span4" style="float:right">
@@ -28,7 +30,8 @@
             </div>
           </div>
         </div>
-        <p style="color:#4B4B4B;font-size: 15px;"><%= exp.summary %></p>
+        <div class="cl-10"></div>
+        <p style="color:#4B4B4B;font-size: 16px;font-style: italic"><strong>Summary : </strong><%= exp.summary %></p>
         <%= link_to "delete" , delete_position_path(:id => exp.id) ,:style=>"float:right;margin-right:15px;" %>
         <%= link_to "edit" , edit_position_path(:id => exp.id) , :remote => true ,:style=>"float:right;margin-right:20px;" %>
 

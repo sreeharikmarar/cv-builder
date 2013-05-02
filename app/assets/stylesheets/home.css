@@ -121,3 +121,24 @@ width:150px;
 height:150px;
 border-radius:300px;
 }
+
+.grey-feed {
+padding: 10px 10px;
+color: #4B4B4B;
+background-color: whiteSmoke;
+border: 1px solid #EEE;
+margin-top: 10px;
+border-radius: 5px;
+}
+
+.single-feed {
+padding: 10px 10px;
+color: #4B4B4B;
+}
+
+
+.multy-feed {
+padding: 10px 10px;
+color: #4B4B4B;
+border-top: 1px solid #EEE;
+}
