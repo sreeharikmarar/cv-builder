@@ -110,3 +110,14 @@ margin-bottom: 20px;
 }
 
 .feed { padding: 10px 5px; color: #4b4b4b;background-color: inherit;border-bottom:1px solid #eee;}
+
+.logo{
+border: 2px solid #6B6B6B;
+float:left;
+padding: 10px;
+background-color: whiteSmoke;
+/*margin-left: 20px;*/
+width:150px;
+height:150px;
+border-radius:300px;
+}
