@@ -11,26 +11,39 @@
   <p style="font-size:17px;"><strong>Do you already have an account on one of these sites? Click the logo to log in with it here:</strong></p>
   <div class="cl-10"></div>
 
-  <% facebook_img_tag = image_tag("/assets/facebook.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+  <% facebook_img_tag = image_tag("/assets/fb.png", :style=>"margin:0px;padding:0px;", :class=>"img-circle") %>
 
-  <% twitter_img_tag = image_tag("/assets/twitter.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+  <% twitter_img_tag = image_tag("/assets/twitter.png", :style=>"margin:0px;padding:0px;", :class=>"img-circle") %>
 
-  <% google_img_tag = image_tag("/assets/google.jpg", :style=>"margin:0px;padding:0px;", :width=>"150", :height=>"50") %>
+  <% google_img_tag = image_tag("/assets/google.png", :style=>"margin:0px;padding:0px;",:class=>"img-circle") %>
 
-
-  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
-    <h4 style="color:#4b4b4b;">Log in using</h4>
-    <%= link_to facebook_img_tag , user_omniauth_authorize_path(:facebook), :style=>"margin-left:10px;" %>&ensp;&ensp;
+  <div class="span2">
+  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
+<%= link_to facebook_img_tag , user_omniauth_authorize_path(:facebook), :style=>"" %>&ensp;&ensp;
     <div class="cl"></div>
   </div>
-  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
-    <h4 style="color:#4b4b4b;">Log in using</h4>
-    <%= link_to twitter_img_tag, '#' , :style=>"margin-left:10px;" %>&ensp;&ensp;
+  </div>
+  <div class="span2">
+  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
+    <%= link_to twitter_img_tag, '#' , :style=>"" %>&ensp;&ensp;
     <div class="cl"></div>
   </div>
-  <div class="well span4" style="height: 115px;width: 200px;padding: 10px">
-    <h4 style="color:#4b4b4b;">Log in using</h4>
-    <%= link_to google_img_tag , '#' , :style=>"margin-left:10px;" %>&ensp;&ensp;
+  </div>
+  <div class="span2">
+  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
+    <%= link_to google_img_tag , '#' , :style=>"" %>&ensp;&ensp;
     <div class="cl"></div>
   </div>
+  </div>
+
 </div>
+
+<script type="text/javascript">
+
+  function applyStyle(el){
+   $(el).css("padding","12px");
+  }
+  function revertStyle(el){
+   $(el).css("padding","10px");
+  }
+</script>
