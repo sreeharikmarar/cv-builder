@@ -1,4 +1,10 @@
+ window.scrollTo(0,0)
+$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","absolute");
+
 content = "<%= escape_javascript(render(:partial=>'/users/basic_info/edit')) %>";
 // Show PopUp Window
+
+
 options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Basic Information', 'showHeader':true }
 showPopUpWindow(options);
+

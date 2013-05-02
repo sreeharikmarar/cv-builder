@@ -53,9 +53,9 @@ function showPopUpWindow(options){
 	//$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("width",width);
 	//$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("height",height);
 	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("z-index","1003");
-//	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","absolute");
+//	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","fixed");
+	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("display","block");
         //$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
-        //$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
 
 	container_width = (width - (2 * 22) - 20);
 	container_height = (height - (2 * 6) - 20);
