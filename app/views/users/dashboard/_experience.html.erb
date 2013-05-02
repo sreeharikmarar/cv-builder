@@ -1,44 +1,46 @@
 <div class="raw-fluid padding-left-10">
-      <h2 class="heading" style="line-height: 5px;font-size: 20px;">Experiences</h2>
-      <div style="border-bottom: solid #ccc 1.5px;"></div>
-      <div class="cl-10"></div>
+  <h2 class="heading" style="line-height: 5px;font-size: 20px;">Experiences</h2>
+  <div style="border-bottom: solid #ccc 1.5px;"></div>
+  <div class="cl-10"></div>
 
-          <% if @experience_details && @experience_details.any? %>
-            <% @experience_details.each do |exp| %>
-    <div class="grey-feed">
-      <div class="row-fluid">
-        <div class="span9">
-          <% if exp.title %>
-      <h4 style="line-height:5px;"><%= exp.title %></h4>
-      <% end %>
-      <% if exp.company_name %>
-      <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;margin-right: 5px"><%= exp.company_name %></p>
-      <% end %>
-      <% if exp.industry_name %>
-      <p style="color:#4B4B4B;font-size: 15px;font-style: italic;float: left;margin-left: 5px">, <%= exp.industry_name %> Industry</p>
-      <% end %>
+  <% if @experience_details && @experience_details.any? %>
+    <% @experience_details.each do |exp| %>
+      <div class="grey-feed">
+        <div class="row-fluid">
+          <div class="span8">
+            <% if exp.title %>
+              <h4 style="line-height:5px;"><%= exp.title %></h4>
+            <% end %>
+            <% if exp.company_name %>
+              <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;margin-right: 5px"><%= exp.company_name %></p>
+            <% end %>
+            <% if exp.industry_name %>
+              <p style="color:#4B4B4B;font-size: 15px;font-style: italic;float: left;margin-left: 5px">, <%= exp.industry_name %> Industry</p>
+            <% end %>
+          </div>
+          <div class="span4" style="float:right">
+            <div style="float:right;margin-top: 10px;margin-right: 10px">
+              <% if exp.is_current %>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
+              <% else %>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%m, %Y").strftime('%b %Y') %></p>
+              <% end %>
+            </div>
+          </div>
         </div>
-       <div class="span3" style="float:right">
-      <% if exp.is_current %>
-         <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
-      <% else %>
-         <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%m, %Y").strftime('%b %Y') %></p>
-      <% end %>
-         </div>
-         </div>
-      <p style="color:#4B4B4B;font-size: 15px;"><%= exp.summary %></p>
-    <%= link_to "delete" , delete_position_path(:id => exp.id) ,:style=>"float:right;margin-right:15px;" %>
-    <%= link_to "edit" , edit_position_path(:id => exp.id) , :remote => true ,:style=>"float:right;margin-right:20px;" %>
-      
-      <div class="cl"></div>
-    </div>
+        <p style="color:#4B4B4B;font-size: 15px;"><%= exp.summary %></p>
+        <%= link_to "delete" , delete_position_path(:id => exp.id) ,:style=>"float:right;margin-right:15px;" %>
+        <%= link_to "edit" , edit_position_path(:id => exp.id) , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+
+        <div class="cl"></div>
+      </div>
 
     <% end %>
-    <% else %>
-     <div class="cl-30"></div>
-     <div class="cl-30"></div>
-     <div class="cl-30"></div>
-     <div class="cl-30"></div>
-    <% end %>
+  <% else %>
+    <div class="cl-30"></div>
+    <div class="cl-30"></div>
+    <div class="cl-30"></div>
+    <div class="cl-30"></div>
+  <% end %>
 </div>
 <div class="cl-30"></div>
