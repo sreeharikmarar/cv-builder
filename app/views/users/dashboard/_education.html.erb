@@ -3,9 +3,9 @@
   <div style="border-bottom: solid #ccc 1.5px;"></div>
   <div class="cl-10"></div>
 
-  <% if @education_details && @education_details.any? %>
+  <% if @education_details.any? %>
     <% @education_details.each do |edu| %>
-      <div class="feed">
+      <div class="grey-feed">
         <div class="row-fluid">
           <div class="span9" style="width:390px;">
             <h4 style="line-height:20px;"><%= edu.degree %></h4>
@@ -28,4 +28,4 @@
   <% end %>
 </div>
 
- <div class="cl-30"></div>
+<div class="cl-30"></div>

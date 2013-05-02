@@ -5,19 +5,19 @@ var currentDivName = null;
 
 // Pop up a Window
 // var options = {'width': 700, 'height':400, 'content':content,
-//            'heading':'Basic Information', 
+//            'heading':'Basic Information',
 //            'showHeader':true, 'showCloseButton': true, 'divName':null}
 // showPopUpWindow(options);
 function showPopUpWindow(options){
-	
-	var width = options['width'] == null ? 700 : options['width']; 
-	var height = options['height'] == null ? 320 : options['height']; 
+	//$("body").css("overflow", "hidden");
+	var width = options['width'] == null ? 700 : options['width'];
+	var height = options['height'] == null ? 320 : options['height'];
 	var content = options['content'] == null ? "No data has been provided." : options['content'];
-	var heading = options['heading'] == null ? "Azzist.com | Launchpad to Success" : options['heading']; 
-	var showHeader = options['showHeader'] == null ? true : options['showHeader']; 
-	var showCloseButton = options['showCloseButton'] == null ? true : options['showCloseButton']; 
-	var divName = options['divName'] == null ? null : options['divName']; 
-	
+	var heading = options['heading'] == null ? "Azzist.com | Launchpad to Success" : options['heading'];
+	var showHeader = options['showHeader'] == null ? true : options['showHeader'];
+	var showCloseButton = options['showCloseButton'] == null ? true : options['showCloseButton'];
+	var divName = options['divName'] == null ? null : options['divName'];
+
 	// Storing the id of the div where the scroll was previously. will scroll to this div once the lightbox closes.
 	currentDivName = divName || null;
 
@@ -31,7 +31,7 @@ function showPopUpWindow(options){
 	page_height = xdoc.h;
 	$("#DIVID_LIGHT_BOX_LOADING_FADE").css("width",page_width);
 	$("#DIVID_LIGHT_BOX_LOADING_FADE").css("height",page_height);
-	
+
 	// Get the top pixels.
 	// if the height of the popup box is less than 200 make it middle
 	// else show the pop up starting 100 px from top :)
@@ -41,25 +41,27 @@ function showPopUpWindow(options){
 	} else if(height > 500) {
 		top_val = 30;
 	} else {
-		top_val = 100;
+		top_val = 70;
 	}
-	top_val = 100;
+	top_val = 70;
 	// screen.width
 	left_val = ( page_width - width)/2;
-	
+
 	// Setting up the container main
 	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("top",top_val);
 	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("left",left_val);
 	//$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("width",width);
 	//$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("height",height);
 	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("z-index","1003");
-	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","absolute");
-	
+//	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","absolute");
+        //$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
+        //$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
+
 	container_width = (width - (2 * 22) - 20);
 	container_height = (height - (2 * 6) - 20);
 	$("#DIVID_LIGHT_BOX_CONTAINER").css("width",container_width);
 	//$("#DIVID_LIGHT_BOX_CONTAINER").css("height",container_height);
-	
+
 	// Adjusting the width of the top box container
 	// 20 is for the padding
 	frame_width = (width - (2 * 28));
@@ -82,26 +84,26 @@ function showPopUpWindow(options){
 	} else {
 		$("#DIVID_LIGHT_BOX_HEADER").hide();
 	}
-	
+
 	// Display CloseButton if required
 	if(showCloseButton==true){
 		$("#BTN_LIGHT_BOX_CLOSE").show();
 	}	else {
 		$("#BTN_LIGHT_BOX_CLOSE").hide();
 	}
-	
+
 	if(heading!=null){
 		$("#DIVID_LIGHT_BOX_HEADING").text(heading);
 	}
-	
+
 	// Setting up the container
 	$("#DIVID_LIGHT_BOX_CONTAINER").html(content);
 	$("#DIVID_LIGHT_BOX_CONTAINER").css("background-color","#FFF");
-	
+
 	// Initialize Type Aheads
 	initializeTypeaheads();
-	
-	javascript:scroll(0,0);
+
+	//javascript:scroll(0,0);
 	// // lock scroll position, but retain settings for later
 	// 	var scrollPosition = [
 	// 	self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
@@ -112,11 +114,12 @@ function showPopUpWindow(options){
 	//html.data('previous-overflow', html.css('overflow'));
 	//html.css('overflow', 'hidden');
 	//window.scrollTo(scrollPosition[0], scrollPosition[1]);
-	
+
 }
 
 // Hide the Pop up Window
 function hidePopUpWindow(){
+        $("body").removeClass("noscroll");
 	$("#DIVID_LIGHT_BOX_LOADING_FADE").hide();
 	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").hide();
 	$("#DIVID_LIGHT_BOX_CONTAINER").html("");
@@ -141,12 +144,12 @@ function showLightBoxLoading(){
 // Show content residing inside a div on a lightbox.
 // Helps to display a menu in a lightbox.
 function showPopUpContent(width, height, content_id, heading){
-	
+
 	// If heading is passed, it will display header
-	var heading = heading == "" ? null : heading; 
+	var heading = heading == "" ? null : heading;
 	var showHeader = true;
 	if(heading == null){ showHeader = false; }
-	
+
 	var content = $('#' + content_id).html();
 	var options = {'width': width, 'height':height, 'content':content,
 	            'showCloseButton': true, 'showHeader':showHeader, 'heading': heading}
@@ -199,10 +202,10 @@ function showConfirmDialogForForms(message, waiting_text, method){
 	newContent = newElement.html();
 
 	var options = {'width': 400, 'height':140, 'content':newContent,
-	           'heading':'Confirmation required', 
+	           'heading':'Confirmation required',
 	           'showHeader':true, 'showCloseButton': true, 'divName':null}
 	showPopUpWindow(options);
-	
+
 	// Bind an onClick funciton to yes and no button
 
 	// call the method which will call the method to submit the form.
@@ -251,16 +254,16 @@ function showConfirmDialog(message, waiting_text, rmt, url, mname){
 	newContent = newElement.html();
 
 	var options = {'width': 400, 'height':140, 'content':newContent,
-	           'heading':'Confirmation required', 
+	           'heading':'Confirmation required',
 	           'showHeader':true, 'showCloseButton': true, 'divName':null}
 	showPopUpWindow(options);
-	
+
 	url = $("#DIV_CONFIRMATION_URL").val();
 	waiting_text = $("#DIV_CONFIRMATION_WAITING_TEXT").val();
-	
+
 	$('#DIV_YES_BUTTON').attr("data-loading-text", waiting_text);
 	$("#DIVID_LIGHT_BOX_CLOSE_BUTTON").hide();
-	
+
 	// Bind an onClick funciton to yes and no button
 	if(rmt == true){
 		$('#DIV_YES_BUTTON').click(function(e){
