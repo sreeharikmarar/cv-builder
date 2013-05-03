@@ -1,0 +1,29 @@
+
+<% if @technologies && @technologies.new_record? %>
+  <% path = create_technologies_path %>
+<% else %>
+  <% path = update_technologies_path %>
+<% end %>
+
+
+<div class="padding-5" style="border-radius:2px;">
+
+  <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
+    <div class="control-group required" style="margin-bottom: 10px;">
+      <label class="select control-label" style="text-align:left"> Technical Skills & Expertise  </label>
+      <div class="controls"><%= text_area_tag("technologies[details]", @technologies.details ? @technologies.details : '' ,:style=>"height:200px;width:375px;" , :id=>"some_text_area" ) %></div>
+    </div>
+    
+
+    <div class="form-actions" style="margin-bottom:0px;margin-top:0px;">
+      <div class="cl"></div>
+      <div class="float-right">
+        <%= submit_tag "Save", :class => "float-right btn btn-primary", :onclick=>"$(this).button('loading');", "data-loading-text"=>"Saving..." %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="cl"></div>
+
+</div>
