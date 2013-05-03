@@ -1,11 +1,3 @@
-
-/* 
-    Document   : welcome
-    Created on : 29 Jul, 2010, 11:52:09 AM
-    Author     : K P Varma
-    Copyright (C) 2010 www.azzist.com
-*/
-
 /* boxes */
 
 .box {color: #545454;border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border: 1px solid #eee;}
@@ -251,8 +243,12 @@
     src: url("/assets/Quicksand_Book.otf");
 }
 @font-face {
+    font-family: 'Quicksand_Bold';
+    src: url("/assets/Quicksand_Bold.otf");
+}
+@font-face {
     font-family: 'Arvo-Regular';
-    src: url("/assets/Arvo-Regular.otf");
+    src: url("/assets/Arvo-Regular.ttf");
 }
 
 @font-face {

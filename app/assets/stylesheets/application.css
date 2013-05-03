@@ -11,6 +11,7 @@
  *= require_self
  *= require home
  *= require lightbox
+ *= require bootstrap-wysihtml5
  *= require noty
  *= require bootstrap_and_overrides
  *= require general

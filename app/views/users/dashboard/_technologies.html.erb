@@ -8,6 +8,8 @@
     <div class="row-fluid">
       <% if @technical_details && @technical_details.details %>
         <p style="color:#4B4B4B;font-size: 16px;font-style: italic;"><%=  @technical_details.details %></p>
+        <%= link_to "edit" ,edit_technologies_path , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+        <div class="cl"></div>
       <% else %>
         <div class="cl-30"></div>
         <div class="cl-30"></div>

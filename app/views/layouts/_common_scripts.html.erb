@@ -1,6 +1,15 @@
+<%= stylesheet_link_tag    "bootstrap-wysihtml5" %>
+<%= javascript_include_tag "bootstrap-wysihtml5" %>
 
 <script type="text/javascript">
 
+
+   function loadTextEditor(){
+    $("#some_text_area").wysihtml5();
+  }
+   window.onload = loadTextEditor();
+
+   
   $(document).ready(function () {
 
     // Script for google plus badge
@@ -27,10 +36,10 @@
   // Initializing all popovers - it should be initialized outside the document ready
   $(".popitover").popover();
 	
-  initializeAllLoadingButtons();
+  <%#*initializeAllLoadingButtons();%>
 	
   // Initialize the check box
-  check_all_boxes('CHECK_ALL');
+  //check_all_boxes('CHECK_ALL');
 	
   // Inititalize keybindings for lightbox closing using ESC key
   $(document).keydown(function(e){
@@ -40,14 +49,6 @@
     }
   });
 	
-  // Initialize TinyMCE
-  <%#*function loadTinyMCE(){%>
-    <%#*tinyMCE.init({%>
-      <%#*mode: 'textareas',%>
-      <%#*editor_deselector : "no-editor"%>
-    <%#*});%>
-  <%#*}%>
-  <%#*window.onload=loadTinyMCE ;%>
 	
   // Initialize Noty/Growl Message
   $.noty.defaultOptions = {
@@ -74,15 +75,6 @@
       container: null // $('.custom_container')
     }
   };
-	
-  // initialize type ahead data
-  <%#*initializeTypeaheads();%>
 
-<%#*$(function() {%>
-    <%#*// Invoke the plugin%>
-    <%#*$('input, textarea').placeholder();%>
-    <%#*// That’s it, really.%>
-    <%#*// Now display a message if the browser supports placeholder natively%>
-   <%#*});%>
 </script>
 

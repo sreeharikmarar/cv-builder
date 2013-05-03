@@ -22,6 +22,10 @@ CvBuilder::Application.routes.draw do
   match '/user/basic_info/edit'                 =>              'users/basic_info#edit'    , :method=>:get  , :as => :edit_basic_info
   match '/user/basic_info/update'               =>              'users/basic_info#update'  , :method=>:get  , :as => :update_basic_info
   match '/user/basic_info/create'               =>              'users/basic_info#create'  , :method=>:post , :as => :create_basic_info
+
+  match '/user/technologies/edit'                 =>              'users/technologies#edit'    , :method=>:get  , :as => :edit_technologies
+  match '/user/technologies/update'               =>              'users/technologies#update'  , :method=>:get  , :as => :update_technologies
+  match '/user/technologies/create'               =>              'users/technologies#create'  , :method=>:post , :as => :create_technologies
   
   match '/user/position/new'                    =>              'users/position#new'    , :method=>:get  , :as => :new_position
   match '/user/position/:id/edit'               =>              'users/position#edit'    , :method=>:get  , :as => :edit_position
