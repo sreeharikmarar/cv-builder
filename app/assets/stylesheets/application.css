@@ -14,6 +14,7 @@
  *= require noty
  *= require bootstrap_and_overrides
  *= require bootstrap-wysihtml5
+ *= require datepicker
  *= require general
  *= require_tree .
 */

@@ -23,9 +23,9 @@
           <div class="span4" style="float:right">
             <div style="float:right;margin-top: 10px;margin-right: 10px">
               <% if exp.is_current %>
-                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
               <% else %>
-                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%m, %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%m, %Y").strftime('%b %Y') %></p>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%m, %Y").strftime('%b %Y') %></p>
               <% end %>
             </div>
           </div>

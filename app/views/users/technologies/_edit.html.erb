@@ -11,7 +11,7 @@
   <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
     <div class="control-group required" style="margin-bottom: 10px;">
       <label class="select control-label" style="text-align:left"> Technical Skills & Expertise  </label>
-      <div class="controls"><%= text_area_tag("technologies[details]", @technologies.details ? @technologies.details : '' ,:style=>"height:200px;width:375px;" , :id=>"some_text_area" ) %></div>
+      <div class="controls"><%= text_area_tag("technologies[details]", @technologies.details ? @technologies.details : '' ,:style=>"height:200px;width:450px;" , :id=>"some_text_area" ) %></div>
     </div>
   <script type="text/javascript">$('#some_text_area').wysihtml5();</script>
 
@@ -29,5 +29,5 @@
 </div>
 
 <style type="text/css">
-  .wysihtml5-toolbar {margin-left:29%;}
+  ul.wysihtml5-toolbar {margin-left:10%;}
 </style>
