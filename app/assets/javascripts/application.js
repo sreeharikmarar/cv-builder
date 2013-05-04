@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lightbox
-//= require noty
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
+//= require lightbox
+//= require noty
 //= require_tree .

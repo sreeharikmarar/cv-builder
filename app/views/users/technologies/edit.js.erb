@@ -1,5 +1,3 @@
- window.scrollTo(0,0)
-$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","absolute");
 
 content = "<%= escape_javascript(render(:partial=>'/users/technologies/edit')) %>";
 // Show PopUp Window
@@ -7,5 +5,4 @@ content = "<%= escape_javascript(render(:partial=>'/users/technologies/edit')) %
 
 options = {'width': 700, 'height':400, 'content':content, 'heading':'Technologies', 'showHeader':true }
 showPopUpWindow(options);
-loadTextEditor();
 
