@@ -8,7 +8,7 @@
 
 <div class="padding-10" style="border-radius:2px;">
 
-  <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
+  <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH" , :remote => true) do %>
     <div class="control-group required" style="margin-bottom: 10px;">
       <label class="select control-label" style="width:180px;text-align:left"> Title  </label>
       <div class="controls"><%= text_field_tag("position[title]", @position.title ? @position.title : '' ,:style=>"height:24px;width:300px;") %></div>
@@ -23,11 +23,13 @@
       <div class="controls"><%= text_field_tag("position[industry_name]", @position.industry_name ? @position.industry_name : '' ,:style=>"height:24px;width:300px;") %></div>
     </div>
   <% if @position.is_current %>
+  <%#= hidden_field_tag("position[is_current]","true") %>
     <div class="control-group required" style="margin-bottom: 10px;">
       <label class="select control-label" style="width:180px;text-align:left"> current job</label>
       <div class="controls"><%= check_box_tag("position[is_current]", @position.is_current  , true , :id => "is_current",:style=>"height:24px;width:20px;") %></div>
     </div>
   <% else %>
+  <%#= hidden_field_tag("position[is_current]","false") %>
     <div class="control-group required" style="margin-bottom: 10px;">
       <label class="select control-label" style="width:180px;text-align:left"> current job</label>
       <div class="controls"><%= check_box_tag("position[is_current]", false  , false , :id => "is_current" , :style=>"height:24px;width:20px;") %></div>
@@ -66,24 +68,33 @@
 </div>
  <script type="text/javascript">
         $('.filter_date').datepicker({format: "dd,mm,yyyy"});
- 
+
+if($("#is_current").is(':checked'))
+{
+   $("#is_current").attr({"value":true});
+   $("#END_DATE_DIV").hide();
+}
+
+if($("#is_current").is(':not(:checked)'))
+{
+   $("#is_current").attr({"value":false});
+    document.getElementById('end_date_field').value = "";
+   $("#END_DATE_DIV").show();
+}
+
 $('#is_current').bind('change', function () {
 
  if($(this).is(':checked')) {
+    $("#is_current").attr({"value":true});
     $("#END_DATE_DIV").hide();
  }
  else
  {
+   $("#is_current").attr({"value":false});
+   document.getElementById('end_date_field').value = "";
    $("#END_DATE_DIV").show();
   }
 });
 
-if($("#is_current").is(':checked'))
-{
-   $("#END_DATE_DIV").hide();
-}
-if($("#is_current").is(':unchecked'))
-{
-   $("#END_DATE_DIV").show();
-}
+
  </script>

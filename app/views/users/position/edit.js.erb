@@ -1,3 +1,12 @@
+<% if @position.errors %>
+  <% @position.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Experience Details has been saved", "topRight");
+<% end %>
+
+
 content = "<%= escape_javascript(render(:partial=>'/users/position/edit')) %>";
 // Show PopUp Window
 options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Experience', 'showHeader':true }
