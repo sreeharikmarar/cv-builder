@@ -59,7 +59,7 @@ class LinkedinDetails < ActiveRecord::Base
           begin
             
             if pos.start_date && (pos.start_date.month && pos.start_date.year)
-              start_date = "#{pos.start_date.month},#{pos.start_date.year}"
+              start_date = "1,#{pos.start_date.month},#{pos.start_date.year}"
               end_date = "present"
             end
           rescue
@@ -75,8 +75,8 @@ class LinkedinDetails < ActiveRecord::Base
            
             if pos.start_date && pos.end_date
               if (pos.start_date.month && pos.end_date.month)  && (pos.start_date.year && pos.end_date.year)
-                start_date = "#{pos.start_date.month},#{pos.start_date.year}"
-                end_date = "#{pos.end_date.month},#{pos.end_date.year}"
+                start_date = "1,#{pos.start_date.month},#{pos.start_date.year}"
+                end_date = "1,#{pos.end_date.month},#{pos.end_date.year}"
               end
             end
           rescue
