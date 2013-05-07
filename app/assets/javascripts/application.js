@@ -16,5 +16,6 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-datepicker
 //= require lightbox
+//= require utilities
 //= require noty
 //= require_tree .

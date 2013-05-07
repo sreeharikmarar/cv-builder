@@ -28,22 +28,35 @@ class Users::PositionController < ApplicationController
     else
       @position.title = params[:position][:title]
     end
-    @position.company_name = params[:position][:company_name]
-    @position.industry_name = params[:position][:industry_name]
+
+    if params[:position][:company_name].blank?
+      @position.errors.add(:company_name, "can't be blank")
+    else
+      @position.company_name = params[:position][:company_name]
+    end
+    if params[:position][:industry_name].blank?
+      @position.errors.add(:industry_name, "can't be blank")
+    else
+      @position.industry_name = params[:position][:industry_name]
+    end
+    
     @position.is_current = params[:position][:is_current]
+    
     @position.start_date = params[:position][:start_date]
+
     if @position.is_current
       @position.end_date = "present"
     else
       @position.end_date = params[:position][:end_date]
     end
+
     @position.summary = params[:position][:summary]
 
      if @position.errors.blank?
         @position.save
 
       respond_to do |format|
-        format.html { redirect_to dashboard_path}
+        format.js { render :create}
       end
     else
       respond_to do |format|
@@ -78,7 +91,7 @@ class Users::PositionController < ApplicationController
         @position.save
 
       respond_to do |format|
-        format.html { redirect_to dashboard_path}
+        format.js { render :create}
       end
     else
       respond_to do |format|
