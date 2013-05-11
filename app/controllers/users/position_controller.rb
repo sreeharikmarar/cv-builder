@@ -41,19 +41,27 @@ class Users::PositionController < ApplicationController
     end
     
     @position.is_current = params[:position][:is_current]
-    
-    @position.start_date = params[:position][:start_date]
 
+    if params[:position][:start_date].blank?
+      @position.errors.add(:start_date, "can't be blank")
+    else
+      @position.start_date = params[:position][:start_date]
+    end
+    
     if @position.is_current
       @position.end_date = "present"
     else
-      @position.end_date = params[:position][:end_date]
+      if params[:position][:end_date].blank?
+        @position.errors.add(:end_date, "can't be blank")
+      else
+        @position.end_date = params[:position][:end_date]
+      end
     end
 
     @position.summary = params[:position][:summary]
 
-     if @position.errors.blank?
-        @position.save
+    if @position.errors.blank?
+      @position.save
 
       respond_to do |format|
         format.js { render :create}
@@ -88,7 +96,7 @@ class Users::PositionController < ApplicationController
     @position.summary = params[:position][:summary]
 
     if @position.errors.blank?
-        @position.save
+      @position.save
 
       respond_to do |format|
         format.js { render :create}

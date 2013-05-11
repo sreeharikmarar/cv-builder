@@ -6,8 +6,6 @@
 <% end %>
 
 
-
-
 <%= simple_form_for(@position, :as => "position", :url=>path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :style=>"text-align:left;", :autocomplete => "off"}) do |f|  -%>
 
 
@@ -18,12 +16,9 @@
      
     <%= f.input :title, :as=>:string, :input_html => {:value => @position.title ? @position.title : '' ,:style=>"text-align:left;"}   %>
    <div class="cl-10"></div>
-   <div class="cl-10"></div>
   <%= f.input :company_name, :as=>:string, :label =>"Company_name",  :input_html => {:value => @position.company_name ? @position.company_name : ''} %>
    <div class="cl-10"></div>
-   <div class="cl-10"></div>
   <%= f.input :industry_name, :as=>:string, :label =>"Industry_name",  :input_html => {:value => @position.industry_name ? @position.industry_name : '' } %>
-   <div class="cl-10"></div>
    <div class="cl-10"></div>
   <% if @position.is_current %>
     <%= f.input :is_current, :as=>:boolean, :label =>"Current Job",  :checked => true ,  :input_html => {:value => @position.is_current , :id => "is_current" , :type=>"checkbox" , :style=>"float:rigt;" } %>
@@ -31,15 +26,13 @@
     <%= f.input :is_current, :as=>:boolean, :label =>"Current Job", :checked => false ,  :input_html => {:value => false , :id => "is_current" ,:type=>"checkbox" , :style=>"float:right;" } %>
     <% end %>
   <div class="cl-10"></div>
+  <%= f.input :start_date, :as=>:string, :label =>"Start Date",  :input_html => {:value => @position.start_date ? @position.start_date : '', :readonly=>true, :class=>"filter_date" } %>
   <div class="cl-10"></div>
-  <%= f.input :start_date, :as=>:string, :label =>"Start Date",  :input_html => {:value => @position.start_date ? @position.start_date : '', :class=>"filter_date" , :style=>"width:100px;float:left;"} %>
   <div style="float:left;display: none" id="END_DATE_DIV">
-  <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :class=>"filter_date" , :style=>"width:100px;float:left;"} %>
+  <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
   </div>
  <div class="cl-10"></div>
- <div class="cl-10"></div>
-  <%= f.input :summary, :as=>:string, :label =>"summary", :input_html => {:value => @position.summary ? @position.summary : '' , :type=>"text_area", :style=>"height:70px;width:300px;" } %>
-   
+  <%= f.input :summary, :as=>:string, :label =>"summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;margin: 0 10px 0 0;" } %>
 
   <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
     
@@ -83,12 +76,7 @@ $('#is_current').bind('change', function () {
 
  </script>
 
-  <style type="text/css">
-
-    .form-horizontal .control-label {
-text-align: left;
-}
-  </style>
+  
 
   <!--
 
