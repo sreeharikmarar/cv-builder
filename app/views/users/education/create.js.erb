@@ -8,3 +8,5 @@ closeLightBoxLoading();
 <% else %>
     displayGrowlMessages("success","Success!", "Education Details has been saved", "topRight");
 <% end %>
+
+$('#DIV_EDUCATION_DETAILS').html("<%= escape_javascript(render(:partial=>"/users/dashboard/education")) %>");

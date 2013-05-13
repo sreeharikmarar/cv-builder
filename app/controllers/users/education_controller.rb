@@ -22,41 +22,46 @@ class Users::EducationController < ApplicationController
   def create
     @education =  EducationDetails.new
 
-   @education.user_id = current_user.id
+    @education.user_id = current_user.id
 
-    if params[:position][:degree].blank?
+    if params[:education][:degree].blank?
       @education.errors.add(:degree, "can't be blank")
     else
-      @education.degree = params[:position][:degree]
+      @education.degree = params[:education][:degree]
     end
 
-    if params[:position][:field_of_study].blank?
+    if params[:education][:field_of_study].blank?
       @education.errors.add(:field_of_study, "can't be blank")
     else
-      @education.field_of_study = params[:position][:field_of_study]
+      @education.field_of_study = params[:education][:field_of_study]
     end
 
-    if params[:position][:school_name].blank?
+    if params[:education][:school_name].blank?
       @education.errors.add(:school_name, "can't be blank")
     else
-      @education.school_name = params[:position][:school_name]
+      @education.school_name = params[:education][:school_name]
     end
 
-    if params[:position][:start_date].blank?
+    if params[:education][:start_date].blank?
       @education.errors.add(:school_name, "can't be blank")
     else
-      @education.start_date = params[:position][:start_date]
+      @education.start_date = params[:education][:start_date]
     end
 
-    if params[:position][:end_date ].blank?
+    if params[:education][:end_date ].blank?
       @education.errors.add(:end_date , "can't be blank")
     else
-      @education.end_date  = params[:position][:end_date ]
+      @education.end_date  = params[:education][:end_date ]
+    end
+    unless params[:education][:end_date ].blank? && params[:education][:start_date].blank?
+      if params[:education][:start_date ].to_i >= params[:education][:end_date].to_i
+        @education.errors.add(:start_date , "Start Date should be less than End date")
+      end
     end
 
     if @education.errors.blank?
       @education.save
-
+      @education_details = current_user.education_details
       respond_to do |format|
         format.js { render :create}
       end
@@ -71,42 +76,48 @@ class Users::EducationController < ApplicationController
   def update
     @education = EducationDetails.find_by_id_and_user_id(params[:id],current_user.id)
     
+    
     @education.user_id = current_user.id
     
-    if params[:position][:degree].blank?
+    if params[:education][:degree].blank?
       @education.errors.add(:degree, "can't be blank")
     else
-      @education.degree = params[:position][:degree]
+      @education.degree = params[:education][:degree]
     end
     
-    if params[:position][:field_of_study].blank?
+    if params[:education][:field_of_study].blank?
       @education.errors.add(:field_of_study, "can't be blank")
     else
-      @education.field_of_study = params[:position][:field_of_study]
+      @education.field_of_study = params[:education][:field_of_study]
     end
     
-    if params[:position][:school_name].blank?
+    if params[:education][:school_name].blank?
       @education.errors.add(:school_name, "can't be blank")
     else
-      @education.school_name = params[:position][:school_name]
+      @education.school_name = params[:education][:school_name]
     end
 
-    if params[:position][:start_date].blank?
+    if params[:education][:start_date].blank?
       @education.errors.add(:school_name, "can't be blank")
     else
-      @education.start_date = params[:position][:start_date]
+      @education.start_date = params[:education][:start_date]
     end
     
-    if params[:position][:end_date ].blank?
+    if params[:education][:end_date ].blank?
       @education.errors.add(:end_date , "can't be blank")
     else
-      @education.end_date  = params[:position][:end_date ]
+      @education.end_date  = params[:education][:end_date ]
     end
     
-
+    unless params[:education][:end_date ].blank? && params[:education][:start_date].blank?
+      if params[:education][:start_date ].to_i >= params[:education][:end_date].to_i
+        @education.errors.add(:start_date , "Start Date should be less than End date")
+      end
+    end
+    
     if @education.errors.blank?
       @education.save
-
+      @education_details = current_user.education_details
       respond_to do |format|
         format.js { render :create}
       end

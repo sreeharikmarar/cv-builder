@@ -1,0 +1,16 @@
+// Close the loading lightbox
+closeLightBoxLoading();
+
+<% if @git_details.errors %>
+  <% @git_details.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Git Repo Details has been saved", "topRight");
+<% end %>
+
+
+content = "<%= escape_javascript(render(:partial=>'/users/github_details/edit')) %>";
+// Show PopUp Window
+options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Repo Details', 'showHeader':true }
+showPopUpWindow(options);

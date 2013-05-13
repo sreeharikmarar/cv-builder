@@ -8,11 +8,11 @@
 
 <%= simple_form_for(@education, :as => "education", :url=>path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :style=>"text-align:left;", :autocomplete => "off"}) do |f|  -%>
 
-
   <div class="form-inputs" style="margin: 10px 20px;">
-    <div class="cl-10"></div>
-
+    <div class="cl-5"></div>
   <%= f.error_notification %>
+    <div class="cl-5"></div>
+
      
   <%= f.input :degree, :as=>:string, :input_html => {:value => @education.degree ? @education.degree : '' }   %>
    <div class="cl-10"></div>
@@ -20,12 +20,11 @@
    <div class="cl-10"></div>
   <%= f.input :school_name, :as=>:string, :label =>"School Name",  :input_html => {:value => @education.school_name ? @education.school_name : '' } %>
    <div class="cl-10"></div>
-  <%#= f.input :start_date, :as=>:string, :label =>"Start Date",  :input_html => {:value => @education.start_date ? @education.start_date : '', :readonly=>true, :class=>"filter_date" } %>
-  <%= f.input :start_date, :as=>:string, :label =>"Start Date", :collection => (1980..Date.today.year).to_a, :selected => @education.start_date ? @education.start_date : '' %>
+  <%= f.input :start_date, :as => :select , :label =>"Start Date", :collection => (1950..Date.today.year).to_a, :selected => @education.start_date ? @education.start_date : '' , :input_html => {:place_holder => "Please Select"}%>
    <div class="cl-10"></div>
-  <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @education.end_date ? @education.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
+  <%= f.input :end_date, :as => :select, :label =>"End Date", :collection => (1950..Date.today.year).to_a , :selected => @education.end_date ? @education.end_date : '' %>
 
-  <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
+  <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
     
   <% end %>
 

@@ -6,7 +6,7 @@
 <% end %>
 
 
-<%= simple_form_for(@position, :as => "position", :url=>path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :style=>"text-align:left;", :autocomplete => "off"}) do |f|  -%>
+<%= simple_form_for(@position, :as => "position", :url=>path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :autocomplete => "off"}) do |f|  -%>
 
 
   <div class="form-inputs" style="margin: 10px 20px;">
@@ -14,7 +14,7 @@
 
   <%= f.error_notification %>
      
-    <%= f.input :title, :as=>:string, :input_html => {:value => @position.title ? @position.title : '' ,:style=>"text-align:left;"}   %>
+    <%= f.input :title, :as=>:string, :input_html => {:value => @position.title ? @position.title : '' }   %>
    <div class="cl-10"></div>
   <%= f.input :company_name, :as=>:string, :label =>"Company_name",  :input_html => {:value => @position.company_name ? @position.company_name : ''} %>
    <div class="cl-10"></div>
@@ -32,8 +32,9 @@
   <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
   </div>
  <div class="cl-10"></div>
-  <%= f.input :summary, :as=>:string, :label =>"summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;margin: 0 10px 0 0;" } %>
-
+  <%= f.input :summary, :as=>:string, :label =>"summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;" } %>
+<div class="cl-10"></div>
+<div class="cl-10"></div>
   <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
     
  
@@ -77,58 +78,3 @@ $('#is_current').bind('change', function () {
  </script>
 
   
-
-  <!--
-
-   <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Title  </label>
-      <div class="controls"><%= text_field_tag("position[title]", @position.title ? @position.title : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left">  Company </label>
-      <div class="controls"><%= text_field_tag("position[company_name]", @position.company_name ? @position.company_name : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Industry </label>
-      <div class="controls"><%= text_field_tag("position[industry_name]", @position.industry_name ? @position.industry_name : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-  <% if @position.is_current %>
-  <%#= hidden_field_tag("position[is_current]","true") %>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> current job</label>
-      <div class="controls"><%= check_box_tag("position[is_current]", @position.is_current  , true , :id => "is_current",:style=>"height:24px;width:20px;") %></div>
-    </div>
-  <% else %>
-  <%#= hidden_field_tag("position[is_current]","false") %>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> current job</label>
-      <div class="controls"><%= check_box_tag("position[is_current]", false  , false , :id => "is_current" , :style=>"height:24px;width:20px;") %></div>
-    </div>
-  <% end %>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <div class="controls" style="margin-left:0px;">
-        <div style="float:left;">
-            <label class="select control-label" style="width:45px;text-align:left"> From </label>
-            <%= text_field_tag("position[start_date]", @position.start_date ? @position.start_date : '' ,:style=>"float;left;height:24px;width:150px;margin-left:30px;",:class=>"filter_date") %>
-          </div>
-          <div style="float:left;display: none" id="END_DATE_DIV">
-            <label class="select control-label" style="width:45px;float:left;width:40px;margin-left:40px;margin-right:10px;text-align:left"> To  </label>
-            <%= text_field_tag("position[end_date]", @position.end_date ? @position.end_date : '' , :id=>"end_date_field" , :style=>"float:left;height:24px;width:150px;" , :class=>"filter_date") %>
-          </div>
-        </div>
-    </div>
-
-<div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Summary </label>
-      <div class="controls"><%= text_area_tag("position[summary]", @position.summary ? @position.summary : '' , :style=>"height:70px;width:300px;") %></div>
-    </div>
-
-
-    <div class="form-actions" style="margin-bottom:0px;margin-top:0px;">
-      <div class="cl"></div>
-      <div class="float-right">
-        <%= submit_tag "Save", :class => "float-right btn btn-primary", :onclick=>"$(this).button('loading');", "data-loading-text"=>"Saving..." %>
-      </div>
-    </div>
-  -->

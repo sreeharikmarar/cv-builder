@@ -3,7 +3,7 @@
   <div style="border-bottom: solid #ccc 1.5px;"></div>
   <div class="cl-10"></div>
 
-  <% if @education_details.any? %>
+  <% if @education_details && @education_details.any? %>
     <% @education_details.each do |edu| %>
       <div class="grey-feed">
         <div class="row-fluid">
@@ -21,7 +21,6 @@
         <%= link_to "edit" , edit_education_path(:id =>edu.id ), :remote => true ,:style=>"float:right;margin-right:20px;" %>
         <div class="cl"></div>
       </div>
-
     <% end %>
   <% else %>
     <div class="cl-30"></div>
@@ -29,6 +28,5 @@
     <div class="cl-30"></div>
   <% end %>
 </div>
-
-<div class="cl-30"></div>
+ <div class="cl-30"></div>
 

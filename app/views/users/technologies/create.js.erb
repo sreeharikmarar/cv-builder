@@ -1,0 +1,13 @@
+
+// Close the loading lightbox
+closeLightBoxLoading();
+
+<% if @technologies.errors.any? %>
+  <% @technologies.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Technologies Details has been saved", "top");
+<% end %>
+
+$("#DIV_TECHNOLOGY_DETAILS").html("<%= escape_javascript(render(:partial=>"/users/dashboard/technologies")) %>");

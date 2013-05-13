@@ -1,8 +1,16 @@
+closeLightBoxLoading();
 
-content = "<%= escape_javascript(render(:partial=>'/users/technologies/edit')) %>";
+<% if @technologies.errors %>
+  <% @technologies.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Technology Details has been saved", "topRight");
+<% end %>
+
+
+ content = "<%= escape_javascript(render(:partial=>'/users/technologies/edit')) %>";
 // Show PopUp Window
-
-
 options = {'width': 800, 'height':400, 'content':content, 'heading':'Technologies', 'showHeader':true }
 showPopUpWindow(options);
 

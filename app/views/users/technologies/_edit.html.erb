@@ -1,35 +1,29 @@
 
-<% if @technologies && @technologies.new_record? %>
-  <% path = create_technologies_path %>
-<% else %>
-  <% path = update_technologies_path %>
-<% end %>
-
-
 <div class="padding-5" style="border-radius:2px;">
+  
+<%= simple_form_for(@technologies,:as => "technologies", :url=> create_technologies_path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :autocomplete => "off"}) do |f| -%>
 
-  <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="text-align:left"> Technical Skills & Expertise  </label>
-      <div class="controls"><%= text_area_tag("technologies[details]", @technologies.details ? @technologies.details : '' ,:style=>"height:200px;width:450px;" , :id=>"some_text_area" ) %></div>
-    </div>
+  <div class="form-inputs" style="margin: 10px 20px;">
+    <div class="cl-5"></div>
+  <%= f.error_notification %>
+    <div class="cl-5"></div>
+
+    <%= f.input :details, :as=>:string, :label=> false, :input_html => {:value => @technologies.details ? @technologies.details : '' , :style=>"height:200px;width:650px;" , :id=>"some_text_area"}   %>
+   <div class="cl-10"></div>
+   <div class="cl-10"></div>
   <script type="text/javascript">$('#some_text_area').wysihtml5();</script>
 
-    <div class="form-actions" style="margin-bottom:0px;margin-top:0px;">
-      <div class="cl"></div>
-      <div class="float-right">
-        <%= submit_tag "Save", :class => "float-right btn btn-primary", :onclick=>"$(this).button('loading');", "data-loading-text"=>"Saving..." %>
-      </div>
-    </div>
+  <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
 
   <% end %>
 
   <div class="cl"></div>
 
 </div>
+</div>
 
 <style type="text/css">
-  ul.wysihtml5-toolbar {margin-left:10%;}
+  ul.wysihtml5-toolbar {margin-left:20%;}
   .form-horizontal .controls {
 margin-left: 220px;
 }
