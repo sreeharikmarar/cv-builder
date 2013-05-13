@@ -1,0 +1,10 @@
+// Close the loading lightbox
+closeLightBoxLoading();
+
+<% if @education.errors %>
+  <% @education.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Education Details has been saved", "topRight");
+<% end %>

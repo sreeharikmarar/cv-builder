@@ -1,0 +1,16 @@
+// Close the loading lightbox
+closeLightBoxLoading();
+
+<% if @education.errors %>
+  <% @education.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% else %>
+    displayGrowlMessages("success","Success!", "Education Details has been saved", "topRight");
+<% end %>
+
+
+content = "<%= escape_javascript(render(:partial=>'/users/education/edit')) %>";
+// Show PopUp Window
+options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Education', 'showHeader':true }
+showPopUpWindow(options);

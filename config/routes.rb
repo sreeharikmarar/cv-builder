@@ -32,5 +32,11 @@ CvBuilder::Application.routes.draw do
   match '/user/position/:id/update'             =>              'users/position#update'  , :method=>:get  , :as => :update_position
   match '/user/position/:id/delete'             =>              'users/position#delete'  , :method=>:get  , :as => :delete_position
   match '/user/position/create'                 =>              'users/position#create'  , :method=>:post , :as => :create_position
+
+  match '/user/education/new'                    =>              'users/education#new'    , :method=>:get  , :as => :new_education
+  match '/user/education/:id/edit'               =>              'users/education#edit'    , :method=>:get  , :as => :edit_education
+  match '/user/education/:id/update'             =>              'users/education#update'  , :method=>:get  , :as => :update_education
+  match '/user/education/:id/delete'             =>              'users/education#delete'  , :method=>:get  , :as => :delete_education
+  match '/user/education/create'                 =>              'users/education#create'  , :method=>:post , :as => :create_education
   
 end

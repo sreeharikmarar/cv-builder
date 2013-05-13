@@ -17,8 +17,8 @@
           </div>
         </div>
         <p style="color:#4B4B4B;font-size: 16px;font-style: italic"><%= edu.school_name %></p>
-        <%= link_to "delete" , '#' ,:style=>"float:right;margin-right:15px;" %>
-        <%= link_to "edit" , '#' , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+        <%= link_to "delete" , delete_education_path(:id =>edu.id ) ,:style=>"float:right;margin-right:15px;" %>
+        <%= link_to "edit" , edit_education_path(:id =>edu.id ), :remote => true ,:style=>"float:right;margin-right:20px;" %>
         <div class="cl"></div>
       </div>
 
@@ -31,3 +31,4 @@
 </div>
 
 <div class="cl-30"></div>
+
