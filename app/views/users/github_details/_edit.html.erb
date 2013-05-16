@@ -12,7 +12,7 @@
     <div class="cl-10"></div>
     <%= f.input :technologies, :as=>:string, :label =>"Technologies" , :input_html => {:value => @git_details.technologies ? @git_details.technologies : '' }   %>
     <div class="cl-10"></div>
-    <%= f.input :contribution, :as=>:string, :label =>"Your Contribution", :input_html => {:value => @git_details.contribution ? @git_details.contribution : '' , :style=>"height:100px;" } %>
+    <%= f.input :contribution, :label =>"Your Contribution", :input_html => {:value => @git_details.contribution ? @git_details.contribution : '' , :rows => 10, :cols=> 420, :style=>"" } %>
     <div class="cl-20"></div>
     <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
 

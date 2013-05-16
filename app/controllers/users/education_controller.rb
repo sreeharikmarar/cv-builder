@@ -43,7 +43,7 @@ class Users::EducationController < ApplicationController
     end
 
     if params[:education][:start_date].blank?
-      @education.errors.add(:school_name, "can't be blank")
+      @education.errors.add(:start_date, "can't be blank")
     else
       @education.start_date = params[:education][:start_date]
     end
@@ -53,6 +53,7 @@ class Users::EducationController < ApplicationController
     else
       @education.end_date  = params[:education][:end_date ]
     end
+    
     unless params[:education][:end_date ].blank? && params[:education][:start_date].blank?
       if params[:education][:start_date ].to_i >= params[:education][:end_date].to_i
         @education.errors.add(:start_date , "Start Date should be less than End date")

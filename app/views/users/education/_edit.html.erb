@@ -20,9 +20,9 @@
    <div class="cl-10"></div>
   <%= f.input :school_name, :as=>:string, :label =>"School Name",  :input_html => {:value => @education.school_name ? @education.school_name : '' } %>
    <div class="cl-10"></div>
-  <%= f.input :start_date, :as => :select , :label =>"Start Date", :collection => (1950..Date.today.year).to_a, :selected => @education.start_date ? @education.start_date : '' , :input_html => {:place_holder => "Please Select"}%>
+  <%= f.input :start_date, :as => :select , :label =>"Start Date", :collection => (1950..Date.today.year).to_a, :selected => @education.start_date ? @education.start_date : '' ,:prompt => "Please Select" %>
    <div class="cl-10"></div>
-  <%= f.input :end_date, :as => :select, :label =>"End Date", :collection => (1950..Date.today.year).to_a , :selected => @education.end_date ? @education.end_date : '' %>
+  <%= f.input :end_date, :as => :select, :label =>"End Date", :collection => (1950..Date.today.year).to_a , :selected => @education.end_date ? @education.end_date : '',:prompt => "Please Select" %>
 
   <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
     

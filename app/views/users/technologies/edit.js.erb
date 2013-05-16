@@ -1,12 +1,11 @@
 closeLightBoxLoading();
 
-<% if @technologies.errors %>
+<% if @technologies.errors.any? %>
   <% @technologies.errors.full_messages.each do |message| %>
     displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
   <% end %>
-<% else %>
-    displayGrowlMessages("success","Success!", "Technology Details has been saved", "topRight");
 <% end %>
+
 
 
  content = "<%= escape_javascript(render(:partial=>'/users/technologies/edit')) %>";
