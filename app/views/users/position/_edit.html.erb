@@ -12,69 +12,72 @@
   <div class="form-inputs" style="margin: 10px 20px;">
     <div class="cl-10"></div>
 
-  <%= f.error_notification %>
-     
+    <%= f.error_notification %>
+
     <%= f.input :title, :as=>:string, :input_html => {:value => @position.title ? @position.title : '' }   %>
-   <div class="cl-10"></div>
-  <%= f.input :company_name, :as=>:string, :label =>"Company_name",  :input_html => {:value => @position.company_name ? @position.company_name : ''} %>
-   <div class="cl-10"></div>
-  <%= f.input :industry_name, :as=>:string, :label =>"Industry_name",  :input_html => {:value => @position.industry_name ? @position.industry_name : '' } %>
-   <div class="cl-10"></div>
-  <% if @position.is_current %>
-    <%= f.input :is_current, :as=>:boolean, :label =>"Current Job",  :checked => true ,  :input_html => {:value => @position.is_current , :id => "is_current" , :type=>"checkbox" , :style=>"float:rigt;" } %>
-  <% else %>
-    <%= f.input :is_current, :as=>:boolean, :label =>"Current Job", :checked => false ,  :input_html => {:value => false , :id => "is_current" ,:type=>"checkbox" , :style=>"float:right;" } %>
+    <div class="cl-10"></div>
+    <%= f.input :company_name, :as=>:string, :label =>"Company Name",  :input_html => {:value => @position.company_name ? @position.company_name : ''} %>
+    <div class="cl-10"></div>
+    <%= f.input :industry_name, :as=>:string, :label =>"Industry Name",  :input_html => {:value => @position.industry_name ? @position.industry_name : '' } %>
+    <div class="cl-10"></div>
+    <% if @position.is_current %>
+      <%= f.input :is_current, :as=>:boolean, :label =>"Current Job",  :checked => true ,  :input_html => {:value => @position.is_current , :id => "is_current" , :type=>"checkbox" , :style=>"float:rigt;" } %>
+    <% else %>
+      <%= f.input :is_current, :as=>:boolean, :label =>"Current Job", :checked => false ,  :input_html => {:value => false , :id => "is_current" ,:type=>"checkbox" , :style=>"float:right;" } %>
     <% end %>
-  <div class="cl-10"></div>
-  <%= f.input :start_date, :as=>:string, :label =>"Start Date",  :input_html => {:value => @position.start_date ? @position.start_date : '', :readonly=>true, :class=>"filter_date" } %>
-  <div class="cl-10"></div>
-  <div style="float:left;display: none" id="END_DATE_DIV">
-  <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
-  </div>
- <div class="cl-10"></div>
-  <%= f.input :summary, :as=>:string, :label =>"summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;" } %>
-<div class="cl-10"></div>
-<div class="cl-10"></div>
-  <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
-    
- 
+    <div class="cl-10"></div>
+    <%= f.input :start_date, :as=>:string, :label =>"Start Date",  :input_html => {:value => @position.start_date ? @position.start_date : '', :readonly=>true, :class=>"filter_date" } %>
+    <div class="cl-10"></div>
+    <div style="float:left;display: none" id="END_DATE_DIV">
+      <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
+    </div>
+    <div class="cl-10"></div>
+    <%= f.input :summary, :as=>:string, :label =>"Summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;" } %>
+    <div class="cl-10"></div>
+    <div class="cl-10"></div>
+    <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
+
+
 
   <% end %>
 
-  </div>
-  <div class="cl"></div>
+</div>
+<div class="cl"></div>
 
- <script type="text/javascript">
-        $('.filter_date').datepicker({format: "dd,mm,yyyy"});
+<script type="text/javascript">
 
-if($("#is_current").is(':checked'))
-{
-   $("#is_current").attr({"value":true});
-   $("#END_DATE_DIV").hide();
-}
+  $( document ).ready(function() {
+    
+    $('.filter_date').datepicker({format: "dd,mm,yyyy"});
 
-if($("#is_current").is(':not(:checked)'))
-{
-   $("#is_current").attr({"value":false});
-    document.getElementById('end_date_field').value = "";
-   $("#END_DATE_DIV").show();
-}
+    if($("#is_current").is(':checked'))
+    {
+      $("#is_current").attr({"value":true});
+      $("#END_DATE_DIV").hide();
+    }
+    else if($("#is_current").is(':not(:checked)'))
+    {
+      $("#is_current").attr({"value":false});
+      <%#*document.getElementById('end_date_field').value = "";%>
+      $("#END_DATE_DIV").show();
+    }
 
-$('#is_current').bind('change', function () {
+    $('#is_current').bind('change', function () {
 
- if($(this).is(':checked')) {
-    $("#is_current").attr({"value":true});
-    $("#END_DATE_DIV").hide();
- }
- else
- {
-   $("#is_current").attr({"value":false});
-   document.getElementById('end_date_field').value = "";
-   $("#END_DATE_DIV").show();
-  }
-});
+      if($(this).is(':checked')) {
+        $("#is_current").attr({"value":true});
+        $("#END_DATE_DIV").hide();
+      }
+      else if($(this).is(':not(:checked)'))
+      {
+        $("#is_current").attr({"value":false});
+        document.getElementById('end_date_field').value = "";
+        $("#END_DATE_DIV").show();
+      }
+    });
+  });
 
 
- </script>
+</script>
 
-  
+

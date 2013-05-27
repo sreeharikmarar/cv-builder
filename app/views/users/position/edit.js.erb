@@ -1,16 +1,15 @@
-// Close the loading lightbox
-closeLightBoxLoading();
+$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
+$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
 
-<% if @position.errors %>
+<% if @position.errors.any? %>
   <% @position.errors.full_messages.each do |message| %>
     displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
   <% end %>
-<% else %>
-    displayGrowlMessages("success","Success!", "Experience Details has been saved", "topRight");
 <% end %>
 
 
 content = "<%= escape_javascript(render(:partial=>'/users/position/edit')) %>";
+
 // Show PopUp Window
 options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Experience', 'showHeader':true }
 showPopUpWindow(options);

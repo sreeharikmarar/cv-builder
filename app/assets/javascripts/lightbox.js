@@ -53,7 +53,7 @@ function showPopUpWindow(options){
     //$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("width",width);
     //$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("height",height);
     $("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("z-index","1003");
-    	$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("position","fixed");
+//    $("#DIVID_LIGHT_BOX_LOADING_FADE").css("position","absolute");
     //$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
     //$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
 
@@ -100,10 +100,10 @@ function showPopUpWindow(options){
     $("#DIVID_LIGHT_BOX_CONTAINER").html(content);
     $("#DIVID_LIGHT_BOX_CONTAINER").css("background-color","#FFF");
 
-// Initialize Type Aheads
-//initializeTypeaheads();
+    // Initialize Type Aheads
+//    initializeTypeaheads();
 
-//javascript:scroll(0,0);
+  //   javascript:scroll(0,0);
 // // lock scroll position, but retain settings for later
 // 	var scrollPosition = [
 // 	self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
@@ -119,6 +119,7 @@ function showPopUpWindow(options){
 
 // Hide the Pop up Window
 function hidePopUpWindow(){
+    $("body").removeClass("noscroll");
     $("#DIVID_LIGHT_BOX_LOADING_FADE").hide();
     $("#DIVID_LIGHT_BOX_CONTAINER_MAIN").hide();
     $("#DIVID_LIGHT_BOX_CONTAINER").html("");

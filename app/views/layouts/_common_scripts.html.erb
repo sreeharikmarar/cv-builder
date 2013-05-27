@@ -2,37 +2,9 @@
 <%= javascript_include_tag "bootstrap-wysihtml5" %>
 <script type="text/javascript">
 
-  
-  $(document).ready(function () {
-
-    // Script for google plus badge
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-	
-    // Script for tweet button
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-	
-	
-    // Initialize all carousels
-    $('.carousel').carousel({
-      interval: 2500
-    })
-	
-    // Initialize all dropdowns
-    $('.dropdown-toggle').dropdown();
-		
-  });
-	
   // Initializing all popovers - it should be initialized outside the document ready
   $(".popitover").popover();
 	
-  <%#*initializeAllLoadingButtons();%>
-	
-  // Initialize the check box
-  //check_all_boxes('CHECK_ALL');
 	
   // Inititalize keybindings for lightbox closing using ESC key
   $(document).keydown(function(e){

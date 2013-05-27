@@ -1,10 +1,12 @@
 // Close the loading lightbox
 closeLightBoxLoading();
 
-<% if @position.errors %>
+<% if @position.errors.any? %>
   <% @position.errors.full_messages.each do |message| %>
     displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
   <% end %>
 <% else %>
-    displayGrowlMessages("success","Success!", "Experience Details has been saved", "topRight");
+    displayGrowlMessages("success","Success!", "Experience Details has been saved", "top");
 <% end %>
+
+$('#DIV_EXPERIENCE_DETAILS').html("<%= escape_javascript(render(:partial=>"/users/dashboard/experience")) %>");

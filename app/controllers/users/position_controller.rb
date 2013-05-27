@@ -57,18 +57,24 @@ class Users::PositionController < ApplicationController
         @position.end_date = params[:position][:end_date]
       end
     end
+    
+    unless params[:position][:end_date ].blank? && params[:position][:start_date].blank?
+      if params[:position][:start_date ].to_i >= params[:position][:end_date].to_i
+        @position.errors.add(:start_date , "Start Date should be less than End date")
+      end
+    end
 
     @position.summary = params[:position][:summary]
 
     if @position.errors.blank?
       @position.save
-
+      @experience_details = current_user.positions if current_user.positions.any?
       respond_to do |format|
         format.js { render :create}
       end
     else
       respond_to do |format|
-        format.js { render :edit}
+        format.js { render :edit }
       end
     end
     
@@ -88,22 +94,24 @@ class Users::PositionController < ApplicationController
     @position.industry_name = params[:position][:industry_name]
     @position.is_current = params[:position][:is_current]
     @position.start_date = params[:position][:start_date]
+
     if @position.is_current
       @position.end_date = "present"
     else
       @position.end_date = params[:position][:end_date]
     end
+
     @position.summary = params[:position][:summary]
 
     if @position.errors.blank?
       @position.save
-
+      @experience_details = current_user.positions if current_user.positions.any?
       respond_to do |format|
         format.js { render :create}
       end
     else
       respond_to do |format|
-        format.js { render :edit}
+        format.js { render :edit }
       end
     end
   end

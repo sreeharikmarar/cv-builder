@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="margin: 0;">
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -72,6 +72,7 @@
 
 	<!-- Lightbox and Commaon Scripts -->
     <%= render :partial=>"/layouts/common_scripts" %>
+     <%= render :partial=>"/layouts/notifications/display_growl_messages" %>
     <%= render :partial=>"/layouts/lightbox/main" %>
   
 </body>

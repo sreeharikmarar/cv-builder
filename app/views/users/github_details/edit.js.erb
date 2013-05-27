@@ -1,5 +1,5 @@
-// Close the loading lightbox
-closeLightBoxLoading();
+$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '');
+$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow","hidden");
 
 <% if @git_details.errors %>
   <% @git_details.errors.full_messages.each do |message| %>
