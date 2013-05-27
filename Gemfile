@@ -10,7 +10,7 @@ gem "mysql2"
 gem 'execjs'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
-
+gem 'psych'
 
 # Gems used only for assets and not required
 # in production environments by default.
