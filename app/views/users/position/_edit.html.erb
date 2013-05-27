@@ -32,7 +32,7 @@
       <%= f.input :end_date, :as=>:string, :label =>"End Date",  :input_html => {:value => @position.end_date ? @position.end_date : '', :id=>"end_date_field" , :readonly=>true, :class=>"filter_date" } %>
     </div>
     <div class="cl-10"></div>
-    <%= f.input :summary, :as=>:string, :label =>"Summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;" } %>
+    <%= f.input :summary, :as=>:text, :label =>"Summary", :input_html => {:value => @position.summary ? @position.summary : '' , :style=>"height:100px;" } %>
     <div class="cl-10"></div>
     <div class="cl-10"></div>
     <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>

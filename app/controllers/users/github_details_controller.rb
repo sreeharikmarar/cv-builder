@@ -29,7 +29,9 @@ class Users::GithubDetailsController < ApplicationController
       @git_details.technologies = params[:git_details][:technologies]
     end
     
-    unless params[:git_details][:contribution].blank?
+    if params[:git_details][:contribution].blank?
+      @git_details.errors.add(:contribution, "can't be blank")
+    else
       @git_details.contribution = params[:git_details][:contribution]
     end
     
