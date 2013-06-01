@@ -6,59 +6,96 @@
 <% end %>
 
 
-<div class="padding-10" style="border-radius:2px;">
+  <%= simple_form_for(@basic_info, :as => "basic_info", :url=>path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :autocomplete => "off"}) do |f|  -%>
 
-  <%= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> First name  </label>
-      <div class="controls"><%= text_field_tag("basic_info[first_name]", @basic_info.first_name ? @basic_info.first_name : current_user.name ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Last name  </label>
-      <div class="controls"><%= text_field_tag("basic_info[last_name]", @basic_info.last_name ? @basic_info.last_name : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left">  Email  </label>
-      <div class="controls"><%= text_field_tag("basic_info[email]", @basic_info.email ? @basic_info.email : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left">  Date Of Birth  </label>
-      <div class="controls">
-          <%= select_tag("basic_info[year]",  options_for_select((1800..2050).to_a, @basic_info.year) , :style=>"width:80px;") %> <span style="margin-left:5px;margin-right:5px;">year</span>
-          <%= select_tag("basic_info[month]", options_for_select((1..12).to_a, @basic_info.month), :style=>"width:60px;" ) %><span style="margin-left:5px;margin-right:5px;">month</span>
-          <%= select_tag("basic_info[day]", options_for_select((1..31).to_a, @basic_info.day ), :style=>"width:60px;") %><span style="margin-left:5px;margin-right:5px;">day</span>
-        </div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Address </label>
-      <div class="controls"><%= text_area_tag("basic_info[main_address]", @basic_info.main_address ? @basic_info.main_address : '' ,:style=>"height:100px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Phone  </label>
-      <div class="controls"><%= text_field_tag("basic_info[phone_number]", @basic_info.phone_number ? @basic_info.phone_number : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Website / Blog  </label>
-      <div class="controls"><%= text_field_tag("basic_info[personal_website]", @basic_info.personal_website ? @basic_info.personal_website : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Twitter handle @  </label>
-      <div class="controls"><%= text_field_tag("basic_info[twitter_account]", @basic_info.twitter_account ? @basic_info.twitter_account : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
-    <div class="control-group required" style="margin-bottom: 10px;">
-      <label class="select control-label" style="width:180px;text-align:left"> Linkedin Public url  </label>
-      <div class="controls"><%= text_field_tag("basic_info[public_profile_url]", @basic_info.public_profile_url ? @basic_info.public_profile_url : '' ,:style=>"height:24px;width:300px;") %></div>
-    </div>
 
-    <div class="form-actions" style="margin-bottom:0px;margin-top:0px;">
-      <div class="cl"></div>
-      <div class="float-right">
-        <%= submit_tag "Save", :class => "float-right btn btn-primary", :onclick=>"$(this).button('loading');", "data-loading-text"=>"Saving..." %>
-      </div>
-    </div>
+  <div class="form-inputs" style="margin: 10px 20px;">
+    <div class="cl-10"></div>
+
+    <%= f.error_notification %>
+
+    <%= f.input :first_name, :as=>:string, :label =>"First Name", :input_html => {:value => @basic_info.first_name ? @basic_info.first_name : '' }   %>
+    <div class="cl-10"></div>
+    <%= f.input :last_name, :as=>:string, :label =>"Last Name",  :input_html => {:value => @basic_info.last_name ? @basic_info.last_name : ''} %>
+    <div class="cl-10"></div>
+    <%= f.input :email, :as=>:string, :label =>"Email",  :input_html => {:value => @basic_info.email ? @basic_info.email : '' } %>
+    <div class="cl-10"></div>
+
+    <%= f.input :year, :as => :select , :label =>"Date Of Birth", :collection => (1950..Date.today.year).to_a, :selected => @basic_info.year ? @basic_info.year : '' ,:prompt => "Please Select", :input_html => { :style=>"width:75px;float:left;"} %>
+    <div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Year</div>
+    <%= f.input :month, :as => :select , :label =>false, :collection => (1..12).to_a, :selected => @basic_info.month ? @basic_info.month : '' ,:prompt => "Please Select" , :input_html => { :style=>"width:60px;float:left;"} %>
+    <div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Month</div>
+    <%= f.input :day, :as => :select , :label =>false, :collection => (1..30).to_a, :selected => @basic_info.day ? @basic_info.day : '' ,:prompt => "Please Select" , :input_html => { :style=>"width:60px;float:left;"} %>
+    <div style="float:left;margin-left:10px;margin-top: 4px;">Day</div>
+    <div class="cl-10"></div>
+   <%= f.input :main_address, :as=>:text, :label =>"Address",  :input_html => {:value => @basic_info.main_address ? @basic_info.main_address : '', :style=>"height:100px;" } %>
+    <div class="cl-10"></div>
+    <%= f.input :phone_number, :as=>:string, :label =>"Phone number",  :input_html => {:value => @basic_info.phone_number ? @basic_info.phone_number : '' } %>
+    <div class="cl-10"></div>
+     <%= f.input :personal_website, :as=>:string, :label =>"Website",  :input_html => {:value => @basic_info.personal_website ? @basic_info.personal_website : ''} %>
+    <div class="cl-10"></div>
+     <%= f.input :twitter_account, :as=>:string, :label =>"Twitter handle @",  :input_html => {:value => @basic_info.twitter_account ? @basic_info.twitter_account : ''} %>
+    <div class="cl-10"></div>
+     <%= f.input :public_profile_url, :as=>:string, :label =>"Linkedin Public URL",  :input_html => {:value => @basic_info.public_profile_url ? @basic_info.public_profile_url : ''} %>
+    <div class="cl-10"></div>
+    <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"SAving...", :onclick=>"$(this).button('loading');" %>
+
+
 
   <% end %>
-
-  <div class="cl"></div>
-
 </div>
+<div class="cl"></div>
+
+<!--
+  <%#= form_tag(path, :class => "form-horizontal padding-left-20 padding-right-20", :autocomplete=>"off", :id=>"FRM_ADVANCED_COMPANY_SEARCH") do %>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> First name  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[first_name]", @basic_info.first_name ? @basic_info.first_name : current_user.name ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Last name  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[last_name]", @basic_info.last_name ? @basic_info.last_name : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left">  Email  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[email]", @basic_info.email ? @basic_info.email : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left">  Date Of Birth  </label>%>
+      <%#*<div class="controls">%>
+          <%#= select_tag("basic_info[year]",  options_for_select((1800..2050).to_a, @basic_info.year) , :style=>"width:80px;") %> <span style="margin-left:5px;margin-right:5px;">year</span>
+          <%#= select_tag("basic_info[month]", options_for_select((1..12).to_a, @basic_info.month), :style=>"width:60px;" ) %><span style="margin-left:5px;margin-right:5px;">month</span>
+          <%#= select_tag("basic_info[day]", options_for_select((1..31).to_a, @basic_info.day ), :style=>"width:60px;") %><span style="margin-left:5px;margin-right:5px;">day</span>
+        <%#*</div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Address </label>%>
+      <%#*<div class="controls"><%= text_area_tag("basic_info[main_address]", @basic_info.main_address ? @basic_info.main_address : '' ,:style=>"height:100px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Phone  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[phone_number]", @basic_info.phone_number ? @basic_info.phone_number : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Website / Blog  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[personal_website]", @basic_info.personal_website ? @basic_info.personal_website : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Twitter handle @  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[twitter_account]", @basic_info.twitter_account ? @basic_info.twitter_account : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+    <%#*<div class="control-group required" style="margin-bottom: 10px;">%>
+      <%#*<label class="select control-label" style="width:180px;text-align:left"> Linkedin Public url  </label>%>
+      <%#*<div class="controls"><%= text_field_tag("basic_info[public_profile_url]", @basic_info.public_profile_url ? @basic_info.public_profile_url : '' ,:style=>"height:24px;width:300px;") %></div>%>
+    <%#*</div>%>
+
+    <%#*<div class="form-actions" style="margin-bottom:0px;margin-top:0px;">%>
+      <%#*<div class="cl"></div>%>
+      <%#*<div class="float-right">%>
+        <%#= submit_tag "Save", :class => "float-right btn btn-primary", :onclick=>"$(this).button('loading');", "data-loading-text"=>"Saving..." %>
+      <%#*</div>%>
+    <%#*</div>%>
+
+  <%# end %>
+
+      -->

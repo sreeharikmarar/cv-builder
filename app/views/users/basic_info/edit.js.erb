@@ -3,6 +3,12 @@
 $('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
 $("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
 
+<% if @basic_info.errors.any? %>
+  <% @basic_info.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% end %>
+
 content = "<%= escape_javascript(render(:partial=>'/users/basic_info/edit')) %>";
 // Show PopUp Window
 

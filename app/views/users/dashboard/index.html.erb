@@ -8,8 +8,9 @@
   <div class="well-white span12" style="margin-left: 0px;height:auto;border-color: #898989">
     <% if @user %>
       <div class="span8">
-
+         <div id="DIV_BASIC_INFO_DETAILS">
         <%= render :partial => "/users/dashboard/basic_info" %>
+         </div>
         <div class="cl-30"></div>
         <div id="DIV_TECHNOLOGY_DETAILS">
         <%= render :partial => "/users/dashboard/technologies" %>

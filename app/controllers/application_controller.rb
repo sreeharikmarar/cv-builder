@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
       @user = current_user
    end
 
+   def redirect_to_home_if_signed_in
+    if current_user
+      redirect_to dashboard_path
+    end
+  end
 end
