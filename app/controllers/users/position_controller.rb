@@ -98,9 +98,19 @@ class Users::PositionController < ApplicationController
     if @position.is_current
       @position.end_date = "present"
     else
-      @position.end_date = params[:position][:end_date]
+      if params[:position][:end_date].blank?
+        @position.errors.add(:end_date, "can't be blank")
+      else
+        @position.end_date = params[:position][:end_date]
+      end
     end
 
+    unless params[:position][:end_date ].blank? && params[:position][:start_date].blank?
+      if params[:position][:start_date ].to_i >= params[:position][:end_date].to_i
+        @position.errors.add(:start_date , "Start Date should be less than End date")
+      end
+    end
+    
     @position.summary = params[:position][:summary]
 
     if @position.errors.blank?

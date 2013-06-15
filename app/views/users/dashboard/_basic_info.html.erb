@@ -6,8 +6,8 @@
 
     <div class="span5" style="width:380px;margin-left:30px;">
       <h2 style="color:#4B4B4B;margin-top: 0px;font-family: 'open-sans'"><%= @user.name %></h2>
-      <% if @linkedin_details && @linkedin_details.headline %><h5 style="color:#4B4B4B"><%= @linkedin_details.headline %></h5><% end %>
-        <span style="color: #08C;"><%= current_user.email %></span>
+      <h5 style="color:#4B4B4B"><%= @linkedin_details && @linkedin_details.headline ? @linkedin_details.headline : '' %></h5>
+      <span style="color: #08C;"><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span>
         <div class="cl-3"></div>
       <% if @linkedin_details && @linkedin_details.personal_website %>
         <%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website %>
@@ -21,10 +21,8 @@
         <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url %>
         <div class="cl-3"></div>
       <% end %>
-      <% if @linkedin_details && @linkedin_details.main_address %>
-        <p style="color:#4B4B4B;"><%= @linkedin_details.main_address %></p>
+        <p style="color:#4B4B4B;"><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></p>
         <div class="cl"></div>
-      <% end %>
     </div>
     <div class="cl"></div>
   </div>

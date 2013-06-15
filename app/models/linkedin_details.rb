@@ -12,10 +12,19 @@ class LinkedinDetails < ActiveRecord::Base
   
   ## Specifies a white list of attributes that can be set via mass-assignment.
   attr_accessible :user_id, :first_name , :last_name , :email , :headline , :public_profile_url, :year ,:month ,:day, :twitter_account, :main_address , :phone_number , :location , :personal_website
+
   validates :year, :presence=>true
   validates :month, :presence=>true
   validates :day, :presence=>true
 
+  validates :phone_number, :length => {:minimum => 6 ,:maximum => 16}, :format => { :with => /^[0-9+\-\ .&]*\z/ }, :unless => Proc.new { |info| info.phone_number.blank? }
+  validates :public_profile_url, :format => URI::regexp(%w(http https)), :unless => Proc.new { |i| i.public_profile_url.blank? } 
+  validates :personal_website, :format => URI::regexp(%w(http https)), :unless => Proc.new { |i| i.personal_website.blank? } 
+
+  EmailRegex = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}/i
+
+  validates_format_of :email, :with => EmailRegex , :unless => Proc.new { |i| i.email.blank? } , :message=>"Not a valid Email format"
+  
   def self.parse_linkedin1(user, profile_1)
 
     ## Storing Personal Detail
@@ -98,10 +107,10 @@ class LinkedinDetails < ActiveRecord::Base
   end
 
 
-    def self.parse_linkedin_3(user, profile_3)
+  def self.parse_linkedin_3(user, profile_3)
 
-      EducationDetails.parse_education_details(user, profile_3)
-      TechnicalDetails.parse_technical_details(user, profile_3)
-    end
+    EducationDetails.parse_education_details(user, profile_3)
+    TechnicalDetails.parse_technical_details(user, profile_3)
+  end
   
 end
