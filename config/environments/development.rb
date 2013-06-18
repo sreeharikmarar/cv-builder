@@ -32,6 +32,7 @@ CvBuilder::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
+  ENV['WICKED_PDF_FILE_PATH'] = "#{Rails.root}/bin/wkhtmltopdf-amd64"
   # Expands the lines which load the assets
   config.assets.debug = true
 end

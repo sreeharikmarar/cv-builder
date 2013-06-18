@@ -39,7 +39,12 @@ CvBuilder::Application.routes.draw do
   match '/user/education/:id/delete'             =>              'users/education#delete'  , :method=>:get  , :as => :delete_education
   match '/user/education/create'                 =>              'users/education#create'  , :method=>:post , :as => :create_education
 
-  match '/user/github_details/:id/edit'               =>              'users/github_details#edit'    , :method=>:get  , :as => :edit_github_details
-  match '/user/github_details/:id/update'             =>              'users/github_details#update'  , :method=>:get  , :as => :update_github_details
-  match '/user/github_details/:id/delete'             =>              'users/github_details#delete'  , :method=>:get  , :as => :delete_github_details
+  match '/user/github_details/:id/edit'          =>              'users/github_details#edit'    , :method=>:get  , :as => :edit_github_details
+  match '/user/github_details/:id/update'        =>              'users/github_details#update'  , :method=>:get  , :as => :update_github_details
+  match '/user/github_details/:id/delete'        =>              'users/github_details#delete'  , :method=>:get  , :as => :delete_github_details
+
+
+  match '/download'                              =>              'download#download_cv'  , :method=>:get  , :as => :download_cv
+
+
 end

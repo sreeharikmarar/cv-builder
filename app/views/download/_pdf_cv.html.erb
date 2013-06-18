@@ -1,0 +1,20 @@
+<div>
+
+  <h1><% @user.name %></h1>
+  <h5 style="color:#4B4B4B"><%= @linkedin_details && @linkedin_details.headline ? @linkedin_details.headline : '' %></h5>
+   <span style="color: #08C;"><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span><br/>
+    <% if @linkedin_details && @linkedin_details.personal_website %>
+        <%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website %>
+        <div class="cl-3"></div>
+      <% end %>
+      <% if @linkedin_details && @linkedin_details.twitter_account %>
+        <%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}"%>
+        <div class="cl-3"></div>
+      <% end %>
+      <% if @linkedin_details && @linkedin_details.public_profile_url %>
+        <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url %>
+        <div class="cl-3"></div>
+      <% end %>
+        <p style="color:#4B4B4B;"><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></p>
+        <div class="cl"></div>
+</div>

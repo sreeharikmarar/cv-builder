@@ -44,10 +44,12 @@ gem "simple_form", '2.0.2'
 
 gem 'omniauth-github'
 
-gem 'linkedin', '0.3.7', :git => "git://github.com/pengwynn/linkedin.git"
+gem 'linkedin', '0.4.1', :git => "git://github.com/pengwynn/linkedin.git"
 
-
-
+## wkhtmltopdf
+gem 'wkhtmltopdf'
+gem 'wicked_pdf'
+gem "wkhtmltopdf-binary"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
