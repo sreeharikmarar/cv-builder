@@ -1,0 +1,27 @@
+
+
+<div id="" class="span8"  style="margin:20px;padding:20px;margin:0px;padding:0px;">
+    <h1 style="text-align:center;font-size: 35px;"><%= @user.name %></h1>
+    <div class="cl-15"></div>
+
+    <div class="span6" style="font-size:15px;">
+    <span style="color: #000;"><b>Email : </b><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span><br/>
+    <% if @linkedin_details && @linkedin_details.personal_website %>
+      <span style="color: #000;"><b>Website : </b><%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website %></span>
+      <div class="cl-3"></div>
+    <% end %>
+    <% if @linkedin_details && @linkedin_details.twitter_account %>
+      <span style="color: #000;"><b>Twitter : </b><%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}"%></span>
+      <div class="cl-3"></div>
+    <% end %>
+    <% if @linkedin_details && @linkedin_details.public_profile_url %>
+      <span style="color: #000;"><b>Linkedin : </b> <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url %></span>
+      <div class="cl-3"></div>
+    <% end %>
+    <span style="color:#000;"><b>Address : </b><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></span>
+    <div class="cl"></div>
+  </div>
+  <div class="cl"></div
+</div>
+<div class="cl-20"></div>
+ <%= link_to "Download PDF", download_cv_path  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
