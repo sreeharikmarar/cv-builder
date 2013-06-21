@@ -1,5 +1,16 @@
 class DownloadController < ApplicationController
 
+  def preview
+    collect_data_for_displaying_and_downloading_cv
+
+    respond_to do |format|
+      format.html {}
+      format.js { render :preview }
+    end
+
+  end
+  
+  
   def download_cv
 
     @format = "pdf"
