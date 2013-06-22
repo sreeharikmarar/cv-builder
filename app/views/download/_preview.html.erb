@@ -1,27 +1,61 @@
 
 
-<div id="" class="span8"  style="margin:20px;padding:20px;margin:0px;padding:0px;">
-    <h1 style="text-align:center;font-size: 35px;"><%= @user.name %></h1>
-    <div class="cl-15"></div>
+<div id="" class="span8"  style="padding:20px;margin-left:10px;margin-top: 20px;color:#000;font-family: 'Times New Roman'">
+  <h1 style="text-align:center;"><%= @user.name %></h1>
+  <div class="cl-15"></div>
 
-    <div class="span6" style="font-size:15px;">
-    <span style="color: #000;"><b>Email : </b><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span><br/>
+  <!-- Basic Info Block -->
+  <div class="span6" style="font-size:15px;margin-left: 0px;">
+    <span><b>Email : </b><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span><br/>
     <% if @linkedin_details && @linkedin_details.personal_website %>
-      <span style="color: #000;"><b>Website : </b><%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website %></span>
-      <div class="cl-3"></div>
+      <div><b>Website : </b><%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website , :style=>"color:#000;" %></div>
+      <div class="cl-2"></div>
     <% end %>
     <% if @linkedin_details && @linkedin_details.twitter_account %>
-      <span style="color: #000;"><b>Twitter : </b><%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}"%></span>
-      <div class="cl-3"></div>
+      <div><b>Twitter : </b><%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}" , :style=>"color:#000;"%></div>
+      <div class="cl-2"></div>
     <% end %>
     <% if @linkedin_details && @linkedin_details.public_profile_url %>
-      <span style="color: #000;"><b>Linkedin : </b> <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url %></span>
-      <div class="cl-3"></div>
+      <div><b>Linkedin : </b> <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url ,:style=>"color:#000;"  %></div>
+      <div class="cl-2"></div>
     <% end %>
-    <span style="color:#000;"><b>Address : </b><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></span>
-    <div class="cl"></div>
+    <div><b>Address : </b><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></div>
+    <div class="cl-2"></div>
   </div>
-  <div class="cl"></div
+  <!-- Basic Info Block -->
+  <div class="cl-10"></div>
+  <!-- Experience Block -->
+  <div>
+    <h3>Experience</h3>
+    <% if @experience_details && @experience_details.any? %>
+      <% @experience_details.each do |exp| %>
+        <div class="row-fluid">
+          <div class="span5">
+            <% if exp.title %>
+              <h4 style="line-height:5px;"><%= exp.title %></h4>
+            <% end %>
+            <% if exp.company_name %>
+              <div class="cl"></div>
+              <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;"><%= exp.company_name %></p>
+            <% end %>
+            <% if exp.industry_name %>
+              <div class="cl"></div>
+              <p style="color:#4B4B4B;font-size: 15px;font-style: italic;"><%= exp.industry_name %> Industry</p>
+            <% end %>
+          </div>
+          <div class="span3" style="float:right">
+            <div style="float:right;margin-top: 10px;">
+              <% if exp.is_current %>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
+              <% else %>
+                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%d , %m, %Y").strftime('%b %Y') %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="cl-20"></div>
- <%= link_to "Download PDF", download_cv_path  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+<%= link_to "Download PDF", download_cv_path  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
