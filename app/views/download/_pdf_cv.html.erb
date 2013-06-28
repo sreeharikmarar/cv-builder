@@ -4,7 +4,7 @@
   <div class="cl-15"></div>
 
   <!-- Basic Info Block -->
-  <div class="span10" style="font-size:15px;border: 2px solid #000;width: 780px;">
+  <div class="span10" style="font-size:18px;border: 2px solid #000;width: 780px;">
     <div><b>Email : </b><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></div>
     <div class="cl-2"></div>
     <% if @linkedin_details && @linkedin_details.personal_website %>
@@ -30,20 +30,20 @@
     <% if @experience_details && @experience_details.any? %>
       <% @experience_details.each do |exp| %>
         <div class="row-fluid">
-          <div class="span8" style="border: 2px solid #000;width: 620px;">
+          <div class="" style="float:left;border: 2px solid #000;width: 600px;">
             <% if exp.title %>
               <h5 style="line-height:5px;"><%= exp.title %></h5>
             <% end %>
             <% if exp.company_name %>
               <div class="cl"></div>
-              <div style="font-size: 17px;font-style: italic;float: left;"><%= exp.company_name %></div>
+              <div style="font-size: 21px;font-style: italic;float: left;"><%= exp.company_name %></div>
             <% end %>
             <% if exp.industry_name %>
               <div class="cl"></div>
-              <div style="font-size: 15px;font-style: italic;"><%= exp.industry_name %> Industry</div>
+              <div style="font-size: 18px;font-style: italic;"><%= exp.industry_name %> Industry</div>
             <% end %>
           </div>
-          <div class="span3" style="float:right;border: 2px solid #000;width: 250px;">
+          <div class="" style="float:left;border: 2px solid #000;width: 250px;">
             <div style="float:right;">
               <% if exp.is_current %>
                 <div><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= exp.end_date %></div>

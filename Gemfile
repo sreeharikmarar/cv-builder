@@ -11,7 +11,7 @@ gem 'rails', '3.2.13'
 gem 'execjs'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
-gem 'psych'
+gem 'psych' , '2.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,7 +28,7 @@ gem "jquery-rails", "1.0.19"
 
 gem 'rest-client'
 # gem for facebook authentication using devise
-gem 'devise'
+gem 'devise','2.2.4'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'oauth2'
