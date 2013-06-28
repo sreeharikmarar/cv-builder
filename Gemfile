@@ -4,9 +4,10 @@ gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+  gem "mysql2"
 
-gem "mysql2"
-#gem "pg"
+#  gem "pg"
+
 gem 'execjs'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
