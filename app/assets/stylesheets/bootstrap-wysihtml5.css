@@ -4,7 +4,7 @@ ul.wysihtml5-toolbar {
 	display: block;
 }
 
-ul.wysihtml5-toolbar::after {
+ul.wysihtml5-toolbar:after {
 	clear: both;
 	display: table;
 	content: "";
