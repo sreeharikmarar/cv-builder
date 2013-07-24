@@ -2,11 +2,19 @@
 # http://code.google.com/p/wkhtmltopdf/
 #
 
-class WickedPdf
-  WICKED_PDF = {
-       :exe_path => "#{Rails.root}/bin/wkhtmltopdf-amd64"
-  }
+if Rails.env.staging? || Rails.env.production?
+  exe_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+else
+  exe_path = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+  # exe_path = '/usr/local/bin/wkhtmltopdf'
 end
+
+#class WickedPdf
+#  WICKED_PDF = {
+#       :exe_path => "#{Rails.root}/bin/wkhtmltopdf-amd64",
+#       :wkhtmltopdf => "#{Rails.root}/bin/wkhtmltopdf-amd64"
+#  }
+#end
 #  def initialize(wkhtmltopdf_binary_path = nil)
 #    @exe_path = wkhtmltopdf_binary_path
 #    @exe_path ||= WICKED_PDF[:exe_path] unless WICKED_PDF.empty?
