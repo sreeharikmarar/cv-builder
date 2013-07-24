@@ -47,10 +47,10 @@ gem 'omniauth-github'
 
 gem 'linkedin', '0.4.1', :git => "git://github.com/pengwynn/linkedin.git"
 
-## wkhtmltopdf
 gem 'wkhtmltopdf'
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary"
+#gem "wkhtmltopdf-heroku"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

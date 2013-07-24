@@ -41,7 +41,7 @@ class DownloadController < ApplicationController
     respond_to do |format|
       format.html {
         render :pdf => pdf_file_name,
-        :footer => { :left => "Left", :text => "azzist"},
+        :footer => { :left => "Left", :text => "cv builder"},
         :template => '/download/download_cv.html.erb',
         :margin => {:top                => 0,
           :bottom             => 0,
