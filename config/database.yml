@@ -1,8 +1,9 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
 #
 #
-# Be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+# Important to Drop the Heroku DB or reset db use the below command
+#
+# heroku pg:reset DATABASE_URL --confirm cvbuilder
 development:
   adapter: mysql2
   encoding: utf8
@@ -31,6 +32,8 @@ production:
   pool: 5
   username: root
   password: asdfgh
-#  socket: /var/run/mysqld/mysqld.sock
+##  socket: /var/run/mysqld/mysqld.sock
   port: 5432
   host: localhost
+  
+

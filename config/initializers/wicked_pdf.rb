@@ -1,13 +1,10 @@
 # wkhtml2pdf Ruby interface
 # http://code.google.com/p/wkhtmltopdf/
 #
-#require 'logger'
-#require 'digest/md5'
-#require 'open3'
-#
+
 class WickedPdf
   WICKED_PDF = {
-       :exe_path => ENV['WICKED_PDF_FILE_PATH']
+       :exe_path => "#{Rails.root}/bin/wkhtmltopdf-amd64"
   }
 end
 #  def initialize(wkhtmltopdf_binary_path = nil)
