@@ -22,7 +22,7 @@ class TechnicalDetails < ActiveRecord::Base
       end
       @tech_details = TechnicalDetails.new
       @tech_details.user_id = user.id
-      @tech_details.details = "Skills : " + all_skills[1..-1].join(" , ")
+      @tech_details.details = all_skills[1..-1].join(" , ")
       @tech_details.save
   end
 end
