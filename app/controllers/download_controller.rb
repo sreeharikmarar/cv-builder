@@ -1,5 +1,7 @@
 class DownloadController < ApplicationController
 
+    layout "after-login"
+
   def preview
     collect_data_for_displaying_and_downloading_cv
 
