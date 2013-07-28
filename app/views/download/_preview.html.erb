@@ -1,61 +1,50 @@
+<div class="span12"  style="padding:5px;margin-top:20px;margin-left: 10px;border: 0px solid #898989; border-radius: 3pt;
+     box-shadow:1px 1px 20px #c1c1c1; color:#000;width:950px;font-family: 'Times New Roman';">
 
+  <!-- Name -->
 
-<div id="" class="span8"  style="padding:20px;margin-left:10px;margin-top: 20px;color:#000;font-family: 'Times New Roman'">
-  <h1 style="text-align:center;"><%= @user.name %></h1>
+  <h1 style="text-align:center;font-size: 40px;margin-top: 30px;"><%= @user.name %></h1>
   <div class="cl-15"></div>
 
-  <!-- Basic Info Block -->
-  <div class="span6" style="font-size:15px;margin-left: 0px;">
-    <span><b>Email : </b><%= @linkedin_details.email ? @linkedin_details.email : current_user.email %></span><br/>
-    <% if @linkedin_details && @linkedin_details.personal_website %>
-      <div><b>Website : </b><%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website , :style=>"color:#000;" %></div>
-      <div class="cl-2"></div>
-    <% end %>
-    <% if @linkedin_details && @linkedin_details.twitter_account %>
-      <div><b>Twitter : </b><%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}" , :style=>"color:#000;"%></div>
-      <div class="cl-2"></div>
-    <% end %>
-    <% if @linkedin_details && @linkedin_details.public_profile_url %>
-      <div><b>Linkedin : </b> <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url ,:style=>"color:#000;"  %></div>
-      <div class="cl-2"></div>
-    <% end %>
-    <div><b>Address : </b><%= @linkedin_details && @linkedin_details.main_address ? @linkedin_details.main_address : '' %></div>
-    <div class="cl-2"></div>
-  </div>
-  <!-- Basic Info Block -->
+  <!-- Name -->
+
   <div class="cl-10"></div>
+
+  <!-- Basic Info Block -->
+
+  <%= render :partial=>"/download/sections/basic_info" ,:locals =>{:linkedin_details => @linkedin_details} %>
+
+  <!-- Basic Info Block -->
+
+  <div class="cl-10"></div>
+
+  <!-- Skills Block -->
+
+  <%= render :partial=>"/download/sections/technical_skills" ,:locals =>{:technical_details => @technical_details} %>
+
+  <!-- Skills Block -->
+
+  <div class="cl-10"></div>
+
   <!-- Experience Block -->
-  <div>
-    <h3>Experience</h3>
-    <% if @experience_details && @experience_details.any? %>
-      <% @experience_details.each do |exp| %>
-        <div class="row-fluid">
-          <div class="span5">
-            <% if exp.title %>
-              <h4 style="line-height:5px;"><%= exp.title %></h4>
-            <% end %>
-            <% if exp.company_name %>
-              <div class="cl"></div>
-              <p style="color:#4B4B4B;font-size: 17px;font-style: italic;float: left;"><%= exp.company_name %></p>
-            <% end %>
-            <% if exp.industry_name %>
-              <div class="cl"></div>
-              <p style="color:#4B4B4B;font-size: 15px;font-style: italic;"><%= exp.industry_name %> Industry</p>
-            <% end %>
-          </div>
-          <div class="span3" style="float:right">
-            <div style="float:right;margin-top: 10px;">
-              <% if exp.is_current %>
-                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= exp.end_date %></p>
-              <% else %>
-                <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%d , %m, %Y").strftime('%b %Y') %></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+
+  <%= render :partial=>"/download/sections/experience" ,:locals =>{:experience_details => @experience_details} %>
+
+  <!-- Experience Block -->
+
+  <div class="cl-10"></div>
+
+  <!-- Education Block -->
+
+  <%= render :partial=>"/download/sections/education" ,:locals =>{:education_details => @education_details} %>
+
+  <!-- Education Block -->
+
+  <div class="cl-10"></div>
+
+  <!-- Github Block  -->
+  <%= render :partial=>"/download/sections/github" ,:locals =>{:github_details => @github_details} %>
+
+  <div class="cl-10"></div>
+
 </div>
-<div class="cl-20"></div>
-<%= link_to "Download PDF", download_cv_path  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>

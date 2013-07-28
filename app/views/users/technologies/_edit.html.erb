@@ -8,7 +8,7 @@
   <%= f.error_notification %>
     <div class="cl-5"></div>
 
-    <%= f.input :details, :as=>:string, :label=> false, :input_html => {:value => @technologies.details ? @technologies.details : '' , :style=>"height:200px;width:650px;" , :id=>"some_text_area"}   %>
+    <%= f.input :details, :as=>:text, :label=> false, :input_html => {:value => @technologies.details ? @technologies.details : '' , :style=>"height:200px;width:650px;" , :id=>"some_text_area"}   %>
    <div class="cl-10"></div>
    <div class="cl-10"></div>
   <script type="text/javascript">$('#some_text_area').wysihtml5();</script>
