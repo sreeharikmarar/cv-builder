@@ -12,8 +12,8 @@
  *= require home
  *= require lightbox
  *= require noty
- *= require bootstrap_and_overrides
  *= require bootstrap-wysihtml5
+ *= require bootstrap_and_overrides
  *= require datepicker
  *= require general
  *= require_tree .
