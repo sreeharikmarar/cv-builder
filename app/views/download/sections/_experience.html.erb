@@ -1,8 +1,8 @@
 <div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
+<% if experience_details && experience_details.any? %>
   <h3>Experience</h3>
-  <% if experience_details && experience_details.any? %>
+  <div class="row-fluid">
     <% experience_details.each do |exp| %>
-      <div class="row-fluid">
         <div class="" style="float:left;width: 650px;">
           <% if exp.title %>
             <div style="font-size: 21px;font-weight: bold;"><%= exp.title %></div>
@@ -28,8 +28,8 @@
           </div>
         </div>
         <div class="cl-20"></div>
-      </div>
     <% end %>
+        </div>
   <% end %>
   <div class="cl"></div>
 </div>

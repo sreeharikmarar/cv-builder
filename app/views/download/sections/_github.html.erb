@@ -1,34 +1,35 @@
 <div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
+  <% if github_details && github_details.any? %>
     <h3>Projects on Github</h3>
     <div class="row-fluid">
-    <% if github_details && github_details.any? %>
+
       <% github_details.each do |git| %>
 
-          <div class="" style="float:left;width: 650px;">
-            <% if git.project_name %>
-              <div style="font-size: 21px;font-weight: bold;"><%= git.project_name %></div>
-              <div class="cl-10"></div>
-            <% end %>
-            <% if git.public_url %>
-              <div style="font-size: 18px;font-style: italic;"><%= link_to "#{git.public_url}" , git.public_url ,:style=>"color:blue;" %></div>
-              <div class="cl-10"></div>
-            <% end %>
+        <div class="" style="float:left;width: 650px;">
+          <% if git.project_name %>
+            <div style="font-size: 21px;font-weight: bold;"><%= git.project_name %></div>
+            <div class="cl-10"></div>
+          <% end %>
+          <% if git.public_url %>
+            <div style="font-size: 18px;font-style: italic;"><%= link_to "#{git.public_url}" , git.public_url ,:style=>"color:blue;" %></div>
+            <div class="cl-10"></div>
+          <% end %>
 
-            <% if git.project_description %>
-              <div class="cl-5"></div>
-              <div style="font-size: 18px;font-style: italic;"><%= git.project_description %></div>
+          <% if git.project_description %>
+            <div class="cl-5"></div>
+            <div style="font-size: 18px;font-style: italic;"><%= git.project_description %></div>
+          <% end %>
+        </div>
+        <div class="" style="float:right;width: 250px;">
+          <div style="float:right;">
+            <% if git.created_at && git.updated_at %>
+              <div><%= git.created_at.strftime('%b %Y')  %> to <%= git.updated_at.strftime('%b %Y')  %></div>
             <% end %>
           </div>
-          <div class="" style="float:right;width: 250px;">
-            <div style="float:right;">
-              <% if git.created_at && git.updated_at %>
-                <div><%= git.created_at.strftime('%b %Y')  %> to <%= git.updated_at.strftime('%b %Y')  %></div>
-              <% end %>
-            </div>
-          </div>
-          <div class="cl-30"></div>
+        </div>
+        <div class="cl-30"></div>
       <% end %>
-    <% end %>
-          </div>
-    <div class="cl"></div>
-  </div>
+    </div>
+  <% end %>
+  <div class="cl"></div>
+</div>

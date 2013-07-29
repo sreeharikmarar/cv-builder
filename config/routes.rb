@@ -45,7 +45,9 @@ CvBuilder::Application.routes.draw do
 
 
   match '/download'                              =>              'download#download_cv'  , :method=>:get  , :as => :download_cv
-  match '/preview'                              =>              'download#preview'  , :method=>:get  , :as => :preview
+  match '/preview'                               =>              'download#preview'  , :method=>:get  , :as => :preview
+
+  match '/users'                                 =>              'list_users#index'  , :method=>:get  , :as => :list_users
 
 
 end
