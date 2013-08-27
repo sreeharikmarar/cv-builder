@@ -22,8 +22,12 @@ class EducationDetails < ActiveRecord::Base
       @education_detail.degree = item.degree
       @education_detail.field_of_study = item.field_of_study
       @education_detail.school_name = item.school_name
+      if item.start_date && item.start_date.year
       @education_detail.start_date = item.start_date.year
+      end
+      if item.end_date && item.end_date.year
       @education_detail.end_date = item.end_date.year
+      end
       @education_detail.save
       end
   end

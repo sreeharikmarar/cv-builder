@@ -1,9 +1,24 @@
 <div class="row" style="padding-left: 30px;padding-right: 30px;width:1020px">
   <div class="well-white span12" style="margin-left: 0px;height:auto;border-color: #898989">
 
-<div class="cl-20"></div>
-<%= link_to "Download PDF", download_cv_path  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
-
-<%= render :partial => "/download/preview" %>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active" id="DIV_BASIC_INFO_PERSONAL_DETAILS_LIST_ITEM"><a href="#DIV_THEME_SIMPLE" data-toggle="tab">Simple</a></li>
+        <li id="DIV_BASIC_INFO_CONTACT_DETAILS_LIST_ITEM"><a href="#DIV_THEME_CLASSIC" data-toggle="tab">Classic</a></li>
+        <li id="DIV_BASIC_INFO_PROFESSIONAL_DETAILS_ITEM"><a href="#DIV_THEME_PROFESSIONAL" data-toggle="tab">Professional</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="DIV_THEME_SIMPLE">
+          <%= render :partial => "/download/theme/simple" %>
+        </div>
+        <div class="tab-pane" id="DIV_THEME_CLASSIC">
+          <%= render :partial => "/download/theme/classic" %>
+        </div>
+        <div class="tab-pane" id="DIV_THEME_PROFESSIONAL">
+          <%= render :partial => "/download/theme/professional" %>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </div>

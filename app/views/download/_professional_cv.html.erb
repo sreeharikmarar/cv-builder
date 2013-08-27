@@ -1,0 +1,50 @@
+<div class="span12"  style="padding:5px;margin-left: 10px;color:#000;width:950px;">
+
+<!-- Name -->
+<div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
+  <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 10px;"><%= @user.name %></h1>
+  <div class="cl-10"></div>
+  <div style="border-bottom:2px solid #000;"></div>
+  <div class="cl-15"></div>
+</div>
+  <!-- Name -->
+
+  <div class="cl-15"></div>
+
+  <!-- Basic Info Block -->
+
+  <%= render :partial=>"/download/sections/professional/basic_info" ,:locals =>{:linkedin_details => @linkedin_details} %>
+
+  <!-- Basic Info Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Skills Block -->
+
+  <%= render :partial=>"/download/sections/professional/technical_skills" ,:locals =>{:technical_details => @technical_details} %>
+
+  <!-- Skills Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Experience Block -->
+
+  <%= render :partial=>"/download/sections/professional/experience" ,:locals =>{:experience_details => @experience_details} %>
+
+  <!-- Experience Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Education Block -->
+
+  <%= render :partial=>"/download/sections/professional/education" ,:locals =>{:education_details => @education_details} %>
+
+  <!-- Education Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Github Block  -->
+  <%= render :partial=>"/download/sections/professional/github" ,:locals =>{:github_details => @github_details} %>
+
+  <div class="cl-10"></div>
+</div>

@@ -16,5 +16,6 @@
  *= require bootstrap_and_overrides
  *= require datepicker
  *= require general
+ *= require preview
  *= require_tree .
 */

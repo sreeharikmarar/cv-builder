@@ -1,0 +1,39 @@
+<div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
+  <% if github_details && github_details.any? %>
+  <div class="classic-box">
+      <div class="box-heading" style="margin-left:10px;">Projects on Github</div>
+      <div class="cl"></div>
+    </div>
+      <div class="cl-20"></div>
+    <div class="row-fluid" style="width:870px;float: left;margin-left: 20px;">
+
+      <% github_details.each do |git| %>
+
+        <div class="" style="float:left;width: 700px;">
+          <% if git.project_name %>
+            <div class="cv-heading"><b><%= git.project_name %></b></div>
+            <div class="cl-10"></div>
+          <% end %>
+          <% if git.public_url %>
+            <div class="cv-mini-heading"><%= link_to "#{git.public_url}" , git.public_url ,:style=>"color:blue;" %></div>
+            <div class="cl-10"></div>
+          <% end %>
+
+          <% if git.project_description %>
+            <div class="cl-5"></div>
+            <div class="cv-description"><%= git.project_description %></div>
+          <% end %>
+        </div>
+        <div class="" style="float:right;width: 160px;">
+          <div class="cv-date">
+            <% if git.created_at && git.updated_at %>
+              <div><%= git.created_at.strftime('%b %Y')  %> to <%= git.updated_at.strftime('%b %Y')  %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="cl-30"></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="cl"></div>
+</div>

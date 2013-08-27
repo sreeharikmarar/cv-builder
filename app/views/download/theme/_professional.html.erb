@@ -1,0 +1,57 @@
+<%= link_to "Download PDF", download_cv_path(:theme => 'professional') , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+<div class="cl-10"></div>
+<div class="span12"  style="padding-left:10px;margin-left: 10px;border: 0px solid #898989; border-radius: 3pt;
+     box-shadow:1px 1px 20px #c1c1c1; color:#000;width:950px;background-color: #fff;">
+
+  <!-- Name -->
+<div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
+  <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 20px;"><b><%= @user.name %></b></h1>
+  <div class="cl-10"></div>
+  <div style="border-bottom:2px solid #000;"></div>
+  <div class="cl-15"></div>
+  <div class="cl-15"></div>
+</div>
+
+  <!-- Name -->
+
+  <div class="cl-15"></div>
+
+  <!-- Basic Info Block -->
+
+  <%= render :partial=>"/download/sections/professional/basic_info" ,:locals =>{:linkedin_details => @linkedin_details} %>
+
+  <!-- Basic Info Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Skills Block -->
+
+  <%= render :partial=>"/download/sections/professional/technical_skills" ,:locals =>{:technical_details => @technical_details} %>
+
+  <!-- Skills Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Experience Block -->
+
+  <%= render :partial=>"/download/sections/professional/experience" ,:locals =>{:experience_details => @experience_details} %>
+
+  <!-- Experience Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Education Block -->
+
+  <%= render :partial=>"/download/sections/professional/education" ,:locals =>{:education_details => @education_details} %>
+
+  <!-- Education Block -->
+
+  <div class="cl-30"></div>
+
+  <!-- Github Block  -->
+  <%= render :partial=>"/download/sections/professional/github" ,:locals =>{:github_details => @github_details} %>
+
+  <div class="cl-10"></div>
+
+</div>
+<div class="cl-50"></div>

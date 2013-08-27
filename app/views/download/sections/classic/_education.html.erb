@@ -1,0 +1,37 @@
+<div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
+  <% if education_details && education_details.any? %>
+    <div class="classic-box">
+      <div class="box-heading" style="margin-left:10px;">Education </div>
+      <div class="cl"></div>
+    </div>
+    <div class="row-fluid" style="width:670px;float: right;">
+      <% education_details.each do |edu| %>
+
+        <div class="" style="float:left;width: 500px;">
+          <% if edu.degree %>
+            <div class="cv-heading"><%= edu.degree %></div>
+            <div class="cl-10"></div>
+          <% end %>
+          <% if edu.field_of_study %>
+            <div class="cl"></div>
+            <div class="cv-sub-heading" style="float: left;"><b><%= edu.field_of_study %></b></div>
+            <div class="cl-5"></div>
+          <% end %>
+          <% if edu.school_name %>
+            <div class="cl-5"></div>
+            <div class="cv-mini-heading"><%= edu.school_name %> School/College</div>
+          <% end %>
+        </div>
+        <div class="" style="float:right;width: 160px;">
+          <div class="cv-date">
+            <% if edu.start_date && edu.end_date %>
+              <div><%= edu.start_date %> to <%= edu.end_date %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="cl-20"></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="cl"></div>
+</div>

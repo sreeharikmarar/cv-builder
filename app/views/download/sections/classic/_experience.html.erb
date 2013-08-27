@@ -1,0 +1,38 @@
+<div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
+  <% if experience_details && experience_details.any? %>
+    <div class="classic-box">
+      <div class="box-heading" style="margin-left:10px;">Experience </div>
+      <div class="cl"></div>
+    </div>
+    <div class="row-fluid" style="width:670px;float: right;">
+      <% experience_details.each do |exp| %>
+        <div style="float:left;width: 500px;">
+          <% if exp.title %>
+            <div class="cv-heading"><b><%= exp.title %></b></div>
+            <div class="cl-10"></div>
+          <% end %>
+          <% if exp.company_name %>
+            <div class="cl"></div>
+            <div class="cv-sub-heading" style="float: left;"><b><%= exp.company_name %></b></div>
+            <div class="cl-5"></div>
+          <% end %>
+          <% if exp.industry_name %>
+            <div class="cl-5"></div>
+            <div class="cv-mini-heading"><%= exp.industry_name %> Industry</div>
+          <% end %>
+        </div>
+        <div class="" style="float:right;width: 160px;font-size: 16px;">
+          <div class="cv-date">
+            <% if exp.is_current %>
+              <div><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= exp.end_date %></div>
+            <% else %>
+              <div><%= Date.strptime("#{exp.start_date.to_s}", "%d , %m,  %Y").strftime('%b %Y') %> to <%= Date.strptime("#{exp.end_date.to_s}", "%d , %m, %Y").strftime('%b %Y') %></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="cl-20"></div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class="cl"></div>
+</div>

@@ -15,6 +15,8 @@ class DownloadController < ApplicationController
   
   def download_cv
 
+    @theme = params[:theme]
+    
     @format = "pdf"
     @show_links = false
 
@@ -43,14 +45,14 @@ class DownloadController < ApplicationController
     respond_to do |format|
       format.html {
         render :pdf => pdf_file_name,
-        :footer => { :left => "Left", :text => "cv builder"},
+        :footer => { :text => "cv builder"},
         :template => '/download/download_cv.html.erb',
-        :margin => {:top                => 0,
-          :bottom             => 0,
-          :left               => 0,
-          :right              => 0},
+        :margin => {:top      => 5,
+          :bottom             => 5,
+          :left               => 5,
+          :right              => 5},
         :orientation      => 'Portrait', # default , Landscape,
-        :no_background    => true
+        :no_background    => false
       }
     end
   end

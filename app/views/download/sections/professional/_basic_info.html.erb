@@ -1,0 +1,28 @@
+<div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
+
+  <div class="classic-box">
+    <div class="box-heading" style="margin-left:10px;">Contact</div>
+  <div class="cl"></div>
+  </div>
+  <div class="cl-20"></div>
+<div style="font-size: 18px;float:left;width:870px;margin-left: 20px;">
+  <div><b>Email: </b><%= linkedin_details && linkedin_details.email ? linkedin_details.email : current_user.email %></div>
+  <div class="cl-4"></div>
+  <% if linkedin_details && linkedin_details.personal_website %>
+    <div><b>Website : </b><%= link_to "#{linkedin_details.personal_website}" , linkedin_details.personal_website , :style=>"color:blue;" %></div>
+    <div class="cl-4"></div>
+  <% end %>
+  <% if linkedin_details && linkedin_details.public_profile_url %>
+    <div><b>Linkedin : </b> <%= link_to "#{linkedin_details.public_profile_url}" , linkedin_details.public_profile_url , :style=>"color:blue;"%></div>
+    <div class="cl-4"></div>
+  <% end %>
+  <% if linkedin_details && linkedin_details.phone_number %>
+    <div><b>Phone : </b> <%= linkedin_details.phone_number %></div>
+    <div class="cl-4"></div>
+  <% end %>
+    <% if linkedin_details && linkedin_details.main_address  %>
+  <div><b>Address : </b><%= linkedin_details.main_address %></div>
+  <% end %>
+  <div class="cl-10"></div>
+</div>
+</div>

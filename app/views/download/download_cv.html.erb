@@ -2,14 +2,22 @@
 <html lang="en">
   <head>
     <style type="text/css">
-<%= render :file => "#{Rails.root.to_path}/app/assets/stylesheets/preview.css", :content_type => 'application/css' %>
 <%= render :file => "#{Rails.root.to_path}/app/assets/stylesheets/general.css", :content_type => 'application/css' %>
+<%= render :file => "#{Rails.root.to_path}/app/assets/stylesheets/preview.css", :content_type => 'application/css' %>
     </style>
   </head>
-  <body class="container" style="width: 970px;height:1430px;">
+  <body class="container">
     <div class="cl-10"></div>
-     <div>
-      <%= render :partial=>"/download/pdf_cv" %>
+    <div style="">
+      <% if @theme %>
+        <% if @theme.to_s == 'simple' %>
+          <%= render :partial=>"/download/pdf_cv" %>
+        <% elsif @theme.to_s == 'classic' %>
+          <%= render :partial=>"/download/classic_cv" %>
+        <% elsif @theme.to_s == 'professional' %>
+          <%= render :partial=>"/download/professional_cv" %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="cl-30"></div>

@@ -1,0 +1,9 @@
+<div class="span10" style="font-size:20px;border: 1px solid #fff;width:920px;margin-left: 10px;margin-right:10px;">
+<% if technical_details && technical_details.details && !technical_details.details.blank? %>
+  <div class="classic-box">
+  <div class="box-heading" style="margin-left:10px;">Skills & Expertise </div>
+  <div class="cl"></div>
+  </div>
+  <div class="cv-content" style="float:right;width:670px;"><%= raw(technical_details.details) %></div>
+  <% end %>
+</div>

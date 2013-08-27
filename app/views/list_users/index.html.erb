@@ -4,8 +4,8 @@
        <% @users.each_with_index do |user,index| %>
       <div class="well" style="min-height:130px;margin-top: 10px;">
           <% if user.image %>
-            <div style="float:left;width: 100px;height:100px;">
-              <img src="<%= user.image %>"></img>
+            <div style="float:left;">
+              <img width="50%" height="80%" src="<%= user.image %>"></img>
             </div>
           <% end %>
           <div style="float:left;margin-left: 20px">

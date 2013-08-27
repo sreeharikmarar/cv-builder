@@ -28,7 +28,10 @@ class LinkedinDetails < ActiveRecord::Base
   def self.parse_linkedin1(user, profile_1)
 
     ## Storing Personal Detail
-    
+
+    puts "%"*100
+    puts "profile_1 : #{profile_1}"
+    puts "%"*100
     @linkedin_detail = user.linkedin_details || LinkedinDetails.new
     
     @linkedin_detail.user_id = user.id
@@ -37,16 +40,36 @@ class LinkedinDetails < ActiveRecord::Base
     @linkedin_detail.last_name = profile_1.last_name unless profile_1.last_name.blank?
     @linkedin_detail.headline = profile_1.headline unless profile_1.headline.blank?
     @linkedin_detail.public_profile_url = profile_1.public_profile_url unless profile_1.public_profile_url.blank?
-    @linkedin_detail.year = profile_1.date_of_birth.year  unless profile_1.date_of_birth.year.blank?
-    @linkedin_detail.month = profile_1.date_of_birth.month unless profile_1.date_of_birth.month.blank?
-    @linkedin_detail.day = profile_1.date_of_birth.day unless profile_1.date_of_birth.day.blank?
-    @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name unless profile_1.primary_twitter_account.provider_account_name.blank?
+    if profile_1.date_of_birth 
+      if profile_1.date_of_birth.year
+       @linkedin_detail.year = profile_1.date_of_birth.year
+      end
+      if profile_1.date_of_birth.month
+        @linkedin_detail.month = profile_1.date_of_birth.month
+      end
+      if profile_1.date_of_birth.day
+        @linkedin_detail.day = profile_1.date_of_birth.day
+      end
+    end
+
+    if profile_1.primary_twitter_account && profile_1.primary_twitter_account.provider_account_name
+      @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name
+    end
+#    @linkedin_detail.month = profile_1.date_of_birth.month unless profile_1.date_of_birth && profile_1.date_of_birth.month.blank?
+#    @linkedin_detail.day = profile_1.date_of_birth.day unless profile_1.date_of_birth && profile_1.date_of_birth.day.blank?
+#    @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name unless profile_1.primary_twitter_account.provider_account_name.blank?
     @linkedin_detail.main_address = profile_1.main_address unless profile_1.main_address.blank?
-    @linkedin_detail.phone_number = profile_1.phone_numbers.all.first.phone_number if  profile_1.phone_numbers.any? && profile_1.phone_numbers.all.first.phone_number
 
-    
-    @linkedin_detail.location = profile_1.location.name unless profile_1.location.blank?
+    if profile_1.phone_numbers && profile_1.phone_numbers.all && profile_1.phone_numbers.all.any?
 
+#      if  profile_1.phone_numbers.any? && profile_1.phone_numbers.all.first.phone_number
+    @linkedin_detail.phone_number = profile_1.phone_numbers.all.first.phone_number
+#      end
+    end
+
+    if profile_1.location
+    @linkedin_detail.location = profile_1.location.name 
+    end
     @linkedin_detail.save(:validate => false)
       
 
