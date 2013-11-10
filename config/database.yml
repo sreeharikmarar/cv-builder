@@ -3,7 +3,10 @@
 #
 # Important to Drop the Heroku DB or reset db use the below command
 #
-# heroku pg:reset DATABASE_URL --confirm cvbuilder
+# heroku pg:reset DATABASE_URL --confirm cvbuilder ( No Need )
+# heroku run rake db:reset 
+# heroku run rake db:migrate
+
 development:
   adapter: mysql2
   encoding: utf8

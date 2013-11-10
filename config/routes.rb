@@ -1,6 +1,7 @@
 CvBuilder::Application.routes.draw do
 
   root :to => 'home#index'
+  match '/about'          =>              'home#about' , :method=>:get , :as => :about
 
   devise_for :users , :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 

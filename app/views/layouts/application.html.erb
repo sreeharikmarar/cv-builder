@@ -14,7 +14,7 @@
         <a class="brand" href="/"><span style="color:#fff">CV </span><span style="color:#0094BD;"> Builder</span></a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li><%= link_to "About" %></li>
+            <li><%= link_to "About" , about_path %></li>
             <% if user_signed_in? %>
              <li style="float:right;font-weight: bold;"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
             <% end %>

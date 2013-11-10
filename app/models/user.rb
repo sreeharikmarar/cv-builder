@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_one :share_cv , :class_name => "ShareCv"
 
   has_many :positions ,:class_name => "Position"
+
   has_many :projects ,:class_name => "Projects"
 
   has_many :github_details ,:class_name => "GithubDetails"
