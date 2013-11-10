@@ -1,0 +1,8 @@
+$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '');
+$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow","hidden");
+
+content = "<%= escape_javascript(render(:partial=>'/share_cv/share')) %>";
+
+// Show PopUp Window
+options = {'width': 700, 'height':400, 'content':content, 'heading':'Publish Your CV', 'showHeader':true }
+showPopUpWindow(options);

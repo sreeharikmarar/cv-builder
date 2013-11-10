@@ -1,6 +1,6 @@
 development:
-  app_id: "emh2az5t30n7"
-  secret_key: "4g0iKt51eL7ERK7V"
+  app_id: "CHlnUPRlBnESIAR7m2BbA"
+  secret_key: "h1xQbE8ZUmCPlcHxq070LBoVfXLKWpnO5ZtafE64eU"
 production:
-  app_id: "6r99q8hwwoy4"
-  secret_key: "mcqNiv6H0HTuhxQi"
+  app_id: "N8Ilv4VYRXbNe06o5ujJg"
+  secret_key: "BCLDUWI405ZnHT6wA4gjlqAIn7CdlLMGXHWdappGBM"

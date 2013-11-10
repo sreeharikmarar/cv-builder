@@ -13,7 +13,8 @@ class GithubDetails < ActiveRecord::Base
   ## Specifies a white list of attributes that can be set via mass-assignment.
   attr_accessible :user_id, :project_name , :project_description ,:public_url , :technologies , :created_at , :updated_at , :contribution
 
-
+  validates :project_name , :presence => true
+  
   def self.parse_github(user, datas)
     user.github_details.destroy_all if user.github_details.any?
     if datas.length > 0

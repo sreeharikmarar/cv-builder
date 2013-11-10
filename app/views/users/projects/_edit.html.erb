@@ -1,0 +1,35 @@
+
+<% if @project && @project.new_record? %>
+  <% path = create_projects_path %>
+<% else %>
+  <% path = update_projects_path(:id=>@project.id) %>
+<% end %>
+
+
+<%= simple_form_for(@project, :as => "projects", :url=> path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :autocomplete => "off"}) do |f| -%>
+
+
+  <div class="form-inputs" style="margin: 10px 20px;">
+    <div class="cl-5"></div>
+    <%= f.error_notification %>
+    <div class="cl-5"></div>
+
+    <%= f.input :project_name, :as=>:string, :label =>"Project Name" , :input_html => {:value => @project.project_name ? @project.project_name :  '' }   %>
+    <div class="cl-10"></div>
+    <%= f.input :public_url, :as=>:string, :label =>"URL" , :input_html => {:value => @project.public_url ? @project.public_url :  '' }   %>
+    <div class="cl-10"></div>
+    <%= f.input :project_description, :as=>:text , :label =>"Project Description", :input_html => {:value => @project.project_description ? @project.project_description: '' , :style=>"height:100px;" } %>
+    <div class="cl-10"></div>
+    <%= f.input :technologies, :as=>:string, :label =>"Technologies" , :input_html => {:value => @project.technologies ? @project.technologies : '' }   %>
+    <div class="cl-10"></div>
+    <%= f.input :contribution, :as=>:text , :label =>"Your Contribution", :input_html => {:value => @project.contribution ? @project.contribution : '' , :style=>"height:100px;" } %>
+    <div class="cl-20"></div>
+    <%= f.submit "Save", :class=>"btn btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
+
+  <% end %>
+
+</div>
+<div class="cl"></div>
+
+
+

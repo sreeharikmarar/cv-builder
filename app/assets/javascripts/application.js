@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
 //= require bootstrap-datepicker
+//= require jquery.slides
 //= require lightbox
 //= require utilities
 //= require noty

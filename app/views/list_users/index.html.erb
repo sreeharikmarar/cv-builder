@@ -1,11 +1,12 @@
 <div class="span12"  style="padding:10px;margin-top:20px;margin-left: 10px;border: 0px solid #898989; border-radius: 3pt;
      box-shadow:1px 1px 20px #c1c1c1; color:#000;width:950px;background-color: #fff;font-family: 'Times New Roman';min-height: 500px;">
      <% if @users.any? %>
+  <h3 align="center">Cv builder Users</h3>
        <% @users.each_with_index do |user,index| %>
-      <div class="well" style="min-height:130px;margin-top: 10px;">
+      <div class="well" style="float:left;min-height:130px;margin:10px;min-width: 400px;">
           <% if user.image %>
             <div style="float:left;">
-              <img width="50%" height="80%" src="<%= user.image %>"></img>
+              <img width="100" height="120" src="<%= user.image %>"></img>
             </div>
           <% end %>
           <div style="float:left;margin-left: 20px">
@@ -19,7 +20,6 @@
           </div>
           <div class="cl"></div>
       </div>
-      <div class="cl"></div>
     <% end %>
   <% end %>
 

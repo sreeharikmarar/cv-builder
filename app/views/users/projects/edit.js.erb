@@ -1,0 +1,14 @@
+$('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '500px');
+$("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow-y","scroll");
+
+<% if @project.errors.any? %>
+  <% @project.errors.full_messages.each do |message| %>
+    displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
+  <% end %>
+<% end %>
+
+
+content = "<%= escape_javascript(render(:partial=>'/users/projects/edit')) %>";
+// Show PopUp Window
+options = {'width': 700, 'height':400, 'content':content, 'heading':'Edit Project Details', 'showHeader':true }
+showPopUpWindow(options);

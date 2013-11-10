@@ -1,0 +1,35 @@
+
+<div class="raw-fluid padding-left-10">
+  <h2 class="heading" style="line-height: 5px;font-size: 20px">Projects (App & Softwares)</h2>
+  <div style="border-bottom: solid #ccc 1.5px;"></div>
+
+  <div class="cl-10"></div>
+
+  <% if @projects && @projects.any? %>
+    <% @projects.each do |project| %>
+      <div class="grey-feed">
+        <div class="row-fluid">
+          <div class="span8">
+            <h4 style="line-height:20px;"><%= project.project_name %></h4>
+          </div>
+          <div class="span4" style="float:right;">
+            <div style="float:right;margin-top: 10px;margin-right: 10px">
+              <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= project.created_at.strftime('%b %Y') %> to <%= project.updated_at.strftime('%b %Y') %></p>
+            </div>
+          </div>
+        </div>
+        <p style="color:#4B4B4B;font-size: 16px;font-style: italic"><%= project.project_description %></p>
+        <%= link_to "delete" , delete_projects_path(:id=>project.id) ,:style=>"float:right;margin-right:15px;" %>
+        <%= link_to "edit" , edit_projects_path(:id => project.id) , :remote => true ,:style=>"float:right;margin-right:20px;" %>
+
+        <div class="cl"></div>
+      </div>
+
+    <% end %>
+  <% else %>
+    <div class="cl-30"></div>
+    <div class="cl-30"></div>
+    <div class="cl-30"></div>
+  <% end %>
+</div>
+<div class="cl-30"></div>

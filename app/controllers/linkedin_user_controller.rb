@@ -44,13 +44,14 @@ class LinkedinUserController < ApplicationController
 
     profile_2 = c.profile(:fields=>["positions","three_current_positions","three_past_positions","publications","patents"])
 
-    puts "profile_2 = #{profile_2}"
+#    puts "profile_2 = #{profile_2}"
 
     LinkedinDetails.parse_linkedin_2(current_user, profile_2)
     
     ##    ImportDetail::Linkedin.parse_linkedin_3(current_individual, profile_3)
     profile_3 = c.profile(:fields=>["languages","skills","certifications","educations"])
-    puts "profile_3 = #{profile_3}"
+
+#    puts "profile_3 = #{profile_3}"
 
     LinkedinDetails.parse_linkedin_3(current_user, profile_3)
     #    ImportDetail::Linkedin.parse_linkedin_4(current_individual, profile_4)

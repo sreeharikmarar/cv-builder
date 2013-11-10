@@ -17,21 +17,15 @@ class Users::GithubDetailsController < ApplicationController
 
     @git_details.user_id = current_user.id
     
-    if params[:git_details][:project_name].blank?
-      @git_details.errors.add(:project_name, "can't be blank")
-    else
       @git_details.project_name = params[:git_details][:project_name]
-    end
 
-    if params[:git_details][:technologies].blank?
-      @git_details.errors.add(:technologies, "can't be blank")
-    else
       @git_details.technologies = params[:git_details][:technologies]
-    end
     
-    @git_details.contribution = params[:git_details][:contribution]
+      @git_details.project_description = params[:git_details][:project_description]
+      
+      @git_details.contribution = params[:git_details][:contribution]
     
-    if @git_details.errors.blank?
+    if @git_details.valid?
       @git_details.save
       @github_details = current_user.github_details
       respond_to do |format|

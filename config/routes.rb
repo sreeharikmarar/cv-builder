@@ -43,11 +43,22 @@ CvBuilder::Application.routes.draw do
   match '/user/github_details/:id/update'        =>              'users/github_details#update'  , :method=>:get  , :as => :update_github_details
   match '/user/github_details/:id/delete'        =>              'users/github_details#delete'  , :method=>:get  , :as => :delete_github_details
 
+  match '/user/projects/new'                    =>          'users/projects#new'    , :method=>:get  , :as => :new_projects
+  match '/user/projects/:id/edit'          =>              'users/projects#edit'    , :method=>:get  , :as => :edit_projects
+  match '/user/projects/:id/update'        =>              'users/projects#update'  , :method=>:get  , :as => :update_projects
+  match '/user/projects/create'            =>              'users/projects#create'  , :method=>:post  , :as => :create_projects
+  match '/user/projects/:id/delete'        =>              'users/projects#delete'  , :method=>:get  , :as => :delete_projects
+
 
   match '/download'                              =>              'download#download_cv'  , :method=>:get  , :as => :download_cv
-  match '/preview'                               =>              'download#preview'  , :method=>:get  , :as => :preview
+  match '/preview/:id'                               =>           'download#preview'  ,    :method=>:get  , :as => :preview
 
   match '/users'                                 =>              'list_users#index'  , :method=>:get  , :as => :list_users
+
+  match '/share_cv'                                 =>              'share_cv#share'  , :method=>:get  , :as => :share_cv
+  match '/publish_cv'                               =>              'share_cv#publish_cv'  , :method=>:post  , :as => :publish_cv
+
+  match '/profile/:id'                           =>              'profile#show'  , :method=>:get  , :as => :profile
 
 
 end

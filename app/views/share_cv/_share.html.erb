@@ -1,0 +1,35 @@
+
+<%= simple_form_for(@share_cv, :as => "share_cv", :url=> publish_cv_path, :method => :post, :remote => true , :html => {:multipart => true, :class => "form-horizontal", :autocomplete => "off"}) do |f| -%>
+
+
+  <div class="form-inputs" style="margin: 10px 20px;">
+    <div class="cl-5"#></div>
+    <%= f.error_notification %>
+    <div class="cl-5"></div>
+
+    <%= f.input :url, :as=>:string, :label =>"URL" , :input_html => {:value => @share_cv.url ? @share_cv.url :  @url }   %>
+    <div class="cl-10"></div>
+    <%#= f.input :theme, :as=>:string , :label =>"theme", :input_html => {:value => @share_cv.theme ? @share_cv.theme : '' , :style=>"height:100px;" } %>
+    <div class="cl-10"></div>
+    <div class="control-group required">
+        <label class="select control-label"> Themes</label>
+        <% field1 = radio_button_tag "share_cv[theme]", "simple", @share_cv.theme  == "simple", :style=>"margin:0px auto;" %>
+        <% field2 = radio_button_tag "share_cv[theme]", "classic", @share_cv.theme  == "classic", :style=>"margin:0px auto;" %>
+        <% field3 = radio_button_tag "share_cv[theme]", "professional", @share_cv.theme  == "professional", :style=>"margin:0px auto;" %>
+<div class="controls" style="margin-left:175px;">
+<%= raw "<span>#{field1}&nbsp;&nbsp;Simple&nbsp;&nbsp;&nbsp;&nbsp;#{field2}&nbsp;&nbsp;Classic&nbsp;&nbsp;&nbsp;&nbsp;#{field3}&nbsp;&nbsp;Professional</span>" %></div>
+        </div>
+    <div class="control-group required">
+      <label class="select control-label"> Share</label>
+        <% field1 = radio_button_tag "share_cv[publish]", true , @share_cv.publish  ==  true, :style=>"margin:0px auto;" %>
+        <% field2 = radio_button_tag "share_cv[publish]", false , @share_cv.publish  == false, :style=>"margin:0px auto;" %>
+<div class="controls" style="margin-left:175px;">
+<%= raw "<span>#{field1}&nbsp;&nbsp;Publish&nbsp;&nbsp;&nbsp;&nbsp;#{field2}&nbsp;&nbsp;Un publish</span>" %></div>
+        </div>
+    <%= f.submit "Save", :class=>"btn btn-large btn-info float-right margin-right-5", "data-loading-text"=>"Saving...", :onclick=>"$(this).button('loading');" %>
+    <div class="cl-10"></div>
+
+  </div>
+  <div class="cl-10"></div>
+<% end %>
+  <div class="cl-10"></div>

@@ -3,45 +3,27 @@ class DownloadController < ApplicationController
     layout "after-login"
 
   def preview
-    collect_data_for_displaying_and_downloading_cv
+    collect_data_for_displaying_cv
 
-    respond_to do |format|
-      format.html {}
-      format.js { render :preview }
+    if @user
+      respond_to do |format|
+        format.html {}
+      end
+    else
+      respond_to do |format|
+        format.html { render :request_denied}
+      end
     end
-
   end
   
   
   def download_cv
 
-    @theme = params[:theme]
-    
-    @format = "pdf"
-    @show_links = false
-
     collect_data_for_displaying_and_downloading_cv
 
     pdf_file_name = "SAMPLE_CV"
 
-#    respond_to do |format|
-#      format.html {
-#        render :pdf => pdf_file_name,
-#        :template => "/download/download_cv.html.erb",
-#        :margin => {:top                => 0,
-#                    :bottom             => 0,
-#                    :left               => 0,
-#                    :right              => 0},
-#        :orientation      => 'Portrait', # default , Landscape,
-#        :no_background    => true
-#      }
-#
-##      respond_to do |format|
-##      format.pdf {
-##        render :pdf => "sample_CV",
-##        :template => '/download/download_cv.html.erb'
-##      }
-#    end
+
     respond_to do |format|
       format.html {
         render :pdf => pdf_file_name,
@@ -58,13 +40,28 @@ class DownloadController < ApplicationController
   end
 
   private
+
   def collect_data_for_displaying_and_downloading_cv
-    @user = current_user
-    @linkedin_details = current_user.linkedin_details
-    @experience_details = current_user.positions if current_user.positions.any?
-    @github_details = current_user.github_details if current_user.github_details.any?
-    @education_details = current_user.education_details if current_user.education_details.any?
-    @technical_details = current_user.technical_details
+    @theme = params[:theme]
+    @user = User.find_by_id(params[:id])
+    @format = "pdf"
+    @show_links = false
+    
+    @linkedin_details = @user.linkedin_details if @user
+    @experience_details = @user.positions if @user && @user.positions.any?
+    @github_details = @user.github_details if @user && @user.github_details.any?
+    @education_details = @user.education_details if @user && @user.education_details.any?
+    @technical_details = @user.technical_details
+    @projects = @user.projects
+  end
+  def collect_data_for_displaying_cv
+    @user = User.find_by_id(params[:id])
+    @linkedin_details = @user.linkedin_details if @user && @user.linkedin_details.blank?
+    @experience_details = @user.positions if @user && @user.positions.any?
+    @github_details = @user.github_details if @user && @user.github_details.any?
+    @education_details = @user.education_details if @user && @user.education_details.any?
+    @technical_details = @user.technical_details
+    @projects = @user.projects
   end
 
 end

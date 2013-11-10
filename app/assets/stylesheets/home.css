@@ -12,7 +12,6 @@ min-width: 960px;
 background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#c1c1c1));
 background: -moz-linear-gradient(top, #fcfcfc, #c1c1c1);
 background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#c1c1c1));
-border-bottom: 5px solid #898989;
 color: white !important;
 width: 100%;
 min-width: 960px;
@@ -23,10 +22,11 @@ background: #EEE;
 border-top: 1px solid #DBDBDB;
 padding-bottom: 50px;
 }
+
 .footer{
-min-height: 50px;
-background-color: #575757;
-border-top: solid 1px #313131;
+min-height: 150px;
+background: url('/assets/back3.png');
+width:100%;
 color: #FBFBFB;
 position: relative;
 clear: both;
@@ -114,13 +114,47 @@ margin-bottom: 20px;
 .logo{
 border: 2px solid #6B6B6B;
 float:left;
-padding: 6px;
-background-color: whiteSmoke;
+padding: 1px;
+background-color: #fff;
 /*margin-left: 20px;*/
 width:150px;
 height:150px;
 border-radius:300px;
 }
+
+/*.fb {
+  background: url('/assets/icons/facebook.png');
+  width:150px;
+  height:150px;
+  
+}
+.fb-hover {
+  background: url('/assets/hover-icons/facebook.png');
+  width:150px;
+  height:150px;
+}
+.twitter {
+  background: url('/assets/icons/twitter.png');
+  width:150px;
+  height:150px;
+
+}
+.twitter-hover {
+  background: url('/assets/hover-icons/twitter.png');
+  width:150px;
+  height:150px;
+}
+.google {
+  background: url('/assets/icons/google.png');
+  width:150px;
+  height:150px;
+
+}
+.google-hover {
+  background: url('/assets/hover-icons/google.png');
+  width:150px;
+  height:150px;
+}*/
 
 .grey-feed {
 padding: 10px 10px;
@@ -142,3 +176,145 @@ padding: 10px 10px;
 color: #4B4B4B;
 border-top: 1px solid #EEE;
 }
+
+.facebook, .google, .twitter, .facebook-hover, .google-hover, .twitter-hover{
+	background: url('/assets/icons/sprites.png') no-repeat;
+}
+
+.facebook{
+	background-position: -49px -3px ;
+	width: 150px;
+	height: 150px;
+}
+
+.google{
+	background-position: -50px -152px ;
+	width: 150px;
+	height: 150px;
+}
+
+.twitter{
+	background-position: -49px -301px ;
+	width: 150px;
+	height: 150px;
+}
+
+.facebook-hover{
+	background-position: -301px -1px ;
+	width: 150px;
+	height: 150px;
+}
+
+.google-hover{
+	background-position: -300px -151px ;
+	width: 150px;
+	height: 150px;
+}
+
+.twitter-hover{
+	background-position: -301px -300px ;
+	width: 150px;
+	height: 150px;
+}
+#slides {
+      display: none
+    }
+
+    #slides .slidesjs-navigation {
+      margin-top:5px;
+    }
+
+    a.slidesjs-next,
+    a.slidesjs-previous,
+    a.slidesjs-play,
+    a.slidesjs-stop {
+      background-image: url('/assets/btns-next-prev.png');
+      background-repeat: no-repeat;
+      display:block;
+      width:12px;
+      height:18px;
+      overflow: hidden;
+      text-indent: -9999px;
+      float: left;
+      margin-right:5px;
+    }
+
+    a.slidesjs-next {
+      margin-right:10px;
+      background-position: -12px 0;
+    }
+
+    a:hover.slidesjs-next {
+      background-position: -12px -18px;
+    }
+
+    a.slidesjs-previous {
+      background-position: 0 0;
+    }
+
+    a:hover.slidesjs-previous {
+      background-position: 0 -18px;
+    }
+
+    a.slidesjs-play {
+      width:15px;
+      background-position: -25px 0;
+    }
+
+    a:hover.slidesjs-play {
+      background-position: -25px -18px;
+    }
+
+    a.slidesjs-stop {
+      width:18px;
+      background-position: -41px 0;
+    }
+
+    a:hover.slidesjs-stop {
+      background-position: -41px -18px;
+    }
+
+    .slidesjs-pagination {
+      margin: 7px 0 0;
+      float: right;
+      list-style: none;
+    }
+
+    .slidesjs-pagination li {
+      float: left;
+      margin: 0 1px;
+    }
+
+    .slidesjs-pagination li a {
+      display: block;
+      width: 13px;
+      height: 0;
+      padding-top: 13px;
+      background-image: url('/assets/pagination.png');
+      background-position: 0 0;
+      float: left;
+      overflow: hidden;
+    }
+
+    .slidesjs-pagination li a.active,
+    .slidesjs-pagination li a:hover.active {
+      background-position: 0 -13px
+    }
+
+    .slidesjs-pagination li a:hover {
+      background-position: 0 -26px
+    }
+
+    #slides a:link,
+    #slides a:visited {
+      color: #333
+    }
+
+    #slides a:hover,
+    #slides a:active {
+      color: #9e2020
+    }
+
+    .navbar {
+      overflow: hidden
+    }

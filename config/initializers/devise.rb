@@ -17,8 +17,16 @@ Devise.setup do |config|
 
   require "omniauth-facebook"
 
-  conf = YAML::load(File.open("#{Rails.root.to_s}/config/facebook.yml"))
-  config.omniauth :facebook, conf[Rails.env]["app_id"], conf[Rails.env]["secret_key"] , :strategy_class => OmniAuth::Strategies::Facebook , :image_size => 'large'
+  fconf = YAML::load(File.open("#{Rails.root.to_s}/config/facebook.yml"))
+  config.omniauth :facebook, fconf[Rails.env]["app_id"], fconf[Rails.env]["secret_key"] , :strategy_class => OmniAuth::Strategies::Facebook , :image_size => 'large'
+
+  require "omniauth-google-oauth2"
+  gconf = YAML::load(File.open("#{Rails.root.to_s}/config/google.yml"))
+  config.omniauth :google_oauth2, gconf[Rails.env]["app_id"], gconf[Rails.env]["secret_key"], { :access_type => "offline", :approval_prompt => "" }
+
+  require 'omniauth-twitter'
+  tconf = YAML::load(File.open("#{Rails.root.to_s}/config/twitter.yml"))
+  config.omniauth :twitter ,tconf[Rails.env]["app_id"], tconf[Rails.env]["secret_key"]
 
   require "omniauth-github"
   

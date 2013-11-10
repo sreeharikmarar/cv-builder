@@ -2,48 +2,122 @@
 
 
 
-<div style="font-family: 'Arvo-Regular' ;font-size:40px;margin-top: 40px;text-align: center;">
-  Build Your Favorite Cvs Online using Cv Builder</div>
+<div  style="font-family: 'Arvo-Regular' ;font-size:40px;margin-top: 150px;text-align: center;">
+  <div class="slides">Build Your Favorite CVs online using CV <span style="color:#0094BD;">Builder</span></div>
+  <div class="slides">Create & Style your professional CVs in minutes</div>
+  <div class="slides">Download & Share your CVs wherever you want</div>
+</div>
+<div class="cl-40"></div>
+<div class="cl-40"></div>
 
-<div class="cl-20"></div>
-<div class="cl-20"></div>
-<div class="row-fluid" style="margin-top:50px">
-  <div style="font-size:20px;font-family: 'QumpellkaNo12'">Sign in Using</div>
+
+<div class='row-fluid' style="min-height:350px;margin-top: 70px;" align="center">
+  <div style="font-weight: bold;font-size:23.5px;font-family: '2Dumb'">Sign in Using</div>
   <div class="cl-20"></div>
 
-  <% facebook_img_tag = image_tag("/assets/fb.png", :style=>"margin:0px;padding:0px;", :class=>"img-circle") %>
+  <div class="" style="width:600px;border-radius:10px;" align="center">
+    <div class="" style="float:left;width:200px;">
 
-  <% twitter_img_tag = image_tag("/assets/twitter.png", :style=>"margin:0px;padding:0px;", :class=>"img-circle") %>
+      <a href="/users/auth/facebook" style="">
+        <div class="facebook" onmouseover="fbHover(this);" onmouseout="fbRevert(this);"></div>
+      </a>
 
-  <% google_img_tag = image_tag("/assets/google.png", :style=>"margin:0px;padding:0px;",:class=>"img-circle") %>
+      <div class="cl"></div>
 
-  <div class="span2">
-  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
-<%= link_to facebook_img_tag , user_omniauth_authorize_path(:facebook), :style=>"" %>&ensp;&ensp;
+    </div>
+
+    <div class="" style="float:left;width:200px;">
+
+      <a href="/users/auth/twitter" style="">
+        <div class="twitter" onmouseover="twitterHover(this);" onmouseout="twitterRevert(this);"></div>
+      </a>
+
+      <div class="cl"></div>
+
+    </div>
+
+    <div class="" style="float:left;width:200px;">
+
+      <a href="/users/auth/google_oauth2" style="">
+        <div class="google" onmouseover="googleHover(this);" onmouseout="googleRevert(this);"></div>
+      </a>
+
+      <div class="cl"></div>
+
+    </div>
     <div class="cl"></div>
   </div>
-  </div>
-  <div class="span2">
-  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
-    <%= link_to twitter_img_tag, '#' , :style=>"" %>&ensp;&ensp;
-    <div class="cl"></div>
-  </div>
-  </div>
-  <div class="span2">
-  <div class="logo" onmouseover="applyStyle(this);" onmouseout="revertStyle(this);">
-    <%= link_to google_img_tag , '#' , :style=>"" %>&ensp;&ensp;
-    <div class="cl"></div>
-  </div>
-  </div>
+
 
 </div>
 
+
+
+
 <script type="text/javascript">
 
-  function applyStyle(el){
-   $(el).css("padding","8px");
+var slides = $('.slides')
+  current = 0;
+  slides.hide();
+
+$(document).ready(function(){
+  Rotator();
+});
+
+function Rotator() {
+    $(slides[current]).fadeIn('slow').delay(3500).fadeOut('slow');
+    $(slides[current]).queue(function() {
+        current = current < slides.length - 1 ? current + 1 : 0;
+        Rotator();
+        $(this).dequeue();
+    });
+}
+
+  $(function(){
+    $('#slides').slidesjs({
+      width: 650,
+      height: 250,
+      navigation: false,
+      play: {
+        active: true,
+        auto: true,
+        interval: 7000,
+        swap: true
+      }
+    });
+  });
+    
+  function fbHover(el){
+    $(el).removeClass("facebook");
+    $(el).addClass("facebook-hover");
   }
-  function revertStyle(el){
-   $(el).css("padding","6px");
+  function fbRevert(el){
+    $(el).removeClass("facebook-hover");
+    $(el).addClass("facebook");
   }
+  function twitterHover(el){
+    $(el).removeClass("twitter");
+    $(el).addClass("twitter-hover");
+  }
+  function twitterRevert(el){
+    $(el).removeClass("twitter-hover");
+    $(el).addClass("twitter");
+  }
+  function googleHover(el){
+    $(el).removeClass("google");
+    $(el).addClass("google-hover");
+  }
+  function googleRevert(el){
+    $(el).removeClass("google-hover");
+    $(el).addClass("google");
+  }
+
+  
 </script>
+
+<style>
+  /* Prevents slides from flashing */
+  #slides {
+    display:none;
+  }
+</style>

@@ -10,6 +10,8 @@
 
     <%= f.input :project_name, :as=>:string, :label =>"Project Name" , :input_html => {:value => @git_details.project_name ? @git_details.project_name :  '' }   %>
     <div class="cl-10"></div>
+    <%= f.input :project_description, :as=>:text , :label =>"Description", :input_html => {:value => @git_details.project_description ? @git_details.project_description : '' , :style=>"height:100px;" } %>
+    <div class="cl-10"></div>
     <%= f.input :technologies, :as=>:string, :label =>"Technologies" , :input_html => {:value => @git_details.technologies ? @git_details.technologies : '' }   %>
     <div class="cl-10"></div>
     <%= f.input :contribution, :as=>:text , :label =>"Your Contribution", :input_html => {:value => @git_details.contribution ? @git_details.contribution : '' , :style=>"height:100px;" } %>

@@ -1,13 +1,12 @@
 $('#DIVID_LIGHT_BOX_CONTAINER_MAIN').css("height", '');
 $("#DIVID_LIGHT_BOX_CONTAINER_MAIN").css("overflow","hidden");
 
-<% if @git_details.errors %>
+<% if @git_details.errors.any? %>
   <% @git_details.errors.full_messages.each do |message| %>
     displayGrowlMessages("error","Error!", "<%= message %>", "topRight");
   <% end %>
-<% else %>
-    displayGrowlMessages("success","Success!", "Git Repo Details has been saved", "topRight");
 <% end %>
+
 
 
 content = "<%= escape_javascript(render(:partial=>'/users/github_details/edit')) %>";

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon"  href="/assets/favicon.ico" />
+  <title>Cv Builder</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body background="/assets/inner.png" style="margin: 0;">
+
+
+<div  style="width:100%;">
+      <div class="container " style="margin-top: 20px;min-height: 500px;width:1040px;">
+        <div class="row-fluid">
+
+            <%= yield %>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+ 
+	<!-- Lightbox and Commaon Scripts -->
+    <%= render :partial=>"/layouts/common_scripts" %>
+     <%= render :partial=>"/layouts/notifications/display_growl_messages" %>
+    <%= render :partial=>"/layouts/lightbox/main" %>
+
+</body>
+</html>

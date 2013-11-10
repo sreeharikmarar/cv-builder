@@ -6,7 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #  gem "mysql2"
 
-  gem "pg"
+gem "pg"
 
 gem 'execjs'
 gem 'libv8', '~> 3.11.8'
@@ -15,14 +15,14 @@ gem 'psych' , '2.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'less-rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'less-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer'
 
-  gem 'uglifier', '>= 1.0.3'
+gem 'uglifier', '>= 1.0.3'
  
- gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails'
 
 gem "jquery-rails", "1.0.19"
 
@@ -45,28 +45,14 @@ gem "simple_form", '2.0.2'
 
 gem 'omniauth-github'
 
-gem 'linkedin', '0.4.1', :git => "git://github.com/pengwynn/linkedin.git"
+gem 'bitly'
 
-#gem 'wkhtmltopdf'
+
+gem 'linkedin', '0.4.3', :git => "git://github.com/pengwynn/linkedin.git"
+
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary"
 
-#group :production do
-#  gem "wkhtmltopdf-heroku", :git => 'git://github.com/camdez/wkhtmltopdf-heroku.git'
-#  gem 'thin'
-#end
-#gem "wkhtmltopdf-heroku"
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'thin'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

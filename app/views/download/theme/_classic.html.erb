@@ -1,16 +1,28 @@
-<%= link_to "Download PDF", download_cv_path(:theme => 'classic') , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+<%
+unless defined?(share_btn)
+  share_btn = true
+end
+%>
+
+<% if share_btn %>
+  <%= link_to "Share Cv", share_cv_path(:id=>current_user.id , :theme => 'classic')  ,:remote => true , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+<% end %>
+
+
+<%= link_to "Download PDF", download_cv_path(:theme => 'classic',:id=> @user.id)  , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+
 <div class="cl-10"></div>
-<div class="span12"  style="padding-left:10px;margin-left: 10px;border: 0px solid #898989; border-radius: 3pt;
+<div class="span12"  style="padding-left:10px;margin-top:20px;margin-left: 10px;border: 0px solid #898989; border-radius: 3pt;
      box-shadow:1px 1px 20px #c1c1c1; color:#000;width:950px;background-color: #fff;">
 
   <!-- Name -->
-<div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
-  <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 20px;"><b><%= @user.name %></b></h1>
-  <div class="cl-10"></div>
-  <div style="border-bottom:2px solid #000;"></div>
-  <div class="cl-15"></div>
-  <div class="cl-15"></div>
-</div>
+  <div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
+    <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 20px;"><b><%= @user.name %></b></h1>
+    <div class="cl-10"></div>
+    <div style="border-bottom:2px solid #000;"></div>
+    <div class="cl-15"></div>
+    <div class="cl-15"></div>
+  </div>
 
   <!-- Name -->
 
@@ -50,6 +62,11 @@
 
   <!-- Github Block  -->
   <%= render :partial=>"/download/sections/classic/github" ,:locals =>{:github_details => @github_details} %>
+
+  <div class="cl-30"></div>
+
+  <!-- Projects Block  -->
+  <%= render :partial=>"/download/sections/classic/projects" ,:locals =>{:projects => @projects} %>
 
   <div class="cl-10"></div>
 

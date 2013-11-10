@@ -1,0 +1,10 @@
+<div style="padding-left: 30px;width:1020px">
+  <% if @theme == 'simple' %>
+          <%= render :partial => "/download/theme/simple" ,:locals => {:share_btn => false } %>
+  <% elsif @theme == 'classic' %>
+          <%= render :partial => "/download/theme/classic" , :locals => {:share_btn => false }%>
+  <% elsif @theme == 'professional' %>
+          <%= render :partial => "/download/theme/professional" , :locals => {:share_btn => false }%>
+  <% end %>
+  <div class="cl"></div>
+</div>
