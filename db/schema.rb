@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125095601) do
+ActiveRecord::Schema.define(:version => 20130913093344) do
+
+  create_table "education_details", :force => true do |t|
+    t.integer "user_id"
+    t.string  "degree"
+    t.string  "field_of_study"
+    t.string  "school_name"
+    t.string  "start_date"
+    t.string  "end_date"
+  end
+
+  create_table "github_details", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "project_name"
+    t.string   "project_description"
+    t.string   "public_url"
+    t.string   "contribution",        :limit => 1000
+    t.string   "technologies"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
 
   create_table "keywords", :force => true do |t|
     t.integer "user_id"
@@ -23,11 +43,51 @@ ActiveRecord::Schema.define(:version => 20121125095601) do
     t.integer "user_id"
     t.string  "first_name"
     t.string  "last_name"
+    t.string  "email"
     t.string  "headline"
-    t.integer "company_id"
-    t.integer "country_id"
-    t.integer "city_id"
-    t.integer "industry_id"
+    t.string  "location"
+    t.string  "year"
+    t.string  "month"
+    t.string  "day"
+    t.string  "phone_number"
+    t.string  "main_address"
+    t.string  "twitter_account"
+    t.string  "public_profile_url"
+    t.string  "personal_website"
+  end
+
+  create_table "positions", :force => true do |t|
+    t.integer "user_id"
+    t.string  "title"
+    t.string  "company_name"
+    t.string  "industry_name"
+    t.boolean "is_current",                    :default => false
+    t.string  "start_date"
+    t.string  "end_date"
+    t.string  "summary",       :limit => 1000
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "project_name"
+    t.text     "project_description"
+    t.string   "public_url"
+    t.text     "contribution"
+    t.string   "technologies"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "share_cvs", :force => true do |t|
+    t.integer "user_id"
+    t.string  "url"
+    t.string  "theme"
+    t.boolean "publish", :default => true
+  end
+
+  create_table "technical_details", :force => true do |t|
+    t.integer "user_id"
+    t.text    "details", :limit => 16777215
   end
 
   create_table "users", :force => true do |t|
