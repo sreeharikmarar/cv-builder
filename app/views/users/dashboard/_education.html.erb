@@ -12,7 +12,9 @@
           </div>
           <div class="span3" style="float:right">
             <div style="float:right;margin-top: 10px;margin-right: 10px">
+            <% if edu.start_date && edu.end_date %>
             <p style="color:#4B4B4B;font-size: 15px;font-style: italic"><%= edu.start_date %> to <%= edu.end_date %></p>
+            <% end %>
           </div>
           </div>
         </div>
