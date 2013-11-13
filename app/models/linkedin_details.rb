@@ -29,9 +29,7 @@ class LinkedinDetails < ActiveRecord::Base
 
     ## Storing Personal Detail
 
-    puts "%"*100
-    puts "profile_1 : #{profile_1}"
-    puts "%"*100
+   
     @linkedin_detail = user.linkedin_details || LinkedinDetails.new
     
     @linkedin_detail.user_id = user.id
