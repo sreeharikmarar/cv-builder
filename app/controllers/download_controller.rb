@@ -21,7 +21,7 @@ class DownloadController < ApplicationController
 
     collect_data_for_displaying_and_downloading_cv
 
-    pdf_file_name = "#{current_user.name}"
+    pdf_file_name = "#{@user.name}"
 
 
     respond_to do |format|
