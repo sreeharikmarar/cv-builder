@@ -21,7 +21,7 @@ class DownloadController < ApplicationController
 
     collect_data_for_displaying_and_downloading_cv
 
-    pdf_file_name = "SAMPLE_CV"
+    pdf_file_name = "#{current_user.name}"
 
 
     respond_to do |format|
@@ -47,7 +47,7 @@ class DownloadController < ApplicationController
     @format = "pdf"
     @show_links = false
     
-    @linkedin_details = @user.linkedin_details if @user
+    @linkedin_details = @user.linkedin_details if @user && !@user.linkedin_details.blank?
     @experience_details = @user.positions if @user && @user.positions.any?
     @github_details = @user.github_details if @user && @user.github_details.any?
     @education_details = @user.education_details if @user && @user.education_details.any?
@@ -56,7 +56,7 @@ class DownloadController < ApplicationController
   end
   def collect_data_for_displaying_cv
     @user = User.find_by_id(params[:id])
-    @linkedin_details = @user.linkedin_details if @user && @user.linkedin_details.blank?
+    @linkedin_details = @user.linkedin_details if @user && !@user.linkedin_details.blank?
     @experience_details = @user.positions if @user && @user.positions.any?
     @github_details = @user.github_details if @user && @user.github_details.any?
     @education_details = @user.education_details if @user && @user.education_details.any?

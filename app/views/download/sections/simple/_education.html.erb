@@ -21,7 +21,7 @@
         </div>
         <div class="" style="float:right;width: 250px;">
           <div style="float:right;">
-            <% if edu.start_date && edu.end_date %>
+            <% if !edu.start_date.blank? && !edu.end_date.blank? %>
               <div><%= edu.start_date %> to <%= edu.end_date %></div>
             <% end %>
           </div>
