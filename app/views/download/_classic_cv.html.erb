@@ -2,7 +2,11 @@
 
 <!-- Name -->
 <div class="span10" style="width:920px;margin-left: 10px;margin-right:10px;">
+  <% if @linkedin_details && (@linkedin_details.first_name || @linkedin_details.last_name) %>
+  <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 10px;"><%= "#{@linkedin_details.first_name}"+"#{@linkedin_details.last_name}" %></h1>
+  <% else %>
   <h1 class="cv-title" style="text-align:left;font-size: 50px;margin-top: 10px;"><%= @user.name %></h1>
+  <% end %>
   <div class="cl-10"></div>
   <div style="border-bottom:2px solid #000;"></div>
   <div class="cl-15"></div>

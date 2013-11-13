@@ -1,8 +1,11 @@
 <div class="span12"  style="padding:5px;top:5px;bottom: 5px;left: 5px;right:5px;color:#000;width:950px;">
 
 <!-- Name -->
-
+  <% if @linkedin_details && (@linkedin_details.first_name || @linkedin_details.last_name) %>
+  <h1 style="" class="title"><%= "#{@linkedin_details.first_name}"+"#{@linkedin_details.last_name}" %></h1>
+  <% else %>
   <h1 style="" class="title"><%= @user.name %></h1>
+  <% end %>
   <div class="cl-15"></div>
 
   <!-- Name -->

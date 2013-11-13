@@ -13,6 +13,7 @@ class LinkedinDetails < ActiveRecord::Base
   ## Specifies a white list of attributes that can be set via mass-assignment.
   attr_accessible :user_id, :first_name , :last_name , :email , :headline , :public_profile_url, :year ,:month ,:day, :twitter_account, :main_address , :phone_number , :location , :personal_website
 
+  validates :first_name , :presence => true
   validates :year, :presence=>true
   validates :month, :presence=>true
   validates :day, :presence=>true
