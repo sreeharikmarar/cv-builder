@@ -5,19 +5,23 @@
     </div>
 
     <div class="span5" style="width:380px;margin-left:30px;">
+       <% if @linkedin_details && (@linkedin_details.first_name || @linkedin_details.last_name) %>
+      <h2 style="color:#4B4B4B;margin-top: 0px;font-family: 'open-sans'"><%= "#{@linkedin_details.first_name}"+"#{@linkedin_details.last_name}" %></h2>
+      <% else %>
       <h2 style="color:#4B4B4B;margin-top: 0px;font-family: 'open-sans'"><%= @user.name %></h2>
+      <% end %>
       <h5 style="color:#4B4B4B"><%= @linkedin_details && @linkedin_details.headline ? @linkedin_details.headline : '' %></h5>
       <span style="color: #08C;"><%= @linkedin_details && @linkedin_details.email ? @linkedin_details.email : current_user.email %></span>
         <div class="cl-3"></div>
-      <% if @linkedin_details && @linkedin_details.personal_website %>
+      <% if @linkedin_details && !@linkedin_details.personal_website.blank? %>
         <%= link_to "#{@linkedin_details.personal_website}" , @linkedin_details.personal_website %>
         <div class="cl-3"></div>
       <% end %>
-      <% if @linkedin_details && @linkedin_details.twitter_account %>
+      <% if @linkedin_details && !@linkedin_details.twitter_account.blank? %>
         <%= link_to "@#{@linkedin_details.twitter_account}" , "http://twitter.com/#{@linkedin_details.twitter_account}"%>
         <div class="cl-3"></div>
       <% end %>
-      <% if @linkedin_details && @linkedin_details.public_profile_url %>
+      <% if @linkedin_details && !@linkedin_details.public_profile_url.blank? %>
         <%= link_to "#{@linkedin_details.public_profile_url}" , @linkedin_details.public_profile_url %>
         <div class="cl-3"></div>
       <% end %>
