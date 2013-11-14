@@ -1,7 +1,7 @@
 <div class="span10" style="font-size:20px;width:920px;margin-left: 10px;margin-right:10px;">
 
   <div>
-    <% if linkedin_details && linkedin_details.email %>
+    <% if linkedin_details && !linkedin_details.email.blank? %>
     <b>Email: </b><%= linkedin_details.email %>
     <% else %>
   <b>Email: </b><%= current_user.email %>

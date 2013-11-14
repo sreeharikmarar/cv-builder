@@ -21,12 +21,14 @@
     <%= f.input :email, :as=>:string, :label =>"Email",  :input_html => {:value => @basic_info.email ? @basic_info.email : '' } %>
     <div class="cl-10"></div>
 
-    <%= f.input :year, :as => :select , :label =>"Date Of Birth", :collection => (1950..Date.today.year).to_a, :selected => @basic_info.year ? @basic_info.year : '' ,:prompt => "year", :input_html => { :style=>"width:75px;float:left;"} %>
-    <div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Year</div>
-    <%= f.input :month, :as => :select , :label =>false, :collection => (1..12).to_a, :selected => @basic_info.month ? @basic_info.month : '' ,:prompt => "Month" , :input_html => { :style=>"width:80px;float:left;"} %>
-    <div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Month</div>
-    <%= f.input :day, :as => :select , :label =>false, :collection => (1..30).to_a, :selected => @basic_info.day ? @basic_info.day : '' ,:prompt => "Day" , :input_html => { :style=>"width:70px;float:left;"} %>
-    <div style="float:left;margin-left:10px;margin-top: 4px;">Day</div>
+    <%= f.input :year, :as => :select , :label =>"Date Of Birth (yyyy)", :collection => (1950..Date.today.year).to_a, :selected => @basic_info.year ? @basic_info.year : '' ,:prompt => "Year", :input_html => { :style=>"width:75px;float:left;"} %>
+    <%#*<div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Year</div>%>
+     <div class="cl-10"></div>
+    <%= f.input :month, :as => :select , :label =>"Date Of Birth (mm)", :collection => (1..12).to_a, :selected => @basic_info.month ? @basic_info.month : '' ,:prompt => "Month" , :input_html => { :style=>"width:80px;float:left;"} %>
+    <%#*<div style="float:left;margin-left:10px;margin-right:10px;margin-top: 4px;">Month</div>%>
+   <div class="cl-10"></div>
+  <%= f.input :day, :as => :select , :label =>"Date Of Birth (dd)", :collection => (1..30).to_a, :selected => @basic_info.day ? @basic_info.day : '' ,:prompt => "Day" , :input_html => { :style=>"width:70px;float:left;"} %>
+    <%#*<div style="float:left;margin-left:10px;margin-top: 4px;">Day</div>%>
     <div class="cl-10"></div>
    <%= f.input :main_address, :as=>:text, :label =>"Address",  :input_html => {:value => @basic_info.main_address ? @basic_info.main_address : '', :style=>"height:100px;" } %>
     <div class="cl-10"></div>
