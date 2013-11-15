@@ -1,7 +1,11 @@
 <div class="well" style="height:auto">
   <div class="row-fluid">
     <div class="span3">
+      <% if !@user.image.blank? %>
       <%= image_tag @user.image,:class=>"img-polaroid",:style=>"width:auto ,height:auto;"%>
+      <% else %>
+      <img class="img-polaroid" src="/assets/user.png" style="width:auto ,height:auto;"></img>
+      <% end %>
     </div>
 
     <div class="span5" style="width:380px;margin-left:30px;">

@@ -5,7 +5,7 @@ end
 %>
 
 <% if share_btn %>
-  <%= link_to "Share Cv", share_cv_path(:id=>current_user.id , :theme => 'classic')  ,:remote => true , :class=>"btn btn-success" , :style=>"float:right;margin-right:10px;" %>
+  <%= link_to "Share / Publish Cv", share_cv_path(:id=>current_user.id , :theme => 'classic')  ,:remote => true , :class=>"btn btn-info" , :style=>"float:right;margin-right:10px;" %>
 <% end %>
 
 
