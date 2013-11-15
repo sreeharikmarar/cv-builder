@@ -7,9 +7,8 @@
     <%= f.error_notification %>
     <div class="cl-5"></div>
 
-    <%= f.input :url, :as=>:string, :label =>"URL" , :input_html => {:value => @share_cv.url ? @share_cv.url :  @url }   %>
+    <%= f.input :url, :as=>:string, :label =>"URL to Share" , :hint => "( share your CV wherever you want )" , :input_html => {:value => @share_cv.url ? @share_cv.url :  @url, :readonly=>true, :style=>"font-size:1.5em;" }   %>
     <div class="cl-10"></div>
-    <%#= f.input :theme, :as=>:string , :label =>"theme", :input_html => {:value => @share_cv.theme ? @share_cv.theme : '' , :style=>"height:100px;" } %>
     <div class="cl-10"></div>
     <div class="control-group required">
         <label class="select control-label"> Themes</label>
@@ -20,7 +19,7 @@
 <%= raw "<span>#{field1}&nbsp;&nbsp;Simple&nbsp;&nbsp;&nbsp;&nbsp;#{field2}&nbsp;&nbsp;Classic&nbsp;&nbsp;&nbsp;&nbsp;#{field3}&nbsp;&nbsp;Professional</span>" %></div>
         </div>
     <div class="control-group required">
-      <label class="select control-label"> Share</label>
+      <label class="select control-label"> Publish URL</label>
         <% field1 = radio_button_tag "share_cv[publish]", true , @share_cv.publish  ==  true, :style=>"margin:0px auto;" %>
         <% field2 = radio_button_tag "share_cv[publish]", false , @share_cv.publish  == false, :style=>"margin:0px auto;" %>
 <div class="controls" style="margin-left:175px;">
