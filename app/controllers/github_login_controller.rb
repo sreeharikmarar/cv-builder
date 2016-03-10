@@ -22,7 +22,7 @@ class GithubLoginController < ApplicationController
 #    req = Net::HTTP.get(URI.parse("https://api.github.com/user/repos?access_token=#{access_token}"))
 
 
-    # To get the whole repos list in browser https://api.github.com/user/repos?access_token=7e349d6d8173b0fca65f64e8ebffc683024b9415
+    # To get the whole repos list in browser https://api.github.com/user/repos?access_token=#{access_token}
     
      response =  RestClient.get("https://api.github.com/user/repos?access_token=#{access_token}")
      datas = JSON.parse(response)
