@@ -1,7 +1,3 @@
-# Author : Krishnaprasad Varma (kpvarma@presciencesoft.com)
-# Date : 2 Jun, 2011
-# All code (c)2011 Prescience Soft Pvt. Ltd. All rights reserved
-
 class LinkedinDetails < ActiveRecord::Base
 
   ## Set the table name
@@ -28,9 +24,6 @@ class LinkedinDetails < ActiveRecord::Base
   
   def self.parse_linkedin1(user, profile_1)
 
-    ## Storing Personal Detail
-
-   
     @linkedin_detail = user.linkedin_details || LinkedinDetails.new
     
     @linkedin_detail.user_id = user.id
@@ -54,16 +47,11 @@ class LinkedinDetails < ActiveRecord::Base
     if profile_1.primary_twitter_account && profile_1.primary_twitter_account.provider_account_name
       @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name
     end
-#    @linkedin_detail.month = profile_1.date_of_birth.month unless profile_1.date_of_birth && profile_1.date_of_birth.month.blank?
-#    @linkedin_detail.day = profile_1.date_of_birth.day unless profile_1.date_of_birth && profile_1.date_of_birth.day.blank?
-#    @linkedin_detail.twitter_account = profile_1.primary_twitter_account.provider_account_name unless profile_1.primary_twitter_account.provider_account_name.blank?
     @linkedin_detail.main_address = profile_1.main_address unless profile_1.main_address.blank?
 
     if profile_1.phone_numbers && profile_1.phone_numbers.all && profile_1.phone_numbers.all.any?
 
-#      if  profile_1.phone_numbers.any? && profile_1.phone_numbers.all.first.phone_number
     @linkedin_detail.phone_number = profile_1.phone_numbers.all.first.phone_number
-#      end
     end
 
     if profile_1.location
@@ -126,13 +114,6 @@ class LinkedinDetails < ActiveRecord::Base
     end
  
   
-  end
-
-
-  def self.parse_linkedin_3(user, profile_3)
-
-    EducationDetails.parse_education_details(user, profile_3)
-    TechnicalDetails.parse_technical_details(user, profile_3)
   end
   
 end

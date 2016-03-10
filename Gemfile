@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
 
 gem 'rails', '3.2.13'
 
@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 #  gem "mysql2"
 
+# gem "mysql2"
 gem "pg"
 
 gem 'execjs'

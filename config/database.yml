@@ -1,3 +1,4 @@
+
 # MySQL.  Versions 4.1 and 5.0 are recommended.
 #
 #
@@ -14,7 +15,7 @@ development:
   database: cv_builder_db
   pool: 5
   username: root
-  password: asdfgh
+  password: password
   
 
 fast_mode:
@@ -24,7 +25,7 @@ fast_mode:
   database: cv_builder_db
   pool: 5
   username: root
-  password: asdfgh
+  password: password
   
 
 production:
@@ -34,7 +35,7 @@ production:
   database: cv_builder_db
   pool: 5
   username: root
-  password: asdfgh
+  password: password
 ##  socket: /var/run/mysqld/mysqld.sock
   port: 5432
   host: localhost
