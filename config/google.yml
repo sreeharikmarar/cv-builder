@@ -1,6 +1,6 @@
 development:
-  app_id: "366420418948-542j044s5n2h5drmmsr85mv19ccft58e.apps.googleusercontent.com"
-  secret_key: "feez9mFNe9kLEww_yd2p7slx"
+  app_id: ""
+  secret_key: ""
 production:
-  app_id: "141202123295-9gmi27l73t4dsfskfk7nj6clim7l5deo.apps.googleusercontent.com"
-  secret_key: "q4cFecbY8aWdewUuOPxF0Eec"
+  app_id: ""
+  secret_key: ""

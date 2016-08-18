@@ -1,6 +1,6 @@
 development:
-  app_id: "zrjfxj4j6u8i"
-  secret_key: "OFHzBKYQxSNW66wy"
+  app_id: ""
+  secret_key: ""
 production:
-  app_id: "fnoxs3qcbz59"
-  secret_key: "N4jIjYhssjVa8uNo"
+  app_id: ""
+  secret_key: ""
